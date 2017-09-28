@@ -1,0 +1,472 @@
+/*IMPORTANDO FONTES*/
+@import url('https://fonts.googleapis.com/css?family=Quattrocento');
+
+/* PADROES */
+* {box-sizing: border-box;}
+
+body{ font-family: 'Quattrocento', serif;}
+
+/* PADROES */
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.button{
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: rgba(92,156,202, 1);
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 10px;
+    transition: all .3s ease-in;
+}
+
+.button:hover{
+    text-decoration: none;
+    background-color: rgba(92,156,202, .7);
+}
+
+/* ANIMAÇÃO */
+.anime{
+    opacity: 0;
+    transition: .3s;
+}
+
+.anime-start{
+    opacity: 1;
+}
+
+/* NAVBAR */
+.navbar {
+    border-bottom: rgba(92,156,202, .6) 3px solid;
+    opacity: 0.8;
+    font-size: 20px;}
+
+.navbar-brand{
+    font-size: 40px;
+    font-family: "Edwardian Script ITC";
+}
+
+.navbar-nav li.nav-item{
+    padding: 0 15px 0 15px;
+}
+
+.navbar-light .navbar-brand{
+    color:white;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: white;
+}
+
+/* HOVER NO NAVBAR */
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+   /* color: rgba(92,156,202, 1);*/
+}
+.navbar-light .navbar-nav .show>.nav-link{
+    color: white;
+}
+
+.navbar-light a.navbar-brand:hover{
+    color:white;
+}
+
+.dropdown-menu{
+    width: 650px;
+    padding: 20px;
+}
+
+.dropdown-menu * {
+    color: #FFF;
+}
+
+.dropdown-menu img{
+    width: 48px;
+}
+
+.dropdown-menu ul{
+    padding: 0;
+}
+
+.dropdown-menu  li{
+    list-style: none;
+    display: inline-block;
+}
+
+.dropdown-menu img{
+    display: block;
+}
+
+.dropdown-menu li:hover{
+    background-color: #f1f1f1;
+}
+
+.dropdown-menu a:hover{
+    background-color: transparent;
+}
+
+.entrar{
+    list-style: none;
+}
+
+.entrar a{
+    color: #FFF;
+}
+
+/* IMAGEM DO CARRINHO */
+.fa-shopping-cart{
+    font-size: 43px;
+}
+
+.content-carrinho a {
+    padding-right: 40px;
+}
+
+.content-carrinho span{
+    color: white;
+    font-size: 40px;
+    position: relative;
+}
+
+.fa-shopping-bag::after{
+    font-size: 20px;
+    top:10px;
+    content: attr(data-qtd); /*PEGA O VALOR DO ATRIBUTO*/
+
+    text-align: center;
+    color:black;
+    position: absolute;
+    left:0;
+    width: 100%;
+    height: 100%;
+}
+
+/* TITULOS */
+.titulo{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-size: 60px;
+}
+
+.titulo::before,
+.titulo::after{
+    content: "";
+    background-color:rgba(92,156,202, .4);
+    flex-grow: 1;
+    height: 4px;
+    position: relative;
+    top: 0.5em;
+    margin: 40px 25px 0px 25px;
+}
+
+.titulo::before{
+    margin-right: 10px;
+}
+
+.titulo::after{
+    margin-left: 10px;
+}
+
+/* TITULO-TWO*/
+.titulo-two{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-size: 60px;
+}
+
+.titulo-two::before,
+.titulo-two::after{
+    content: "";
+    background-color:rgba(92,156,202, .4);
+    flex-grow: 1;
+    height: 4px;
+    position: relative;
+    top: 0.5em;
+    margin: 8px 25px 0px 25px;
+}
+
+.titulo-two::before{
+    margin-right: 10px;
+}
+
+.titulo-two::after{
+    margin-left: 10px;
+}
+
+/* SUB-TITLES */
+.sub-titles{
+    line-height: 1.5;
+    font-size: 60px;
+}
+
+/* SEÇÃO PRODUTOS */
+#produtos{
+    margin-top: 30px;
+    padding: 30px;
+}
+
+#produtos  span{
+    font-size: 20px;
+}
+
+#produtos a{
+    text-decoration: none;
+}
+
+#produtos a:hover{
+    color:#000;
+}
+
+
+#produtos span::after{
+    content: '';
+    width: 70px;
+    height: 6px;
+    background:rgba(138,118,98, 1);
+    display: block;
+}
+
+/* EFEITO HOVER NAS IMGS*/
+.efeito{
+    opacity: 1;
+    position: relative;
+}
+
+.efeito figure .box-black{
+    position: absolute;
+    width: 100%;
+    height: 0%;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: 1;
+    background-color: #000;
+    transition: all .5s ease-in;
+}
+
+.efeito figure{
+    position: relative;
+
+}
+
+.efeito figcaption {
+    color: #000;
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+    color: #FFF;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    margin: auto;
+    transform: translateY(0%);
+    transition: all 0.5s ease-in .5s;
+    z-index: 2;
+    width: 100%;
+  }
+  .efeito:hover figure .box-black {
+    opacity: 0.5;
+    height: 100%;
+  }
+  .efeito:hover figure figcaption {
+    opacity: 1;
+    bottom: 30px;
+  }
+
+figcaption p {
+    font-size: 40px;
+}
+
+/* SECOES */
+#section-one{
+    margin-top: 30px;
+    padding:30px;   
+}
+
+#section-one p:first-child{
+    font-size: 34px;
+}
+
+.texto :nth-child(2){
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.fa-arrow-right{
+    cursor: pointer;
+    font-size: 40px;
+    padding: 18px;
+    color: rgba(255, 255, 255, .9);
+    background-color: rgba(138,118,98, .6);
+    border: 1px solid rgba(138,118,98, 1);
+    transition: all .3s;
+}
+
+.fa-arrow-right::before{
+    content: '  Seja Única';
+    width: 50px;
+    height: 4px;
+}
+
+.fa-arrow-right:hover{
+    background-color: rgba(138,118,98, 1);
+}
+
+
+.border-baixo{
+    border-bottom: 2px solid grey; 
+}
+
+.texto{
+    padding: 150px 150px 150px 0;
+    text-align: center;
+}
+
+/* SECTION TWO*/
+#section-two > .container{
+    margin-top: 22px;
+
+}
+
+.card{
+    height: 80%;
+}
+
+.card img{
+    width: 100%;
+    height: 60%;
+}
+
+.card-content{
+    
+    font-weight: 500;
+    font-size: 20px;
+  
+}
+#section-two .card-body > p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* RODAPÉ */
+#rodape{
+    background-color: gray;
+}
+
+#rodape .fa{
+    padding: 20px;
+    font-size: 30px;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#rodape .fa:hover{
+    opacity: 0.7;
+}
+
+/* FACEBOOK ICON*/
+.fa-facebook{
+    background: #55ACEE;
+    color:white;
+}
+
+/* INSTAGRAM ICON */
+.fa-instagram{
+    background:#d10869;
+    color: white;
+}
+
+#rodape a:last-child{
+    margin-top: 18px;
+}
+
+/* ANUNCIO */
+#anuncio{
+    background-color:rgba(92,156,202, 1);
+    margin-top: 30px;
+}
+
+.span-anuncio{
+    font-weight: bold;
+    padding-left: 5px;
+    font-size: 19px;
+}
+/* CONTATO */
+form *{
+    padding: 5px;
+}
+
+.botao-contato{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: rgba(92,156,202, 1);
+    font-weight: 500;
+    transition: all .3s ease-in;
+}
+
+.botao-contato:hover{
+    background-color: rgba(92,156,202, .7);
+}
+/* BANDEIRA CARTOES*/
+.bd-cartao{
+    background-color:rgba(92,156,202,1);
+}
+
+.bandeiras img{
+    margin-right: 10px;
+    max-height: 30px;
+}
+
+/****** MEDIA QUERIES ******/
+/* PARTE ANUNCIO */
+@media (max-width: 400px){
+    #anuncio .container .col-md-4{
+        padding: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar{
+        font-size: 22px;
+    }
+
+    .navbar-brand{
+        font-size: 40px;
+        font-family: "Edwardian Script ITC";
+    }
+
+    .navbar-nav li.nav-item{
+        padding: 0;
+    }
+
+    /* TITULO CAROLINA JOAIS*/
+    .titulo{
+        font-size: 40px;
+    }
+
+    .sub-titles{
+        font-size: 25px;
+    }
+
+    .texto{
+        padding: 10px 10px 10px 0;
+        text-align: center;
+        font-size: 18px;
+    }
+
+
+   
+}
+

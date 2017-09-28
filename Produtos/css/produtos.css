@@ -1,0 +1,123 @@
+/*IMPORTANDO FONTES*/
+@import url('https://fonts.googleapis.com/css?family=Quattrocento');
+
+body{ font-family: 'Quattrocento', serif;}
+
+/***** HEADER PARA PESQUISA *****/
+#header-products{
+    margin-top: 150px;
+   
+
+}
+
+#header-products .container{
+    padding: 20px;
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+#ordenar{
+    margin-top: 11px;
+    width: 68%;
+    padding: 4px;
+    font-size: 1.1em;
+}
+
+#search{
+    outline:none;
+    border:none;
+    border-bottom: 2px solid grey;
+}
+
+/***** PARTE DE PRODUTOS *****/
+#vitrine-products{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+/* PEGA TODAS AS COLUNAS COL-MD-* */
+div[class^="col-md-"], div[class*="col-md-"]{
+    margin-top: 15px;
+}
+
+.container-card{
+    border: 1px solid transparent;
+    transition: all .6s;
+    text-align: center;
+    position: relative;
+    min-height: 300px;
+}
+
+.container-card:hover{
+    border: 1px solid grey;
+}
+
+.box-responsive{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.imagem-produto{
+    position: relative;
+}
+
+.description-t{
+    font-size: 1.6em;
+    font-style: normal;
+}
+.description-p{
+    font-size: 1.4em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.price{
+    margin-top: 12px;
+    font-size: 1em;
+    line-height: 1.84em;
+}
+
+.custom-fundo{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    transform: translateY(0);
+    z-index: 1;
+    padding: 6px;
+    background: grey;
+    
+}
+
+.custom-fundo a{
+    color: #000;
+    text-transform: uppercase;
+    font-size: 1em;
+    text-decoration: none;
+    background: rgb(92,156,202);
+    padding: 5px;
+    transition: .4s;
+}
+
+.custom-fundo a:hover{
+    text-decoration: none;
+    background: rgba(92,156,202, .6);
+}
+
+.container-card:hover .custom-fundo{
+    transition: .3s;
+    display: block;
+}
+
+@media (min-width: 720px){
+    #ordenar{
+        width: 30%;
+    }
+}
