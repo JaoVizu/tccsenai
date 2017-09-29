@@ -1,4 +1,10 @@
+<?php
+  include('../Class/Sql.php');
 
+  //SELECIONANDO TODOS OS PRODUTOS DO BANCO
+  $query = mysqli_query($conn, "select * from produto");
+  
+?>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -22,7 +28,7 @@
             </div>
 
             <div class="box-body no-padding table-responsive">
-              <table class="table table-striped">
+              <table style="font-size: 18px;" class="table table-striped">
                 <thead>
                   <tr>
                     <th style="width: 10px">#</th>
@@ -42,27 +48,27 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {loop="$products"}
+                  <?php while ($row = mysqli_fetch_array($query)){?>
                   <tr>
-                    <td>{$value.CodProduto}</td>
-                    <td>{$value.NomeProduto}</td>
-                    <td>R$ &nbsp;{$value.ValorProduto}</td>
-                    <td>{$value.MargemLucro}</td>
-                    <td>R$ &nbsp;{$value.ValorVendaProduto}</td>
-                    <td>{$value.QntProduto}</td>
-                    <td>{$value.CodFornecedor}</td>
-                    <td>{$value.ImagemProduto}</td>
-                    <td>{$value.QntParcelas}</td>
-                    <td>R$ &nbsp;{$value.ValorParcela}</td>
-                    <td>{$value.DataCadastro}</td>
-                    <td>{$value.Descricao}</td>
-                    <td>{$value.Categoria}</td>
+                    <td><?php echo $row['CodProduto']?></td>
+                    <td><?php echo $row['NomeProduto']?></td>
+                    <td>R$ &nbsp;<?php echo $row['ValorProduto']?></td>
+                    <td><?php echo $row['MargemLucro']?></td>
+                    <td>R$ &nbsp;<?php echo $row['ValorVendaProduto']?></td>
+                    <td><?php echo $row['QntProduto']?></td>
+                    <td><?php echo $row['CodFornecedor']?></td>
+                    <td><?php echo $row['ImagemProduto']?></td>
+                    <td><?php echo $row['QntParcelas']?></td>
+                    <td>R$ &nbsp;<?php echo $row['ValorParcela']?></td>
+                    <td><?php echo $row['DataCadastro']?></td>
+                    <td><?php echo $row['Descricao']?></td>
+                    <td><?php echo $row['Categoria']?></td>
                     <td>
-                      <a href="product-update.php" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                      <a href="product-update.php?codproduto=<?php echo $row['CodProduto']?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                       <a href="/admin/products/{$value.CodProduto}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                     </td>
                   </tr>
-                  {/loop}
+                  <?php } ?>
                 </tbody>
               </table>
             </div>

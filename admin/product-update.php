@@ -20,6 +20,12 @@
   $results = mysqli_fetch_assoc($query);
   $nome = $results['NomeCliente'];
 
+  //PEGANDO CODIGO DO PRODUTO
+  $codigoProd = isset($_GET['codproduto']) ? $_GET['codproduto'] : 0;
+
+  //query para pegar informacoes do produto selecionado para update
+  $queryProd = mysqli_query($conn, " SELECT * FROM produto WHERE CodProduto = '$codigoProd'");
+
 ?>
 
 <!DOCTYPE html>
@@ -309,52 +315,59 @@ desired effect
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form style="font-size:25px;" role="form" action="/admin/products/{$product.CodProduto}" method="post"  enctype="multipart/form-data">
+        <form style="font-size:25px;" role="form" action="../update/updateProdutos.php" method="post"  enctype="multipart/form-data">
           <div class="box-body">
-            
+
+            <?php while ($linha = mysqli_fetch_array($queryProd)){?>
+
+            <div class="form-group">
+              <label for="desproduct">Código do produto</label>
+              <input type="text" class="form-control" id="desproduct" name="CodProduto" placeholder="Digite o nome do produto" value="<?php echo $linha['CodProduto']?>">
+            </div>
+
             <div class="form-group">
               <label for="desproduct">Nome do produto</label>
-              <input type="text" class="form-control" id="desproduct" name="NomeProduto" placeholder="Digite o nome do produto" value="{$product.NomeProduto}">
+              <input type="text" class="form-control" id="desproduct" name="NomeProduto" placeholder="Digite o nome do produto" value="<?php echo $linha['NomeProduto']?>">
             </div>
           
 
           <div class="row">
               <div class="form-group col-md-4">
                   <label for="vlprice">Valor Produto</label>
-                  <input type="number" class="form-control" id="vlprice" name="ValorProduto" step="0.01" placeholder="0.00" value="{$product.ValorProduto}">
+                  <input type="number" class="form-control" id="vlprice" name="ValorProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorProduto']?>">
               </div>
 
             <div class="form-group col-md-4">
               <label for="vlwidth">Margem Lucro</label>
-              <input type="number" class="form-control" id="vlwidth" name="MargemLucro" step="0.01" placeholder="0.00" value="{$product.MargemLucro}">
+              <input type="number" class="form-control" id="vlwidth" name="MargemLucro" step="0.01" placeholder="0.00" value="<?php echo $linha['MargemLucro']?>">
             </div>
 
             <div class="form-group col-md-4">
               <label for="vlheight">Valor de Venda</label>
-              <input type="number" class="form-control" id="vlheight" name="ValorVendaProduto" step="0.01" placeholder="0.00" value="{$product.ValorVendaProduto}">
+              <input type="number" class="form-control" id="vlheight" name="ValorVendaProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorVendaProduto']?>">
             </div>
           </div><!-- fim linha -->
 
           <div class="row">
             <div class="form-group col-md-3">
                 <label for="vlheight">Quantidade</label>
-                <input type="number" class="form-control" id="vlheight" name="QntProduto" placeholder="0.00" value="{$product.QntProduto}">
+                <input type="number" class="form-control" id="vlheight" name="QntProduto" placeholder="0.00" value="<?php echo $linha['QntProduto']?>">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="vlheight">Max Parcela</label>
-                <input type="number" class="form-control" id="vlheight" name="QntParcelas" placeholder="0.00" value="{$product.QntParcelas}">
+                <input type="number" class="form-control" id="vlheight" name="QntParcelas" placeholder="0.00" value="<?php echo $linha['QntParcelas']?>">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="vlheight">Valor Parcela</label>
-                <input type="number" class="form-control" id="vlheight" name="ValorParcela" placeholder="0.00" value="{$product.ValorParcela}">
+                <input type="number" class="form-control" id="vlheight" name="ValorParcela" placeholder="0.00" value="<?php echo $linha['ValorParcela']?>">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="categoria">Categoria</label>
                 <select name="Categoria" id="categoria" class="form-control">
-                  <option value="">Categoria deste produto: <strong>{$product.Categoria}</strong></option>
+                  <option value="">Categoria deste produto: <strong><?php echo $linha['Categoria']?></strong></option>
                   <option value="anel">Anel</option>
                   <option value="pulseira">Pulseira</option>
                   <option value="brinco">Brinco</option>
@@ -377,9 +390,10 @@ desired effect
             
             <div class="form-group col-md-6">
                 <label for="descricao">Descrição</label>
-                <textarea class="form-control" name="Descricao" id="descricao" cols="30" placeholder="Descreva o produto">{$product.Descricao}</textarea>
+                <textarea class="form-control" name="Descricao" id="descricao" cols="30" placeholder="Descreva o produto"><?php echo $linha['Descricao']?></textarea>
             </div>
           </div><!-- fim linha -->
+          <?php }?>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
