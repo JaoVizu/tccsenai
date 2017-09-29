@@ -317,7 +317,7 @@ desired effect
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form style="font-size:25px;" role="form" action="../cadastros/cadastroProdutos.php" method="post">
+        <form style="font-size:25px;" role="form" action="../cadastros/cadastroProdutos.php" method="post" enctype="multipart/form-data">
           <div class="box-body">
             <div class="row">
               <div class="form-group col-md-6">

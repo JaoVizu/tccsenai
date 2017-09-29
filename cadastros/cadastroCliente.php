@@ -20,10 +20,8 @@ include('../Class/Sql.php');
 	$senha = md5($_POST['Senha']);
 	$inadmin = $_POST['inadmin'];
 
-	//INSERIR NO BANCO DE DADOS
-	/*$query = mysqli_query($conn, "INSERT INTO cliente(NomeCliente,DataNasc,EndCliente,CepCliente,CPFCLiente,RGCliente,TelefoneCliente,CelularCliente,CidadeCliente,EstadoCliente,BairroCliente,SexoCliente)VALUES('$nome','$datanasc','$endereco','$cep','$cpf','$rg','$telefone','$celular','$cidade',
-		'$estado','$bairro','$sexo')");*/
 
+	//INSERINDO NO BANCO DE DADOS
 	$query = mysqli_query($conn, "CALL sp_users_save('$nome',
 	'$datanasc','$endereco','$cep',
 	'$cpf','$rg','$telefone',
