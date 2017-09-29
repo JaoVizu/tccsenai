@@ -1,6 +1,7 @@
 <?php
 
 include('Class/Sql.php');
+include('functions.php');
 
 //CONSULTA DE PRODUTOS
 $query = mysqli_query($conn, "SELECT * FROM produto");
@@ -56,7 +57,7 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
                             <p class="description-t"><?php echo $rowProd['NomeProduto'] ?></p>
                             <p class="description-p"><?php echo $rowProd['Descricao']?></p>
                             <div class="card-price">
-                                <span class="price"><strong><?php echo $rowProd["ValorVendaProduto"]?></strong>
+                                <span class="price"><strong>R$ &nbsp;<?php echo formatPrice($rowProd["ValorVendaProduto"])?></strong>
                                 <br/>
                                 <?php echo $rowProd["QntParcelas"].'x'?>&nbsp;&nbsp;&nbsp;<?php echo $rowProd["ValorParcela"]?>
                                 </span>
