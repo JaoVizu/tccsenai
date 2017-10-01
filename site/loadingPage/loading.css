@@ -12,7 +12,7 @@ body{margin:0; padding:0;}
 }
 
 .logo{
-	width: 300px;
+	width: 600px;
 	height: 70px;
 	margin: 150px auto 50px auto;
 	font-size: 50px;
@@ -24,7 +24,7 @@ body{margin:0; padding:0;}
 .loader-frame{
 	width: 70px;
 	height: 70px;
-	margin: auto;
+	margin: 150px auto;
 	position: relative; 
 }
 

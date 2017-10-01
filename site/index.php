@@ -113,7 +113,7 @@
                  <?php while($rows = mysqli_fetch_assoc($products)){ ?>
                 <div class="col-md-3 col-sm-6">
                     <div class="card text-center">
-                        <img class="card-img-top" src="res/site/img/products/<?php echo $rows['ImagemProduto']?>" alt="">
+                        <img class="card-img-top" src="res/site/img/products/<?php echo $rows['ImagemProduto']?>" alt="<?php echo $rows['ImagemProduto']?>">
                         <div class="card-body">
                             <p style="white-space: nowrap;overflow:hidden; text-overflow:ellipsis;" class="card-content"><?php echo $rows["NomeProduto"];?></p>
                             <p><strong><?php echo "R$ &nbsp;" . formatPrice($rows["ValorVendaProduto"]);?></strong></p>
