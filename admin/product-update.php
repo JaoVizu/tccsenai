@@ -339,12 +339,12 @@ desired effect
 
             <div class="form-group col-md-4">
               <label for="vlwidth">Margem Lucro</label>
-              <input type="number" class="form-control" id="vlwidth" name="MargemLucro" step="0.01" placeholder="0.00" value="<?php echo $linha['MargemLucro']?>">
+              <input type="number" class="form-control" id="vlwidth" name="MargemLucro" step="0.01" value="<?php echo $linha['MargemLucro']?>" placeholder="0% - 100%">
             </div>
 
             <div class="form-group col-md-4">
               <label for="vlheight">Valor de Venda</label>
-              <input type="number" class="form-control" id="vlheight" name="ValorVendaProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorVendaProduto']?>">
+              <input type="number" class="form-control" id="vlheight" name="ValorVendaProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorVendaProduto']?>" maxlength="100">
             </div>
           </div><!-- fim linha -->
 
@@ -374,24 +374,25 @@ desired effect
                   <option value="colar">Colar</option>
                   <option value="tornozeleira">Tornozeleira</option>
                 </select>
-              </div>
-          </div><!-- fim linha -->
+            </div>
 
           <div class="row">
             <div class="form-group col-md-6">
                 <label for="file">Foto</label>
-                <input type="file" class="form-control" id="file" name="ImagemProduto" value="Valenndo">
+                <input type="file" class="form-control" id="file" name="ImagemProduto">
                 <div class="box box-widget">
                   <div class="box-body">
-                    <img class="img-responsive" id="image-preview" src=" alt="Photo">
+                    <img class="img-responsive" id="image-preview" src="../res/site/img/products/<?php echo $linha['ImagemProduto']?>" alt="Photo">
                   </div>
                 </div>
             </div>
-            
+          
+
             <div class="form-group col-md-6">
-                <label for="descricao">Descrição</label>
-                <textarea class="form-control" name="Descricao" id="descricao" cols="30" placeholder="Descreva o produto"><?php echo $linha['Descricao']?></textarea>
+              <label for="descricao">Descrição</label>
+              <textarea class="form-control" name="Descricao" id="descricao" cols="30" placeholder="Descreva o produto"><?php echo $linha['Descricao']?></textarea>
             </div>
+          </div><!-- fim linha -->
           </div><!-- fim linha -->
           <?php }?>
           </div>

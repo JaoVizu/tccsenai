@@ -5,4 +5,5 @@
 		return number_format((float)$vlprice, 2, ",", ".");
 	}
 
+
 ?>

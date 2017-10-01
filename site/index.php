@@ -1,5 +1,6 @@
     <?php
         include('Class/Sql.php');
+        include('functions.php');
         //CONSULTA DE PRODUTOS ->TRAZ PRODUTOS ALEATORIOS
         $products = mysqli_query($conn, "SELECT * FROM produto ORDER BY RAND() LIMIT 4");
     ?>
@@ -115,7 +116,7 @@
                         <img class="card-img-top" src="res/site/img/products/<?php echo $rows['ImagemProduto']?>" alt="">
                         <div class="card-body">
                             <p style="white-space: nowrap;overflow:hidden; text-overflow:ellipsis;" class="card-content"><?php echo $rows["NomeProduto"];?></p>
-                            <p><?php echo $rows["ValorVendaProduto"];?></p>
+                            <p><strong><?php echo "R$ &nbsp;" . formatPrice($rows["ValorVendaProduto"]);?></strong></p>
                             <a class="button" href="detalhes.php?id_product=<?php echo $rows["CodProduto"]; ?>">comprar</a>
                         </div><!-- fim card body-->
                     </div><!-- fim cartao-->

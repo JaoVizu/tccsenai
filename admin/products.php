@@ -1,5 +1,6 @@
 <?php
   include('../Class/Sql.php');
+  include('../functions.php');
 
   //SELECIONANDO TODOS OS PRODUTOS DO BANCO
   $query = mysqli_query($conn, "select * from produto");
@@ -53,7 +54,7 @@
                     <td><?php echo $row['CodProduto']?></td>
                     <td><?php echo $row['NomeProduto']?></td>
                     <td>R$ &nbsp;<?php echo $row['ValorProduto']?></td>
-                    <td><?php echo $row['MargemLucro']?></td>
+                    <td><?php echo $row['MargemLucro'] . "%";?></td>
                     <td>R$ &nbsp;<?php echo $row['ValorVendaProduto']?></td>
                     <td><?php echo $row['QntProduto']?></td>
                     <td><?php echo $row['CodFornecedor']?></td>

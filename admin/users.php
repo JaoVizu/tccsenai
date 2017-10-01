@@ -1,3 +1,6 @@
+<head>
+<meta charset="utf-8">
+</head>
 <?php
   include('../Class/Sql.php');
 

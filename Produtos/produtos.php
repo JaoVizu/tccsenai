@@ -50,7 +50,7 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
                     <div class="container-card">
                         <!-- clique geral -->
                         <div class="imagem-produto">
-                            <a href=""><img class="box-responsive" src="https://ambercreative.co/experiments/apple-store/img/product-4.jpg" alt=""></a>
+                            <a href=""><img class="box-responsive" src="../res/site/img/products/<?php echo $rowProd['ImagemProduto']?>" alt=""></a>
                         </div>
                         
                         <div class="descricao-produto">

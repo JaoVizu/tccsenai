@@ -1,24 +1,6 @@
 <?php
 
 include('../Class/Sql.php');
-	
-	//metodo para checar foto
-	function checkPhoto($nome){
-		if (file_exists(
-		$_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
-		"res" . DIRECTORY_SEPARATOR . 
-		"site" . DIRECTORY_SEPARATOR .
-		"img" . DIRECTORY_SEPARATOR .
-		"products" . DIRECTORY_SEPARATOR .
-		$nome
-		)){
-			$url = "res/site/img/products/" . $nome;
-		}else{
-			$url = "res/site/img/products/padrao.jpg";
-		}
-
-		return $nome = $url;
-	}
 
 	//VARIAVEIS PARA PEGAR INFORMACOES VINDO DO POST
 	$nome = $_POST['NomeProduto'];
@@ -32,29 +14,54 @@ include('../Class/Sql.php');
 	$descricao = $_POST['Descricao'];
 	$categoria = $_POST['Categoria'];
 
-	
 
-	if(isset($_FILES['ImagemProduto'])){
+	if(!empty($_FILES['ImagemProduto']['name'])){ //verificando se a imagem nao esta vazia
 		$extension = explode('.', $_FILES['ImagemProduto']['name']);
 		$extension = end($extension);
 
-		//nome da imagem
-		$novo_nome = md5(time()) . ".".$extension;
+		// pega o nome da imagem			
+		$nomeimg = substr($_FILES['ImagemProduto']['name'], 0, -4);
 
+		//novo nome da imagem
+		$novo_nome = $nomeimg . ".".$extension;
+
+		//diretorio para onde a imagem deve ser mandada
 		$diretorio = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
 		"res" . DIRECTORY_SEPARATOR . 
 		"site" . DIRECTORY_SEPARATOR .
 		"img" . DIRECTORY_SEPARATOR .
 		"products" . DIRECTORY_SEPARATOR;
 
+		//move a imagem para o diretorio 
 		move_uploaded_file($_FILES['ImagemProduto']['tmp_name'], $diretorio.$novo_nome);
 
 		$query = mysqli_query($conn, "CALL sp_products_save('$nome',
-    	'$valor','$margem','$valorvenda','$estoque','$fornecedor',
-    	'$qntparcelas','$valorparcela','$descricao','$categoria','$novo_nome')");
-		
-	}
+    	'$valor','$margem','$valorvenda','$estoque','$fornecedor','$novo_nome',
+    	'$qntparcelas','$valorparcela','$descricao','$categoria')");
 
+		header('Location: ../admin/index.php');
+
+		
+	}else{
+
+		$novo_nome = "padrao.jpg";
+
+		//diretorio para onde a imagem deve ser mandada
+		$diretorio = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
+		"res" . DIRECTORY_SEPARATOR . 
+		"site" . DIRECTORY_SEPARATOR .
+		"img" . DIRECTORY_SEPARATOR .
+		"products" . DIRECTORY_SEPARATOR;
+
+		//move a imagem para o diretorio 
+		move_uploaded_file($_FILES['ImagemProduto']['tmp_name'], $diretorio.$novo_nome);
+
+		$query = mysqli_query($conn, "CALL sp_products_save('$nome',
+    	'$valor','$margem','$valorvenda','$estoque','$fornecedor','$novo_nome',
+    	'$qntparcelas','$valorparcela','$descricao','$categoria')");
+
+		header('Location: ../admin/index.php');
+	}
 
 
 ?>
