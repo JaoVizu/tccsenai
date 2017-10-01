@@ -33,6 +33,25 @@ body{
     
 }
 
+.bar{position: relative;display: block; width: 250px;}
+
+.bar::before, .bar::after{
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 20px;
+    position: absolute;
+    background: rgba(255,64,129,1);
+    transition: .2s ease all;
+}
+
+.bar:before{left: 50%;}
+.bar:after{right: 50%;}
+
+input:focus ~ .bar::before,
+input:focus ~ .bar::after{
+    width: 50%;
+}
 
 /* header*/
 h2{
@@ -61,6 +80,7 @@ h2{
     border-bottom: 2px solid #fff;
     background:transparent;
     outline: none;
+    width: 250px;
     height: 40px;
     color: #fff;
     font-size:16px ;
