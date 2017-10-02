@@ -7,7 +7,7 @@
   //tratamento de sessao
   if(!isset($_SESSION['usuario'])){
     //se nao estiver setada a sessao vai para o login
-    header("Location: ../site/login.html");
+    header("Location: ../login.php");
     exit;
   }
 

@@ -16,7 +16,8 @@
 	
 	<section>
 		<?php
-			include('site/login.html');
+			session_start();
+			include('site/login.php');
 		?>
 	</section>
 

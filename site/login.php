@@ -18,7 +18,14 @@
                 <span class="bar"></span>
             </div>
             <input type="submit" name="" value="Entrar">
-
+            <p style="color: red;">
+            <?php
+                if(isset($_SESSION['loginerror'])){
+                    echo $_SESSION['loginerror'];
+                    unset($_SESSION['loginerror']);
+                }
+            ?>
+            </p>
             <a href="">Esqueci minha senha</a>   
 
         </form>
