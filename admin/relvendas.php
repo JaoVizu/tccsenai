@@ -7,7 +7,7 @@
   //tratamento de sessao
   if(!isset($_SESSION['usuario'])){
     //se nao estiver setada a sessao vai para o login
-    header("Location: ../site/login.html");
+    header("Location: ../login.php");
     exit;
   }
 
@@ -20,8 +20,12 @@
   $results = mysqli_fetch_assoc($query);
   $nome = $results['NomeCliente'];
 
-  //consulta para pegar os fornecedores
-  $FornQuery = mysqli_query($conn, "SELECT * FROM fornecedor");
+  //TRAZER AS VENDAS
+  $queryVendas = mysqli_query($conn, " SELECT * FROM Venda a INNER JOIN Cliente b USING(CodCliente)");
+
+  //Vendo o total de vendas
+  $totalVenda = mysqli_query($conn, " SELECT COUNT(*) AS total FROM Venda");
+  $rowTotal = mysqli_fetch_assoc($totalVenda); 
 
 ?>
 
@@ -201,18 +205,18 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../res/site/img/menu-icons/admin-icon.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs"><?php echo $nome; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../res/site/img/menu-icons/admin-icon.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $nome; ?> - Administrador
-                  <small>Member since -Colocar data de cadastro</small>
+                  
                 </p>
               </li>
               
@@ -270,14 +274,14 @@ desired effect
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a id="users" a href=""><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a id="products" href=""><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
+        <li><a id="products" href="index.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-         <ul class="treeview-menu">
+          <ul class="treeview-menu">
             <li><a href="relvendas.php">Relátorio de Vendas</a></li>
             <li><a href="#">Venda de Produtos</a></li>
           </ul>
@@ -306,117 +310,85 @@ desired effect
     <!-- Main content -->
     <section class="conteudo">
 
-     <!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    Lista de Produtos
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="/admin/categories">Categorias</a></li>
-    <li class="active"><a href="/admin/categories/create">Cadastrar</a></li>
-  </ol>
-</section>
-
-<!-- Main content -->
-<section class="content">
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <h3 class="box-title">Novo Produto</h3>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form style="font-size:25px;" role="form" action="../cadastros/cadastroProdutos.php" method="post" enctype="multipart/form-data">
-          <div class="box-body">
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="desproduct">Nome do Produto</label>
-                <input type="text" class="form-control" id="desproduct" name="NomeProduto" placeholder="Digite o nome do produto" required>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="vlprice">Valor</label>
-                <input type="number" class="form-control" id="vlprice" name="ValorProduto" step="0.01" placeholder="0.00" required>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="vlwidth">Margem de Lucro</label>
-                <input type="number" class="form-control" id="margem" name="MargemLucro" placeholder="0" maxlength="100" required>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="vlheight">Valor de Venda</label>
-                <input type="text" class="form-control" id="valorVenda" name="ValorVendaProduto" placeholder="0.00">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="vllength">Estoque</label>
-                <input type="number" class="form-control" id="vllength" name="QntProduto" step="0.01" placeholder="Quantidade em estoque" required>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="vlweight">Fornecedor</label>
-                <select class="form-control" name="CodFornecedor" placeholder="Escolha o fornecedor" required>
-                  <?php while($resultsForn = mysqli_fetch_array($FornQuery)){?>
-                  <option value="<?php echo $resultsForn['CodFornecedor'] ?>"><?php echo $resultsForn['NomeFant']?></option>
-                  <?php } ?>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="vlweight">Imagem do Produto</label>
-              <input type="file" class="form-control" name="ImagemProduto">
-            </div>
-
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="vlweight">Max. Parcelas</label>
-                <input type="number" class="form-control" id="maxparcelas" name="QntParcelas"  placeholder="0" required>
-                <div id="erro" style="display:none;" class="alert alert-danger"><p>Erro! Digite uma margem de lucro</p></div>
-              </div>
-
-              <div class="form-group col-md-6">
-                <label for="vlweight">Valor das Parcelas</label>
-                <input type="text" class="form-control" id="valorParcela" name="ValorParcela" step="0.01" placeholder="0.00">
-              </div>
-            </div><!-- fim row -->
-
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="categoria">Categoria</label>
-                <select name="Categoria" id="categoria" class="form-control" required>
-                  <option value="anel">Anel</option>
-                  <option value="pulseira">Pulseira</option>
-                  <option value="brinco">Brinco</option>
-                  <option value="colar">Colar</option>
-                  <option value="tornozeleira">Tornozeleira</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="descricao">Descrição</label>
-              <textarea class="form-control" name="Descricao" id="descricao" cols="30" placeholder="Descreva o produto" required></textarea>
-            </div>
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            <button type="submit" class="btn btn-success">Cadastrar</button>
-          </div>
-        </form>
-      </div>
+           <div class="content-header">
+        <h1>Relatório de Vendas</h1>
     </div>
-  </div>
 
-</section>
-<!-- /.content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Relátorio de Vendas</h3>
+                        <h4 class="pull-right">Vendas Totais:&nbsp; <strong style="font-size:40px;"><?php echo $rowTotal['total']; ?></strong></h4>
+                    </div>
+                    
+                    <!-- tabela do relatorio -->
+                    <table class="table">
+                        <thead>
+                            <th>Código de Venda</th>
+                            <th>Cliente</th>
+                            <th>Data de Venda</th>
+                            <th>Forma Pagamento</th>
+                            <th>Status Pedido</th>
+                            <th>Visualizar Item Venda</th>
+                        </thead>
+                        
+                        <tbody>
+                            <?php while($rowVenda = mysqli_fetch_assoc($queryVendas)){?>
+                            <tr>
+                                <td><?php echo $rowVenda['CodVenda'];?></td>
+                                <td><?php echo $rowVenda['NomeCliente']?></td>
+                                <td><?php echo $rowVenda['DataVenda'];?></td>
+                                <td><?php echo $rowVenda['FormaPagamento'];?></td>
+                                <td><?php echo $rowVenda['StatusPedido'];?></td>
+                                <td> 
+                                    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal<?php echo $rowVenda['CodVenda'];?>">Open Modal</button>
+                                </td>
+                            </tr>
+                            <!-- Modal -->
+                                <div id="myModal<?php echo $rowVenda['CodVenda']; ?>" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
 
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Modal Header</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <?php
+                                                //PESQUISAR O ITEM VENDA DA VENDA SELECIONADA
+                                                $codVenda = $rowVenda['CodVenda'];
+
+                                                $queryItemVenda = mysqli_query($conn, "SELECT * FROM itemVenda Where CodVenda = '$codVenda'");
+
+                                                while($rowItem = mysqli_fetch_assoc($queryItemVenda)){
+                                                    echo "<h5>Valor do item</h5>";
+                                                    echo $rowItem['ValorItem'];
+                                                }
+                                             ?>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            <?php }?>
+                        </tbody>
+                    </table>
+                   
+                </div>
+            </div>
+        </div>
     </section>
+
+   
+
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -517,12 +489,9 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-
 <script src="dist/js/ajax.js"></script>
-<script src="dist/js/funcoesJQ.js"></script>
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+
+
+</script>
 </body>
 </html>

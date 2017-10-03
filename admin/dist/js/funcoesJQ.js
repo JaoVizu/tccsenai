@@ -121,3 +121,26 @@
         
     });
 }());
+
+//FUNÇAO DE BUSCA
+(function(){
+
+   
+
+    function buscar(palavra){
+        var page = "../../../busca.php";
+
+        $.ajax({
+            type: "POST",
+            url: page,
+            data: {palavra: palavra},
+            success:function (msg){
+                $('#result-busca').html(msg);
+            }
+        });
+    }
+
+    $('#search-btn').click(function(){
+        buscar($("#p-search").val())
+    });
+}());

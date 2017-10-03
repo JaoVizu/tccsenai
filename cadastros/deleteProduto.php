@@ -7,5 +7,7 @@
 
 	if($sqldel){
 		header('Location:../admin/index.php');
+	}else{
+		echo "Deu merada";
 	}
 ?>

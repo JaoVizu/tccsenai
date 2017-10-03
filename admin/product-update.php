@@ -280,9 +280,21 @@ desired effect
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+           <ul class="treeview-menu">
+            <li><a href="relvendas.php">Relátorio de Vendas</a></li>
+            <li><a href="#">Venda de Produtos</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-archive"></i> <span>Encomendas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Encomendas</a></li>
+            <li><a href="#">Alterar Encomendas</a></li>
           </ul>
         </li>
       </ul>

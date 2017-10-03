@@ -198,18 +198,18 @@ desired effect
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="../res/site/img/menu-icons/admin-icon.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs"><?php echo $nome; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../res/site/img/menu-icons/admin-icon.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $nome; ?> - Administrador
-                  <small>Member since -Colocar data de cadastro</small>
+                  
                 </p>
               </li>
               
@@ -253,7 +253,7 @@ desired effect
       <!-- search form (Optional) -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <input type="text" id="p-search" name="q" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -275,8 +275,21 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="relvendas.php">Relátorio de Vendas</a></li>
+            <li><a href="#">Venda de Produtos</a></li>
+            
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-archive"></i> <span>Encomendas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#">Encomendas</a></li>
+            <li><a href="#">Alterar Encomendas</a></li>
           </ul>
         </li>
       </ul>
@@ -290,9 +303,7 @@ desired effect
     <!-- Content Header (Page header) -->
     <!-- Main content -->
     <section class="conteudo">
-
-     
-
+		<div id="result-busca"></div>
     </section>
     <!-- /.content -->
   </div>
@@ -395,7 +406,7 @@ desired effect
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
 <script src="dist/js/ajax.js"></script>
-
+<script src="dist/js/funcoesJQ.js"></script>
 
 </script>
 </body>
