@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Teste busca</title>
+
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+</head>
+<body>
+	<form action="" method="post">
+		<select name="buscar" id="buscar" onchange="optionCheck()">
+			<option value="">NAda</option>
+			<option value="cliente">Cliente</option>
+			<option value="produto">Produto</option>
+		</select>
+
+		<input id="procurar" name="procurar" type="search" style="display: none;">
+		
+
+		<button type="button" id="enviar">Enviar</button>
+	</form>
+
+	<div id="retorna" style="background:blue;"></div>
+
+	<script>
+		function optionCheck(){
+			var option = document.getElementById("buscar").value;
+
+			if(option == "cliente" || option == "produto"){
+				document.getElementById('procurar').style.display = "block";
+			}
+		}
+	</script>
+
+	<script>
+
+		$(document).ready(function(){
+			$("#enviar").click(function(){
+				var buscar = $('#buscar').val();
+				var procurar= $('#procurar').val();
+
+				$.ajax({
+					url: "buscar.php",
+					data: {buscar:buscar, procurar: procurar},
+					type: "POST",
+
+					success: function(data){
+						$('#retorna').html('<strong>Resultado da busca </strong>' + data);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

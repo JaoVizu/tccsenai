@@ -451,6 +451,10 @@ form *{
         padding: 0;
     }
 
+    .dropdown-menu.show{
+        display: inline;
+    }
+
     /* TITULO CAROLINA JOAIS*/
     .titulo{
         font-size: 40px;
@@ -481,6 +485,12 @@ form *{
 @media (min-width: 720px){
     .card{
         height: 25rem;
+    }
+}
+
+@media (max-width: 769px){
+     .dropdown-menu.show{
+        display: inline;
     }
 }
 
