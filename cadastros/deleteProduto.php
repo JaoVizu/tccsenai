@@ -3,10 +3,10 @@
 
 	$codproduto = $_GET['codproduto'];
 
-	$sqldel = mysqli_query($conn, "DELETE FROM produto WHERE CodProduto = '$codproduto'");
+	$sqldel = mysqli_query($conn, "CALL sp_products_delete($codproduto)");
 
 	if($sqldel){
-		header('Location:../admin/index.php');
+		header('Location:../admin/products.php');
 	}else{
 		echo "Deu merada";
 	}

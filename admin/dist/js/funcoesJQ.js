@@ -9,7 +9,9 @@
         valorConv = parseFloat(valorProduto.val());
         total = valorConv + (valorConv *margemConv/100);
 
-        $('#valorVenda').val(total);
+        var totalPrize = parseFloat(total).toFixed(2);
+
+        $('#valorVenda').val(totalPrize);
         
     });
 
@@ -106,6 +108,7 @@
             valorProduto = $('#valorVenda');
 
         $('#maxparcelas').focusout(function(){
+            
             if( $('#maxparcelas').val() == ''){
 
                 $('#maxparcelas').css("border","1px solid red");
@@ -114,33 +117,12 @@
                 parcelaConv = parseInt(maxParcelas.val());
                 valorConv = parseFloat(valorProduto.val());
                 total = valorConv / parcelaConv;
-                $('#valorParcela').val('R$: ' + total);
+                var totalPrice = parseFloat(total).toFixed(2);
+                $('#valorParcela').val(totalPrice);
+                
             }
 
         });
         
-    });
-}());
-
-//FUNÇAO DE BUSCA
-(function(){
-
-   
-
-    function buscar(palavra){
-        var page = "../../../busca.php";
-
-        $.ajax({
-            type: "POST",
-            url: page,
-            data: {palavra: palavra},
-            success:function (msg){
-                $('#result-busca').html(msg);
-            }
-        });
-    }
-
-    $('#search-btn').click(function(){
-        buscar($("#p-search").val())
     });
 }());

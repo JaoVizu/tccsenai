@@ -54,7 +54,7 @@
 		Descricao = '$descricao' WHERE CodProduto = '$codproduto'
 		");
 
-		header('Location: ../admin/index.php');
+		header('Location: ../admin/products.php');
 
 		
 	}else{
@@ -84,11 +84,7 @@
 		Descricao = '$descricao' WHERE CodProduto = '$codproduto'
 		");
 
-		header('Location: ../admin/index.php');
+		header('Location: ../admin/products.php');
 	}
-
-	/*$query = mysqli_query($conn, "CALL sp_products_update('$codproduto','$nome','$valor','$margem','$valorvenda','$estoque','$qntparcelas','$valorparcela','$descricao','$categoria','$novo_nome')");*/
-	
-
 
 ?>

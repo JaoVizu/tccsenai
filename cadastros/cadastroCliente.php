@@ -18,7 +18,7 @@ include('../Class/Sql.php');
 	$login = $_POST['NomeLogin'];
 	$email = $_POST['email'];
 	$senha = md5($_POST['Senha']);
-	$inadmin = $_POST['inadmin'];
+	$inadmin = isset($_POST['inadmin']) ? 1 : 0;
 
 
 	//INSERINDO NO BANCO DE DADOS
@@ -30,6 +30,7 @@ include('../Class/Sql.php');
 
 	if($query){
 		echo "Sucesso ao cadastrar usuário";
+		//header("Location:../admin/users.php");
 	}else{
 		echo "Erro ao cadastrar usuário";
 	}

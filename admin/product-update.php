@@ -272,8 +272,8 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href=""><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a id="products" href=""><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
+        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -282,7 +282,7 @@ desired effect
           </a>
            <ul class="treeview-menu">
             <li><a href="relvendas.php">Relátorio de Vendas</a></li>
-            <li><a href="#">Venda de Produtos</a></li>
+            
           </ul>
         </li>
 
@@ -351,12 +351,12 @@ desired effect
 
             <div class="form-group col-md-4">
               <label for="vlwidth">Margem Lucro</label>
-              <input type="number" class="form-control" id="vlwidth" name="MargemLucro" step="0.01" value="<?php echo $linha['MargemLucro']?>" placeholder="0% - 100%">
+              <input type="number" class="form-control" id="margem" name="MargemLucro" step="0.01" value="<?php echo $linha['MargemLucro']?>" placeholder="0% - 100%">
             </div>
 
             <div class="form-group col-md-4">
               <label for="vlheight">Valor de Venda</label>
-              <input type="number" class="form-control" id="vlheight" name="ValorVendaProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorVendaProduto']?>" maxlength="100">
+              <input type="number" class="form-control" id="valorVenda" name="ValorVendaProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorVendaProduto']?>" maxlength="100">
             </div>
           </div><!-- fim linha -->
 
@@ -368,12 +368,12 @@ desired effect
 
             <div class="form-group col-md-3">
                 <label for="vlheight">Max Parcela</label>
-                <input type="number" class="form-control" id="vlheight" name="QntParcelas" placeholder="0.00" value="<?php echo $linha['QntParcelas']?>">
+                <input type="number" class="form-control" id="maxparcelas" name="QntParcelas" placeholder="0.00" value="<?php echo $linha['QntParcelas']?>">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="vlheight">Valor Parcela</label>
-                <input type="number" class="form-control" id="vlheight" name="ValorParcela" placeholder="0.00" value="<?php echo $linha['ValorParcela']?>">
+                <input type="number" class="form-control" id="valorParcela" name="ValorParcela" placeholder="0.00" value="<?php echo $linha['ValorParcela']?>">
             </div>
 
             <div class="form-group col-md-3">
@@ -522,7 +522,7 @@ desired effect
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
 
-<script src="dist/js/ajax.js"></script>
+<script src="dist/js/funcoesJQ.js"></script>
 
 <script>
   document.querySelector('#file').addEventListener('change', function(){

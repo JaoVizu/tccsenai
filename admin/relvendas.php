@@ -3,6 +3,7 @@
   
   session_start();
   include('../Class/Sql.php');
+  include('../functions.php');
 
   //tratamento de sessao
   if(!isset($_SESSION['usuario'])){
@@ -26,6 +27,8 @@
   //Vendo o total de vendas
   $totalVenda = mysqli_query($conn, " SELECT COUNT(*) AS total FROM Venda");
   $rowTotal = mysqli_fetch_assoc($totalVenda); 
+
+
 
 ?>
 
@@ -273,8 +276,8 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href=""><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a id="products" href="index.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
+        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -283,7 +286,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="relvendas.php">Relátorio de Vendas</a></li>
-            <li><a href="#">Venda de Produtos</a></li>
+            
           </ul>
         </li>
 
@@ -343,7 +346,7 @@ desired effect
                                 <td><?php echo $rowVenda['FormaPagamento'];?></td>
                                 <td><?php echo $rowVenda['StatusPedido'];?></td>
                                 <td> 
-                                    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal<?php echo $rowVenda['CodVenda'];?>">Open Modal</button>
+                                    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal<?php echo $rowVenda['CodVenda'];?>">Visualizar Item</button>
                                 </td>
                             </tr>
                             <!-- Modal -->
@@ -354,24 +357,35 @@ desired effect
                                         <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Modal Header</h4>
+                                            <h4 class="modal-title" style="font-size: 30px;">Item(s)</h4>
                                         </div>
-                                        <div class="modal-body">
-                                            <?php
-                                                //PESQUISAR O ITEM VENDA DA VENDA SELECIONADA
-                                                $codVenda = $rowVenda['CodVenda'];
+                                        <div class="modal-body" style="font-size: 25px;">
+                                          <?php
+                                            //PESQUISAR O ITEM VENDA DA VENDA SELECIONADA
+                                            $codVenda = $rowVenda['CodVenda'];
 
-                                                $queryItemVenda = mysqli_query($conn, "SELECT * FROM itemVenda Where CodVenda = '$codVenda'");
+                                            //pegando item da venda e o produto
+                                            $queryItemVenda = mysqli_query($conn, "SELECT * FROM itemvenda where codvenda = '$codVenda'");
+                                            $xArra = mysqli_fetch_array($queryItemVenda);
+                                            $codigoproduto = $xArra['CodProduto'];
 
-                                                while($rowItem = mysqli_fetch_assoc($queryItemVenda)){
-                                                    echo "<h5>Valor do item</h5>";
-                                                    echo $rowItem['ValorItem'];
-                                                }
-                                             ?>
+                                            $queryPegaProduto = mysqli_query($conn, "SELECT * FROM produto where codproduto = '$codigoproduto'");
+                                            $pegaProduto = mysqli_fetch_array($queryPegaProduto);
+                                          ?>
+                                          <?php
+                                                
+                                            echo "Nome do Produto: ". '<strong>' . $pegaProduto['NomeProduto'].'</strong>' . '<br/>';
+                                            echo "Quantidade: " . '<strong>'.$xArra['QntItem']. '</strong>' . '<br/>';
+                                            echo "Valor do produto: "  . '<strong>R$ '.formatPrice($xArra['ValorItem']).'</strong>' . '<br/>' ;
 
+                                            $total = (float)$pegaProduto['ValorVendaProduto'] * (float)$xArra['QntItem'];
+
+                                            echo "Valor total: " . '<strong>R$ '.formatPrice($total).'</strong>';
+                                                
+                                          ?>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                                         </div>
                                         </div>
 

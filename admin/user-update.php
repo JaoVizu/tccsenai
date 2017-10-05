@@ -1,3 +1,4 @@
+
 <!-- ABRINDO PHP PARA CONSULTA DE NOMES E ETC -->
 <?php
   
@@ -272,8 +273,8 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href=""><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a id="products" href=""><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
+        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -282,7 +283,7 @@ desired effect
           </a>
            <ul class="treeview-menu">
             <li><a href="relvendas.php">Relátorio de Vendas</a></li>
-            <li><a href="#">Venda de Produtos</a></li>
+            
           </ul>
         </li>
 

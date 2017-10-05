@@ -1,6 +1,6 @@
 <script>
 	function redireciona(){
-		setTimeout("window.location = '../admin/index.php'");
+		setTimeout("window.location = '../admin/users.php'");
 	}
 </script>
 <?php

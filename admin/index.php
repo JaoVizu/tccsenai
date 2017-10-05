@@ -253,7 +253,7 @@ desired effect
       <!-- search form (Optional) -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
-          <input type="text" id="p-search" name="q" class="form-control" placeholder="Search...">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -266,8 +266,8 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href=""><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a id="products" href="index.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
+        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -276,7 +276,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="relvendas.php">Relátorio de Vendas</a></li>
-            <li><a href="#">Venda de Produtos</a></li>
+            
             
           </ul>
         </li>
@@ -303,7 +303,9 @@ desired effect
     <!-- Content Header (Page header) -->
     <!-- Main content -->
     <section class="conteudo">
-		<div id="result-busca"></div>
+
+     
+
     </section>
     <!-- /.content -->
   </div>
@@ -405,8 +407,8 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-<script src="dist/js/ajax.js"></script>
-<script src="dist/js/funcoesJQ.js"></script>
+
+
 
 </script>
 </body>
