@@ -292,7 +292,7 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Encomendas</a></li>
+            <li><a href="encomendas.php">Encomendas</a></li>
             <li><a href="#">Alterar Encomendas</a></li>
           </ul>
         </li>
@@ -335,7 +335,7 @@ desired effect
                     <th>Celular</th>
                     <th>E-mail</th>                  
                     <th style="width: 60px">Admin</th>
-                    <th style="width: 140px">&nbsp;</th>
+                    <th style="width: 140px">Detalhes</th>
                   </tr>
                 </thead>
                 <tbody>

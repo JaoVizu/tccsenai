@@ -297,7 +297,7 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Encomendas</a></li>
+            <li><a href="encomendas.php">Encomendas</a></li>
             <li><a href="#">Alterar Encomendas</a></li>
           </ul>
         </li>
@@ -503,7 +503,7 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-<script src="dist/js/ajax.js"></script>
+
 
 
 </script>

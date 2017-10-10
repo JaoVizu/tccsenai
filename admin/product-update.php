@@ -26,6 +26,7 @@
   //query para pegar informacoes do produto selecionado para update
   $queryProd = mysqli_query($conn, " SELECT * FROM produto WHERE CodProduto = '$codigoProd'");
 
+
 ?>
 
 <!DOCTYPE html>
@@ -293,7 +294,7 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Encomendas</a></li>
+            <li><a href="encomendas.php">Encomendas</a></li>
             <li><a href="#">Alterar Encomendas</a></li>
           </ul>
         </li>
@@ -331,10 +332,11 @@ desired effect
           <div class="box-body">
 
             <?php while ($linha = mysqli_fetch_array($queryProd)){?>
+            <?php $codCategory = $linha['CodCategoria']?>
 
             <div class="form-group">
               <label for="desproduct">Código do produto</label>
-              <input type="text" class="form-control" id="desproduct" name="CodProduto" placeholder="Digite o nome do produto" value="<?php echo $linha['CodProduto']?>">
+              <input type="text" class="form-control" id="desproduct" name="CodProduto" placeholder="Digite o nome do produto" value="<?php echo $linha['CodProduto']?>" readonly>
             </div>
 
             <div class="form-group">
@@ -376,10 +378,16 @@ desired effect
                 <input type="number" class="form-control" id="valorParcela" name="ValorParcela" placeholder="0.00" value="<?php echo $linha['ValorParcela']?>">
             </div>
 
+
+            <?php
+                //pesquisa para pegar o nome da categoria
+                $catName = mysqli_query($conn, " SELECT NomeCategoria FROM Categoria WHERE CodCategoria = $codCategory");
+                $catNameArray = mysqli_fetch_assoc($catName);
+            ?>
             <div class="form-group col-md-3">
                 <label for="categoria">Categoria</label>
                 <select name="Categoria" id="categoria" class="form-control">
-                  <option value="">Categoria deste produto: <strong><?php echo $linha['Categoria']?></strong></option>
+                  <option value="">Categoria deste produto: <strong><?php echo $catNameArray['NomeCategoria']?></strong></option>
                   <option value="anel">Anel</option>
                   <option value="pulseira">Pulseira</option>
                   <option value="brinco">Brinco</option>
@@ -391,7 +399,7 @@ desired effect
           <div class="row">
             <div class="form-group col-md-6">
                 <label for="file">Foto</label>
-                <input type="file" class="form-control" id="file" name="ImagemProduto">
+                <input type="file" class="form-control" id="file" name="ImagemProduto" onchange="previewFile()">
                 <div class="box box-widget">
                   <div class="box-body">
                     <img class="img-responsive" id="image-preview" src="../res/site/img/products/<?php echo $linha['ImagemProduto']?>" alt="Photo">
@@ -515,15 +523,6 @@ desired effect
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-
-<script src="dist/js/jquery-3.2.1.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-
-<script src="dist/js/funcoesJQ.js"></script>
-
 <script>
   document.querySelector('#file').addEventListener('change', function(){
     
@@ -538,5 +537,17 @@ desired effect
     file.readAsDataURL(this.files[0]);
 
 });
+
+</script>
+
+<script src="dist/js/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+
+<script src="dist/js/funcoesJQ.js"></script>
+
+
 </body>
 </html>

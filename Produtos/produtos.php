@@ -28,14 +28,27 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
 </head>
 <body>
     <section id="header-products">
+        <div class="container categories" style="margin-bottom: 10px;"> 
+            
+            <ul class="category-list">
+
+                <a href=""><li>Anel</li></a>
+                <a href=""><li>Brinco</li></a>
+                <a href=""><li>Colar</li></a>
+                <a href=""><li>Pulseira</li></a>
+                <a href=""><li>Tornozeleira</li></a>
+
+            </ul>
+
+        </div>
         <div class="container">
             <div class="d-flex justify-content-around flex-wrap">
                 <input type="search" id="search" name="search" placeholder="Procurar...">
 
                 <select name="ordenar" id="ordenar">
-                    <option value="">Maior Preço</option>
-                    <option value="">Menor Preço</option>
-                    <option value="">Ordenar A - Z</option>
+                    <option value="maiorpreco">Maior Preço</option>
+                    <option value="menorpreco">Menor Preço</option>
+                    <option value="alfabetico">Ordenar A - Z</option>
                 </select>
             </div>
         </div>

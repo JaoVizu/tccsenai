@@ -23,6 +23,9 @@
   //consulta para pegar os fornecedores
   $FornQuery = mysqli_query($conn, "SELECT * FROM fornecedor");
 
+  //consulta para pegar Categorias
+  $categoryQuery = mysqli_query($conn, "SELECT * FROM categoria");
+
 ?>
 
 <!DOCTYPE html>
@@ -290,7 +293,7 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Encomendas</a></li>
+            <li><a href="encomendas.php">Encomendas</a></li>
             <li><a href="#">Alterar Encomendas</a></li>
           </ul>
         </li>
@@ -349,7 +352,7 @@ desired effect
               </div>
               <div class="form-group col-md-6">
                 <label for="vlheight">Valor de Venda</label>
-                <input type="text" class="form-control" id="valorVenda" name="ValorVendaProduto" placeholder="0.00">
+                <input type="text" class="form-control" id="valorVenda" name="ValorVendaProduto" placeholder="0.00" readonly>
               </div>
             </div>
 
@@ -382,7 +385,7 @@ desired effect
 
               <div class="form-group col-md-6">
                 <label for="vlweight">Valor das Parcelas</label>
-                <input type="text" class="form-control" id="valorParcela" name="ValorParcela" step="0.01" placeholder="0.00">
+                <input type="text" class="form-control" id="valorParcela" name="ValorParcela" step="0.01" placeholder="0.00" readonly>
               </div>
             </div><!-- fim row -->
 
@@ -390,11 +393,10 @@ desired effect
               <div class="form-group col-md-6">
                 <label for="categoria">Categoria</label>
                 <select name="Categoria" id="categoria" class="form-control" required>
-                  <option value="anel">Anel</option>
-                  <option value="pulseira">Pulseira</option>
-                  <option value="brinco">Brinco</option>
-                  <option value="colar">Colar</option>
-                  <option value="tornozeleira">Tornozeleira</option>
+                  <?php while($categoryRow = mysqli_fetch_array($categoryQuery)){?>
+                  <option value="<?php echo $categoryRow['CodCategoria'];?>"><?php echo $categoryRow['NomeCategoria']; ?></option>
+                  <
+                  <?php }?>
                 </select>
               </div>
             </div>

@@ -37,10 +37,9 @@ include('../Class/Sql.php');
 
 		$query = mysqli_query($conn, "CALL sp_products_save('$nome',
     	'$valor','$margem','$valorvenda','$estoque','$fornecedor','$novo_nome',
-    	'$qntparcelas','$valorparcela','$descricao','$categoria')");
+    	'$qntparcelas','$valorparcela','$descricao','$categoria')");	
 
-		header('Location: ../admin/index.php');
-
+		header('Location: ../admin/products.php');
 		
 	}else{
 
@@ -59,8 +58,9 @@ include('../Class/Sql.php');
 		$query = mysqli_query($conn, "CALL sp_products_save('$nome',
     	'$valor','$margem','$valorvenda','$estoque','$fornecedor','$novo_nome',
     	'$qntparcelas','$valorparcela','$descricao','$categoria')");
+		
 
-		header('Location: ../admin/index.php');
+		header('Location: ../admin/products.php');
 	}
 
 

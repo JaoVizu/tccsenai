@@ -6,14 +6,39 @@ body{ font-family: 'Quattrocento', serif;}
 /***** HEADER PARA PESQUISA *****/
 #header-products{
     margin-top: 150px;
-   
-
 }
 
 #header-products .container{
     padding: 20px;
     border-top: 2px solid grey;
     border-bottom: 2px solid grey;
+}
+
+.categories{
+    text-align: center;
+    font-size:24px;
+    text-transform: uppercase;
+}
+
+.category-list li{
+    list-style: none;
+    display: inline;
+    padding: 0 3rem 0 3rem;
+}
+
+.category-list  a{
+    text-decoration: none;
+    
+}
+
+.category-list > a:hover{
+    color: black;
+}
+
+.category-list > a > li:hover{
+    transition: all .4s ease;
+    border-bottom: 3px solid pink;
+    padding-bottom: 3px;
 }
 
 #ordenar{
@@ -49,7 +74,7 @@ div[class^="col-md-"], div[class*="col-md-"]{
 }
 
 .container-card:hover{
-    border: 1px solid grey;
+    border: 1px solid rgba(138,118,98, .6);
 }
 
 .box-responsive{
@@ -80,7 +105,7 @@ div[class^="col-md-"], div[class*="col-md-"]{
 
 .price{
     margin-top: 12px;
-    font-size: 1em;
+    font-size: 1.4em;
     line-height: 1.84em;
 }
 
@@ -97,7 +122,7 @@ div[class^="col-md-"], div[class*="col-md-"]{
     transform: translateY(0);
     z-index: 1;
     padding: 6px;
-    background: grey;
+    background: rgba(138,118,98, .8);
     
 }
 
@@ -112,8 +137,10 @@ div[class^="col-md-"], div[class*="col-md-"]{
 }
 
 .custom-fundo a:hover{
-    text-decoration: none;
-    background: rgba(92,156,202, .6);
+    /*text-decoration: none;
+    background: rgba(92,156,202, .6);*/
+
+    color:#FFF;
 }
 
 .container-card:hover .custom-fundo{

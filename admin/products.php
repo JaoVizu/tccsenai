@@ -294,7 +294,7 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Encomendas</a></li>
+            <li><a href="encomendas.php">Encomendas</a></li>
             <li><a href="#">Alterar Encomendas</a></li>
           </ul>
         </li>
@@ -336,11 +336,20 @@ desired effect
                     <th>Nome</th>
                     <th>Valor</th>
                     <th>Descrição</th>
-                    <th style="width: 140px">&nbsp;</th>
+                    <th style="width: 140px">Detalhes</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php while ($row = mysqli_fetch_array($query)){?>
+                  <!--Pegando codigo da categoria -->
+                  <?php
+                    $codCategory = $row['CodCategoria'];
+                    
+                    $categoryQuery = mysqli_query($conn, " SELECT nomecategoria FROM Categoria WHERE CodCategoria = $codCategory");
+                   
+                    $catArray = mysqli_fetch_array($categoryQuery);
+                  
+                  ?>
                   <tr>
                     
                     <td><?php echo $row['NomeProduto']?></td>
@@ -377,7 +386,7 @@ desired effect
                             echo 'Valor Parcela : R$ ' . formatPrice($row['ValorParcela']) . '<br/>';
                             echo 'Data de Cadastro: '.$row['DataCadastro']. '<br/>';
                             echo 'Descrição: ' .$row['Descricao']. '<br/>';
-                            echo 'Categoria: ' .$row['CodCategoria']. '<br/>';
+                            echo 'Categoria: ' .$catArray['nomecategoria']. '<br/>';
                           ?>
                         </div>
 

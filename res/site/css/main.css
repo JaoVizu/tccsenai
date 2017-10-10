@@ -4,7 +4,7 @@
 /* PADROES */
 * {box-sizing: border-box;}
 
-body{ font-family: 'Quattrocento', serif;}
+body{ font-family: 'Quattrocento', serif; overflow-x: hidden;}
 
 /* PADROES */
 a {
@@ -295,12 +295,14 @@ figcaption p {
 
 #section-one p:first-child{
     font-size: 34px;
+    line-height: 2;
 }
 
 .texto :nth-child(2){
     margin-top: 30px;
     font-weight: 600;
     font-size: 28px;
+    line-height: 1.6;
 }
 
 .fa-arrow-right{
@@ -331,6 +333,10 @@ figcaption p {
 .texto{
     padding: 150px 150px 150px 0;
     text-align: center;
+}
+
+.texto p {
+    line-height: 1.3;
 }
 
 /* SECTION TWO*/
