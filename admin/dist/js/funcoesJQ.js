@@ -5,14 +5,21 @@
     
         
     $('#margem').focusout(function(){
-        margemConv = parseFloat(margemLucro.val());
-        valorConv = parseFloat(valorProduto.val());
-        total = valorConv + (valorConv *margemConv/100);
-
-        var totalPrize = parseFloat(total).toFixed(2);
-
-        $('#valorVenda').val(totalPrize);
         
+        if($('#margem').val() < 0.01 || $('#margem').val() > 100){
+            document.getElementById('margem').value = 0;
+            document.getElementById('erro').innerHTML = "Coloque um valor maior que 0.01 e menor que 100";
+            
+        }else{
+            document.getElementById('erro').style.display = "none";
+            margemConv = parseFloat(margemLucro.val());
+            valorConv = parseFloat(valorProduto.val());
+            total = valorConv + (valorConv *margemConv/100);
+            
+            var totalPrize = parseFloat(total).toFixed(2);
+
+            $('#valorVenda').val(totalPrize);
+        }
     });
 
 }());
@@ -125,4 +132,16 @@
         });
         
     });
+}());
+
+(function(){
+
+    var margem = document.getElementById('margem').value;
+    var texto;
+    if(isNan(margem) || margem < 0.01 || margem > 100 ){
+        texto = "Coloque um valor maior que 0.01 e menor que 100";
+    }
+
+    document.getElementById('erro').innerHTML = texto;
+
 }());

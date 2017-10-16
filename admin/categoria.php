@@ -1,4 +1,3 @@
-
 <!-- ABRINDO PHP PARA CONSULTA DE NOMES E ETC -->
 <?php
   
@@ -8,7 +7,7 @@
   //tratamento de sessao
   if(!isset($_SESSION['usuario'])){
     //se nao estiver setada a sessao vai para o login
-    header("Location: ../login.php");
+    header("Location: ../site/login.html");
     exit;
   }
 
@@ -21,8 +20,8 @@
   $results = mysqli_fetch_assoc($query);
   $nome = $results['NomeCliente'];
 
-  //pegando os usuarios do banco de dados
-  $query = mysqli_query($conn, "SELECT * FROM Cliente a INNER JOIN login b USING(CodCliente) ORDER BY a.CodCliente");
+  //PEGANDO CATEGORIAS CADASTRADAS
+  $queryCategory = mysqli_query($conn, "SELECT * FROM categoria");
 
 ?>
 
@@ -209,11 +208,11 @@ desired effect
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="../res/site/img/menu-icons/admin-icon.png" class="img-circle" alt="User Image">
+                <img src="../res/site/img/menu-icons/admin-icon.png" class="user-image" alt="User Image">
 
                 <p>
                   <?php echo $nome; ?> - Administrador
-                  
+                  <small>Member since -Colocar data de cadastro</small>
                 </p>
               </li>
               
@@ -270,7 +269,7 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href=""><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li class="active"><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li class="treeview">
@@ -279,9 +278,8 @@ desired effect
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
+           <ul class="treeview-menu">
             <li><a href="relvendas.php">Relátorio de Vendas</a></li>
-            
             
           </ul>
         </li>
@@ -307,93 +305,84 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <!-- Main content -->
-   <section class="content-header">
+    <section class="conteudo">
+  
+      <section class="content-header">
   <h1>
-    Lista de Usuários
+    Lista de Categorias
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><a href="/admin/users">Usuários</a></li>
-  </ol>
 </section>
 
 <!-- Main content -->
-<section class="content">
+<section class="content ">
 
   <div class="row">
     <div class="col-md-12">
-      <div class="box box-primary">
-            
-            <div class="box-header">
-              <a href="user-create.php" class="btn btn-success">Cadastrar Usuário</a>
-            </div>
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Nova Categoria</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form style="font-size:25px;" action="../cadastros/cadastroCategoria.php" role="form" method="post" id="formCliente">
+          <div class="box-body">
 
-            <div class="box-body no-padding table-responsive">
-              <table style="font-size: 18px;" class="table table-striped">
+            <div class="row">
+
+              <div class="form-group col-md-6">
+                <label for="desperson">Nome da Categoria</label>
+                <input type="text" class="form-control" id="categoryName" name="NomeCategoria" placeholder="Digite o nome da categoria">
+              </div>
+
+            </div><!-- fim linha -->
+
+            <hr>
+
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button id="enviar" type="submit" class="btn btn-success">Cadastrar</button>
+          </div>
+        </form>
+
+        <div class="box-body">
+          
+           <h3>Lista de Categorias Cadastradas</h3>
+            <div class="row">
+
+              <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Nome</th>
-                    <th>Celular</th>
-                    <th>E-mail</th>                  
-                    <th style="width: 60px">Admin</th>
-                    <th style="width: 140px">Detalhes</th>
+                    <th>Código Categoria</th>
+                    <th>Nome da Categoria</th>
+                    <th>Ação</th>
                   </tr>
                 </thead>
+
+
                 <tbody>
-                  <!-- INICIANDO LOOP -->
-                  <?php while ($row = mysqli_fetch_assoc($query)){?>
+                <?php while($rowCatiguria = mysqli_fetch_assoc($queryCategory)){ ?>
                   <tr>
-                    <td><?php echo $row['NomeCliente']?></td>
-                    <td><?php echo $row['CelularCliente']?></td>
-                    <td><?php echo $row['email']?></td>
-                    
-                    <td>  <?php 
-                            if($row['inadmin'] == 1){
-                              echo "Sim";
-                            }else{
-                              echo "Não";
-                            }
-                          ?>
-                      
-                    </td>
-                    <td style="width: 300px;">
-                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#<?php echo $row['CodCliente'];?>">Visualizar</button>
-                      <a href="user-update.php?codcliente=<?php echo $row['CodCliente']?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="../cadastros/deleteCliente.php?idCliente=<?php echo $row['CodLogin'] ?>" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
-                    </td>
+                    <td><?php echo $rowCatiguria['CodCategoria'];?></td>
+                    <td><?php echo $rowCatiguria['NomeCategoria'];?></td>
+                    <td class="text-left"><a href="categoria.php?codcat=<?php echo $rowCatiguria['CodCategoria']?>" class="btn btn-danger"><i class="fa fa-trash"></i></a> &nbsp; <a href="" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $rowCatiguria['CodCategoria'];?>"><i class="fa fa-pencil"></i></a></td>
                   </tr>
-                    <!-- modal larga-->
-                  <div id="<?php echo $row['CodCliente'];?>" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel">
+                  
+                  <div id="<?php echo $rowCatiguria['CodCategoria'];?>" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel">
                     <div class="modal-dialog modal-lg" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title" style="font-size: 30px;">Info. Cliente(s)</h4>
+                          <h4 class="modal-title" style="font-size: 20px;">Alterar Categoria</h4>
                         </div>
 
                         <div class="modal-content" style="font-size: 25px; padding: 10px;">
                           <?php
-                            echo 'Código do Cliente: '.$row['CodCliente'] . '<br/>';
-                            echo 'Nome : '.$row['NomeCliente'] . '<br/>';
-                            echo 'Data Nascimento : '. $row['DataNasc'] . '<br/>';
-                            echo 'Endereço : ' . $row['EndCliente'] . '<br/>';
-                            echo 'CEP : ' . $row['CepCliente'].  '<br/>';
-                            echo 'CPF : ' . $row['CPFCliente'] . '<br/>';
-                            echo 'RG : ' . $row['RGCliente'] . '<br/>';
-                            echo 'Telefone : ' .$row['TelefoneCliente'] . '<br/>';
-                            echo 'Celular : ' .$row['CelularCliente']. '<br/>';
-                            echo 'Cidade : ' .$row['CidadeCliente'] . '<br/>';
-                            echo 'Estado :' .$row['EstadoCliente'] . '<br/>';
-                            echo 'Bairro : '.$row['BairroCliente']. '<br/>';
-                            echo 'Sexo : ' .$row['SexoCliente']. '<br/>';
-                            echo 'E-mail : ' .$row['email']. '<br/>';
-                            echo 'Login : ' .$row['NomeLogin']. '<br/>';
-                            echo 'Administrador :';
-                            if($row['inadmin'] == 1){
-                              echo " Sim";
-                            }else{
-                              echo " Não";
-                            }
+                              echo "<label>Código Categoria</label> <br/>";
+                              echo "<input type='text' value='".$rowCatiguria["CodCategoria"]."'<br/><br/>";
+
+                              echo "<label>Nome Categoria</label> <br/>";
+                              echo "<input type='text' value='".$rowCatiguria["NomeCategoria"]."'";
                           ?>
                         </div>
 
@@ -404,17 +393,20 @@ desired effect
                       </div>
                     </div>
                   </div>
-                  <?php } ?>
+                <?php } ?>
                 </tbody>
               </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
+
+            </div><!-- fim linha -->
+        </div>
+      </div>
     </div>
   </div>
 
 </section>
-<!-- /.content -->
+<!-- /.content -->   
+
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -515,9 +507,11 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-<script src="dist/js/ajax.js"></script>
-
-
-</script>
+<script src="dist/js/jquery.mask.js"></script>
+<script src="dist/js/funcoesJQ.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
 </body>
 </html>

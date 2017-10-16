@@ -275,6 +275,7 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
+        <li class="active"><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -399,7 +400,7 @@ desired effect
           <div class="row">
             <div class="form-group col-md-6">
                 <label for="file">Foto</label>
-                <input type="file" class="form-control" id="file" name="ImagemProduto" onchange="previewFile()">
+                <input type="file" class="form-control" id="file" name="ImagemProduto">
                 <div class="box box-widget">
                   <div class="box-body">
                     <img class="img-responsive" id="image-preview" src="../res/site/img/products/<?php echo $linha['ImagemProduto']?>" alt="Photo">
@@ -523,6 +524,15 @@ desired effect
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
+
+<script src="dist/js/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+
+<script src="dist/js/funcoesJQ.js"></script>
+
 <script>
   document.querySelector('#file').addEventListener('change', function(){
     
@@ -537,17 +547,5 @@ desired effect
     file.readAsDataURL(this.files[0]);
 
 });
-
-</script>
-
-<script src="dist/js/jquery-3.2.1.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-
-<script src="dist/js/funcoesJQ.js"></script>
-
-
 </body>
 </html>
