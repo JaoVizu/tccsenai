@@ -266,9 +266,9 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
-        <li class="active"><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
+        <li><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -353,15 +353,25 @@ desired effect
             </div><!-- fim linha -->
 
             <div class="row">
+              
+              <div class="form-group col-md-3">
+                <label for="despassword">Cep</label>
+                <input type="text" class="form-control" id="cepcliente" name="CepCliente" placeholder="Digite o CEP">
+              </div>
+
+              <div class="form-group col-md-1">
+                <label for="">Nº Casa</label>
+                <input type="text" class="form-control" id="numerohouse" name="numCasa" placeholder="Nº da Casa">
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="">Complemento</label>
+                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento">
+              </div>
 
               <div class="form-group col-md-6">
                 <label for="despassword">Endereço</label>
                 <input type="text" class="form-control" id="endCliente" name="EndCliente" placeholder="Digite o Endereço">
-              </div>
-
-              <div class="form-group col-md-6">
-                <label for="despassword">Cep</label>
-                <input type="text" class="form-control" id="cepcliente" name="CepCliente" placeholder="Digite o CEP">
               </div>
 
             </div><!-- FIM LINHA -->

@@ -273,9 +273,9 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
-        <li class="active"><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
+        <li><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -342,7 +342,7 @@ desired effect
             
             <div class="form-group">
               <label for="desperson">Código Cliente</label>
-              <input type="text" class="form-control" id="desperson" name="CodLogin" placeholder="Digite o nome" value="<?php echo $row['CodLogin'];?>">
+              <input type="text" class="form-control" id="desperson" name="CodLogin" placeholder="Digite o nome" readonly value="<?php echo $row['CodLogin'];?>">
             </div>
 
             <div class="form-group">

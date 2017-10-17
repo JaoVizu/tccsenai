@@ -272,9 +272,9 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
-        <li class="active"><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
+        <li><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -344,11 +344,19 @@ desired effect
                   <?php while ($row = mysqli_fetch_array($query)){?>
                   <!--Pegando codigo da categoria -->
                   <?php
+                    //pegando nome da categoria
                     $codCategory = $row['CodCategoria'];
                     
                     $categoryQuery = mysqli_query($conn, " SELECT nomecategoria FROM Categoria WHERE CodCategoria = $codCategory");
                    
                     $catArray = mysqli_fetch_array($categoryQuery);
+
+                    //pegando nome do fornecedor
+                    $codForn = $row['CodFornecedor'];
+
+                    $fornecedorQuery = mysqli_query($conn, " SELECT nomefant FROM fornecedor where codfornecedor = $codForn");
+
+                    $fornArray = mysqli_fetch_assoc($fornecedorQuery);
                   
                   ?>
                   <tr>
@@ -381,7 +389,7 @@ desired effect
                             echo 'Margem Lucro: ' . number_format($row['MargemLucro'],1).'%'.  '<br/>';
                             echo 'Valor de Venda: R$ ' . formatPrice($row['ValorVendaProduto']) . '<br/>';
                             echo 'Estoque: ' . $row['QntProduto'] . '<br/>';
-                            echo 'Fornecedor: ' .$row['CodFornecedor'] . '<br/>';
+                            echo 'Fornecedor: ' .$fornArray['nomefant'] . '<br/>';
                             echo 'Imagem Produto: ' .$row['ImagemProduto']. '<br/>';
                             echo 'Quant. Parcelas: ' .$row['QntParcelas'] . '<br/>';
                             echo 'Valor Parcela : R$ ' . formatPrice($row['ValorParcela']) . '<br/>';

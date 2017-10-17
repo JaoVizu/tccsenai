@@ -269,9 +269,9 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
-        <li class="active"><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
+        <li><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
             <span class="pull-right-container">
@@ -336,14 +336,14 @@ desired effect
 
             </div><!-- fim linha -->
 
-            <hr>
-
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
             <button id="enviar" type="submit" class="btn btn-success">Cadastrar</button>
           </div>
         </form>
+          
+        <hr>
 
         <div class="box-body">
           
@@ -365,7 +365,7 @@ desired effect
                   <tr>
                     <td><?php echo $rowCatiguria['CodCategoria'];?></td>
                     <td><?php echo $rowCatiguria['NomeCategoria'];?></td>
-                    <td class="text-left"><a href="categoria.php?codcat=<?php echo $rowCatiguria['CodCategoria']?>" class="btn btn-danger"><i class="fa fa-trash"></i></a> &nbsp; <a href="" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $rowCatiguria['CodCategoria'];?>"><i class="fa fa-pencil"></i></a></td>
+                    <td class="text-left"><a href="../cadastros/deleteCategoria.php?codcat=<?php echo $rowCatiguria['CodCategoria']?>" class="btn btn-danger" onclick="return confirm('Deseja deletar esta categoria?')"><i class="fa fa-trash"></i></a> &nbsp; <a href="" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $rowCatiguria['CodCategoria'];?>"><i class="fa fa-edit"></i></a></td>
                   </tr>
                   
                   <div id="<?php echo $rowCatiguria['CodCategoria'];?>" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel">
@@ -378,18 +378,27 @@ desired effect
 
                         <div class="modal-content" style="font-size: 25px; padding: 10px;">
                           <?php
-                              echo "<label>Código Categoria</label> <br/>";
-                              echo "<input type='text' value='".$rowCatiguria["CodCategoria"]."'<br/><br/>";
+                              /*echo "<label>Código Categoria</label> <br/>";
+                              echo "<input type='text' readonly value='".$rowCatiguria["CodCategoria"]."'<br/><br/>";
 
                               echo "<label>Nome Categoria</label> <br/>";
-                              echo "<input type='text' value='".$rowCatiguria["NomeCategoria"]."'";
+                              echo "<input type='text' value='".$rowCatiguria["NomeCategoria"]."'";*/
                           ?>
+
+                          <form action="../update/updateCategoria.php" id="formCat" method="post">
+                            <label for="">Código Categoria</label> <br/>
+                            <input type="text" value="<?php echo $rowCatiguria['CodCategoria']?>" name="codCat"> <br/>
+
+                            <label for="">Nome Categoria</label><br/>
+                            <input type="text" value="<?php echo $rowCatiguria['NomeCategoria']?>" name="nomeCat">
+                            <br/>
+                            <button id="enviar" type="submit" class="btn btn-primary">Alterar</button>
+                          </form>
                         </div>
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                         </div>
-                        
                       </div>
                     </div>
                   </div>
@@ -507,8 +516,10 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
+
 <script src="dist/js/jquery.mask.js"></script>
 <script src="dist/js/funcoesJQ.js"></script>
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

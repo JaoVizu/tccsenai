@@ -31,13 +31,16 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
         <div class="container categories" style="margin-bottom: 10px;"> 
             
             <ul class="category-list">
+                <a href="produtos.php">Todos</a>
+            <?php 
+                $read_categoria = mysqli_query($conn, "SELECT * FROM categoria ORDER BY NomeCategoria ASC");
+                if(mysqli_num_rows($read_categoria) > 0){
+                    foreach ($read_categoria as $read_categoria) {
+                        echo '<a href="produtos.php?cat='.$read_categoria['CodCategoria'].'">'.$read_categoria['NomeCategoria'].'&nbsp;</a>';
+                    }
+                }
 
-                <a href=""><li>Anel</li></a>
-                <a href=""><li>Brinco</li></a>
-                <a href=""><li>Colar</li></a>
-                <a href=""><li>Pulseira</li></a>
-                <a href=""><li>Tornozeleira</li></a>
-
+            ?>
             </ul>
 
         </div>
@@ -58,21 +61,34 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
     <section id="vitrine-products">
         <div class="container">
             <div class="row">
-                <?php while($rowProd = mysqli_fetch_assoc($query)){?>
+                <?php
+                    if(isset($_GET['cat']) && $_GET['cat'] != ''){
+                        $id_cat = addslashes($_GET['cat']);
+                        $sql_categoria = "AND codcategoria = '".$id_cat."'";
+                    }else{
+                        $sql_categoria = "";
+                    }
+                    $read_produto = mysqli_query($conn, "SELECT * FROM produto WHERE codproduto != '' {$sql_categoria}");
+
+                    if(mysqli_num_rows($read_produto) > 0){
+                        foreach ($read_produto as $read_produto) {
+                            
+                        
+                ?>
                 <div class="col-md-4">
                     <div class="container-card">
                         <!-- clique geral -->
                         <div class="imagem-produto">
-                            <a href=""><img class="box-responsive" src="../res/site/img/products/<?php echo $rowProd['ImagemProduto']?>" alt=""></a>
+                            <a href=""><img class="box-responsive" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt=""></a>
                         </div>
                         
                         <div class="descricao-produto">
-                            <p class="description-t"><?php echo $rowProd['NomeProduto'] ?></p>
-                            <p class="description-p"><?php echo $rowProd['Descricao']?></p>
+                            <p class="description-t"><?php echo $read_produto['NomeProduto'] ?></p>
+                            <p class="description-p"><?php echo $read_produto['Descricao']?></p>
                             <div class="card-price">
-                                <span class="price"><strong>R$ &nbsp;<?php echo formatPrice($rowProd["ValorVendaProduto"])?></strong>
+                                <span class="price"><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong>
                                 <br/>
-                                <?php echo $rowProd["QntParcelas"].'x'?>&nbsp;&nbsp;&nbsp;<?php echo $rowProd["ValorParcela"]?>
+                                <?php echo $read_produto["QntParcelas"].'x'?>&nbsp;&nbsp;&nbsp;<?php echo $read_produto["ValorParcela"]?>
                                 </span>
                             </div>
                         </div>
@@ -81,7 +97,10 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
                         </div>
                     </div>    
                 </div><!-- fim col -->
-                <?php } ?>
+                <?php
+                    }
+                }
+                ?>
             </div><!-- fim row -->
             
         </div><!-- fim container -->
