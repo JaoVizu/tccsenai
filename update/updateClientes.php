@@ -13,12 +13,15 @@
 	$telefone = $_POST['TelefoneCliente'];
 	$celular = $_POST['CelularCliente'];
 	$email = $_POST['email'];
+	$endereco = $_POST['endereco'];
+	$complemento = $_POST['complemento'];
+	$numeroC = $_POST['numCasa'];
 	$inadmin = isset($_POST['inadmin']) ? 1:0;
 
 	//query para fazer update
 
 	
-	$query = mysqli_query($conn, "CALL sp_usersupdate_save('$codlogin','$nome','$login','$email','$telefone','$celular','$inadmin')");
+	$query = mysqli_query($conn, "CALL sp_usersupdate_save('$codlogin','$nome','$login','$email','$telefone','$celular','$endereco','$numeroC','$complemento','$inadmin')");
 
 	if($query){
 		echo "Dados do cliente alterado com sucesso";

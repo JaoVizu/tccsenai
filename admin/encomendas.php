@@ -1,4 +1,3 @@
-
 <!-- ABRINDO PHP PARA CONSULTA DE NOMES E ETC -->
 <?php
   
@@ -21,8 +20,12 @@
   $results = mysqli_fetch_assoc($query);
   $nome = $results['NomeCliente'];
 
-  //pegando os usuarios do banco de dados
-  $query = mysqli_query($conn, "SELECT * FROM Cliente a INNER JOIN login b USING(CodCliente) ORDER BY a.CodCliente");
+  //TRAZER AS VENDAS
+  $query = mysqli_query($conn, "SELECT * FROM Encomenda a INNER JOIN Cliente b ON a.codcliente = b.codcliente;");
+  
+  //Vendo o total de vendas
+  $totalEncomenda = mysqli_query($conn, " SELECT COUNT(*) AS total FROM Encomenda");
+  $rowTotal = mysqli_fetch_assoc($totalEncomenda); 
 
 ?>
 
@@ -270,7 +273,7 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a id="users" a href=""><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li class="treeview">
@@ -307,116 +310,77 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <!-- Main content -->
-   <section class="content-header">
-  <h1>
-    Lista de Usuários
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><a href="/admin/users">Usuários</a></li>
-  </ol>
-</section>
+    <section class="conteudo">
 
-<!-- Main content -->
-<section class="content">
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box box-primary">
-            
-            <div class="box-header">
-              <a href="user-create.php" class="btn btn-success">Cadastrar Usuário</a>
-            </div>
-
-            <div class="box-body no-padding table-responsive">
-              <table style="font-size: 18px;" class="table table-striped table-bordered">
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>Celular</th>
-                    <th>E-mail</th>                  
-                    <th style="width: 60px">Admin</th>
-                    <th style="width: 140px">Detalhes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- INICIANDO LOOP -->
-                  <?php while ($row = mysqli_fetch_assoc($query)){?>
-                  <tr>
-                    <td><?php echo $row['NomeCliente']?></td>
-                    <td><?php echo $row['CelularCliente']?></td>
-                    <td><?php echo $row['email']?></td>
-                    
-                    <td>  <?php 
-                            if($row['inadmin'] == 1){
-                              echo "Sim";
-                            }else{
-                              echo "Não";
-                            }
-                          ?>
-                      
-                    </td>
-                    <td style="width: 300px;">
-                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#<?php echo $row['CodCliente'];?>">Visualizar</button>
-                      <a href="user-update.php?codcliente=<?php echo $row['CodCliente']?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="../cadastros/deleteCliente.php?idCliente=<?php echo $row['CodLogin'] ?>" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
-                    </td>
-                  </tr>
-                    <!-- modal larga-->
-                  <div id="<?php echo $row['CodCliente'];?>" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel">
-                    <div class="modal-dialog modal-lg" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title" style="font-size: 30px;">Info. Cliente(s)</h4>
-                        </div>
-
-                        <div class="modal-content" style="font-size: 25px; padding: 10px;">
-                          <?php
-                            echo 'Código do Cliente: '.$row['CodCliente'] . '<br/>';
-                            echo 'Nome : '.$row['NomeCliente'] . '<br/>';
-                            echo 'Data Nascimento : '. $row['DataNasc'] . '<br/>';
-                            echo 'Endereço : ' . $row['EndCliente'] . '<br/>';
-                            echo 'Nº Casa : ' . $row['NCliente'] . '<br/>';
-                            echo 'Complemento : ' . $row['ComCliente'] . '<br/>';
-                            echo 'CEP : ' . $row['CepCliente'].  '<br/>';
-                            echo 'CPF : ' . $row['CPFCliente'] . '<br/>';
-                            echo 'RG : ' . $row['RGCliente'] . '<br/>';
-                            echo 'Telefone : ' .$row['TelefoneCliente'] . '<br/>';
-                            echo 'Celular : ' .$row['CelularCliente']. '<br/>';
-                            echo 'Cidade : ' .$row['CidadeCliente'] . '<br/>';
-                            echo 'Estado :' .$row['EstadoCliente'] . '<br/>';
-                            echo 'Bairro : '.$row['BairroCliente']. '<br/>';
-                            echo 'Sexo : ' .$row['SexoCliente']. '<br/>';
-                            echo 'E-mail : ' .$row['email']. '<br/>';
-                            echo 'Login : ' .$row['NomeLogin']. '<br/>';
-                            echo 'Administrador :';
-                            if($row['inadmin'] == 1){
-                              echo " Sim";
-                            }else{
-                              echo " Não";
-                            }
-                          ?>
-                        </div>
-
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-                  <?php } ?>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
+    <div class="content-header">
+        <h1>Relatório de Encomendas</h1>
     </div>
-  </div>
 
-</section>
-<!-- /.content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Relátorio de Encomendas</h3>
+                        <h4 class="pull-right">Vendas Totais:&nbsp; <strong style="font-size:40px;"><?php echo $rowTotal['total']; ?></strong></h4>
+                    </div>
+                    
+                    <!-- tabela do relatorio -->
+                    <table class="table">
+                        <thead>
+                            <th>Código de Encomenda</th>
+                            <th>Cliente</th>
+                            <th>Data de Venda</th>
+                            <th>Forma Pagamento</th>
+                            <th>Status Pedido</th>
+                            <th>Visualizar Item Venda</th>
+                        </thead>
+                        
+                        <tbody>
+                            <?php foreach($query as $row){?>
+                            <tr>
+                                <td><?php echo $row['CodEncomenda'];?></td>
+                                <td><?php echo $row['NomeCliente']?></td>
+                                <td><?php echo $row['DataEncomenda'];?></td>
+                                <td><?php echo $row['FormaPagamento'];?></td>
+                                <td><?php echo $row['StatusPedido'];?></td>
+                                <td> 
+                                    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal<?php echo $row['CodEncomenda'];?>">Visualizar Item</button>
+                                </td>
+                            </tr>
+                            <!-- Modal -->
+                                <div id="myModal<?php echo $row['CodEncomenda']; ?>" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title" style="font-size: 30px;">Item(s)</h4>
+                                        </div>
+                                        <div class="modal-body" style="font-size: 25px;">
+                                          <?php
+                                          
+                                                
+                                          ?>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            <?php }?>
+                        </tbody>
+                    </table>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -517,7 +481,7 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-<script src="dist/js/ajax.js"></script>
+
 
 
 </script>

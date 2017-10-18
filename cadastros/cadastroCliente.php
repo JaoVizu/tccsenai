@@ -18,6 +18,8 @@ include('../Class/Sql.php');
 	$login = $_POST['NomeLogin'];
 	$email = $_POST['email'];
 	$senha = md5($_POST['Senha']);
+	$complemento = $_POST['complemento'];
+	$numeroC = $_POST['numCasa'];
 	$inadmin = isset($_POST['inadmin']) ? 1 : 0;
 
 
@@ -26,11 +28,11 @@ include('../Class/Sql.php');
 	'$datanasc','$endereco','$cep',
 	'$cpf','$rg','$telefone',
 	'$celular','$cidade',
-	'$estado','$bairro','$sexo','$login','$senha','$email','$inadmin')");
+	'$estado','$bairro','$sexo','$login','$senha','$email','$numeroC','$complemento','$inadmin')");
 
 	if($query){
 		echo "Sucesso ao cadastrar usuário";
-		//header("Location:../admin/users.php");
+		
 	}else{
 		echo "Erro ao cadastrar usuário";
 	}
