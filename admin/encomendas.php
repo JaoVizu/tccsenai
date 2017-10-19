@@ -3,6 +3,7 @@
   
   session_start();
   include('../Class/Sql.php');
+  include('../functions.php');
 
   //tratamento de sessao
   if(!isset($_SESSION['usuario'])){
@@ -322,7 +323,7 @@ desired effect
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">Relátorio de Encomendas</h3>
-                        <h4 class="pull-right">Vendas Totais:&nbsp; <strong style="font-size:40px;"><?php echo $rowTotal['total']; ?></strong></h4>
+                        <h4 class="pull-right">Encomendas Totais:&nbsp; <strong style="font-size:40px;"><?php echo $rowTotal['total']; ?></strong></h4>
                     </div>
                     
                     <!-- tabela do relatorio -->
@@ -330,10 +331,10 @@ desired effect
                         <thead>
                             <th>Código de Encomenda</th>
                             <th>Cliente</th>
-                            <th>Data de Venda</th>
+                            <th>Data de Encomenda</th>
                             <th>Forma Pagamento</th>
                             <th>Status Pedido</th>
-                            <th>Visualizar Item Venda</th>
+                            <th>Detalhes Item Encomenda</th>
                         </thead>
                         
                         <tbody>
@@ -346,6 +347,7 @@ desired effect
                                 <td><?php echo $row['StatusPedido'];?></td>
                                 <td> 
                                     <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal<?php echo $row['CodEncomenda'];?>">Visualizar Item</button>
+                                    <a href="" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $rowCatiguria['CodCategoria'];?>"><i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                             <!-- Modal -->
@@ -360,8 +362,26 @@ desired effect
                                         </div>
                                         <div class="modal-body" style="font-size: 25px;">
                                           <?php
+                                          //PESQUISAR O ITEM ENCOMENDA
+                                          $codEnco = $row['CodEncomenda'];
+
+                                          //pegar item da encomenda e produto
+                                          $queryItemEnco = mysqli_query($conn, "SELECT * FROM itemencomenda where codencomenda = '$codEnco';");
                                           
-                                                
+                                          $arrayItem = mysqli_fetch_assoc($queryItemEnco);
+                                          $codProduto = $arrayItem['CodProduto'];
+
+                                          $queryPegaProd = mysqli_query($conn,"SELECT * FROM produto WHERE codproduto = '$codProduto'; ");
+                                          $pegaProd = mysqli_fetch_assoc($queryPegaProd);
+
+                                          echo "Nome do produto: ".'<strong>' . $pegaProd['NomeProduto']. '</strong><br/>';
+                                          echo "Quantidade: ".' <strong>' . $pegaProd['QntProduto']. '</strong><br/>';
+                                          echo "Valor do produto: ".'<strong>R$ ' . formatPrice($arrayItem['ValorItemEncomenda']). '</strong><br/>';
+
+                                          //calculando total
+                                          $total = (float)$pegaProd['ValorVendaProduto'] * (float)$arrayItem['QntItemEncomenda'];
+
+                                          echo "Valor total: " . '<strong>R$ '. formatPrice($total).'</strong>';
                                           ?>
                                         </div>
                                         <div class="modal-footer">
