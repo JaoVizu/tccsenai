@@ -265,7 +265,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="encomendas.php">Encomendas</a></li>
-            <li><a href="#">Alterar Encomendas</a></li>
+            
           </ul>
         </li>
       </ul>
@@ -323,7 +323,7 @@ desired effect
            <h3>Lista de Categorias Cadastradas</h3>
             <div class="row">
 
-              <table class="table table-bordered table-striped">
+              <table class="table table-bordered table-striped" style="font-size: 18px;">
                 <thead>
                   <tr>
                     <th>Código Categoria</th>

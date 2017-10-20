@@ -298,7 +298,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="encomendas.php">Encomendas</a></li>
-            <li><a href="#">Alterar Encomendas</a></li>
+            
           </ul>
         </li>
       </ul>
@@ -327,7 +327,7 @@ desired effect
                     </div>
                     
                     <!-- tabela do relatorio -->
-                    <table class="table">
+                    <table class="table table-striped" style="font-size: 18px;">
                         <thead>
                             <th>Código de Encomenda</th>
                             <th>Cliente</th>
@@ -413,11 +413,10 @@ desired effect
 
                                               <label>Endereço Encomenda</label>
                                               <input type="text" class="form-control" name="endEncomenda" value="<?php echo $row['EndEncomenda']?>"/>
+                                              
+                                              <br/>
 
-                                              <label>Status do Pedido</label>
-                                              <input type="text" class="form-control" name="status" value="<?php echo $row['StatusPedido']?>"/>
-
-                                              <input type="submit" id="enviar"/>
+                                              <input type="submit" id="enviar" value="Alterar Dados" class="btn btn-lg btn-warning"/>
                                             </div>
                                           </form>
                                         

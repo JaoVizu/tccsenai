@@ -289,7 +289,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="encomendas.php">Encomendas</a></li>
-            <li><a href="#">Alterar Encomendas</a></li>
+            
           </ul>
         </li>
       </ul>

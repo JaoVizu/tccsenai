@@ -299,7 +299,7 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="encomendas.php">Encomendas</a></li>
-            <li><a href="#">Alterar Encomendas</a></li>
+            
           </ul>
         </li>
       </ul>
@@ -328,7 +328,7 @@ desired effect
                     </div>
                     
                     <!-- tabela do relatorio -->
-                    <table class="table">
+                    <table class="table table-striped" style="font-size: 18px;">
                         <thead>
                             <th>Código de Venda</th>
                             <th>Cliente</th>
