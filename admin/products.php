@@ -252,7 +252,7 @@ desired effect
         <div class="pull-left info">
           <p><?php echo $nome;?></p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          
         </div>
       </div>
 

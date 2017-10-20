@@ -254,7 +254,7 @@ desired effect
         <div class="pull-left info">
           <p><?php echo $nome;?></p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          
         </div>
       </div>
 
@@ -347,7 +347,7 @@ desired effect
                                 <td><?php echo $row['StatusPedido'];?></td>
                                 <td> 
                                     <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal<?php echo $row['CodEncomenda'];?>">Visualizar Item</button>
-                                    <a href="" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $rowCatiguria['CodCategoria'];?>"><i class="fa fa-edit"></i></a>
+                                    <a href="" class="btn btn-warning" data-toggle="modal" data-target="#modalAlt<?php echo $row['CodEncomenda'];?>"><i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                             <!-- Modal -->
@@ -383,6 +383,44 @@ desired effect
 
                                           echo "Valor total: " . '<strong>R$ '. formatPrice($total).'</strong>';
                                           ?>
+                                          
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                        </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- outra modal -->
+                                <!-- Modal -->
+                                <div id="modalAlt<?php echo $row['CodEncomenda']; ?>" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title" style="font-size: 30px;">Item(s)</h4>
+                                        </div>
+                                        <div class="modal-body" style="font-size: 25px;">
+                                          <form action="../update/updateEncomenda.php" method="post" id="altEncomenda">
+                                            <div class="form-group">
+
+                                              <label>Código Encomenda</label>
+                                              <input type="text" class="form-control" name="codEnco" value="<?php echo $row['CodEncomenda']?>" readonly/>
+
+                                              <label>Endereço Encomenda</label>
+                                              <input type="text" class="form-control" name="endEncomenda" value="<?php echo $row['EndEncomenda']?>"/>
+
+                                              <label>Status do Pedido</label>
+                                              <input type="text" class="form-control" name="status" value="<?php echo $row['StatusPedido']?>"/>
+
+                                              <input type="submit" id="enviar"/>
+                                            </div>
+                                          </form>
+                                        
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -501,6 +539,7 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
+<!-- <script src="dist/js/updateEncomendas.js"></script> -->
 
 
 
