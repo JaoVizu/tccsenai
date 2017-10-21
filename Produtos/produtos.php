@@ -27,12 +27,35 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
     <title>Produtos</title>
 </head>
 <body>
+
+    <div class="jumbotron text-center">
+        <?php 
+
+            $read_categoria = mysqli_query($conn, "SELECT * FROM categoria ORDER BY NomeCategoria ASC");
+            //verificando se a variavel do $_GET esta setada -  se sim- se não
+            if(isset($_GET['cat'])){
+                if(mysqli_num_rows($read_categoria) > 0){
+                        foreach ($read_categoria as $read_categoria) {
+                            if($read_categoria['CodCategoria'] == $_GET['cat']){
+                                echo '<h1 class="jumbo-text">'.$read_categoria['NomeCategoria'].'</h1>';
+                            }
+                    }
+                }
+
+            }else{
+                echo '<h1 class="jumbo-text">Todos os produtos</h1>';
+            }
+
+        ?>
+    </div>
+
     <section id="header-products">
         <div class="container categories" style="margin-bottom: 10px;"> 
             
-            <ul class="category-list">
+            <ul class="category-list d-flex justify-content-around flex-wrap">
                 <a href="produtos.php">Todos</a>
             <?php 
+
                 $read_categoria = mysqli_query($conn, "SELECT * FROM categoria ORDER BY NomeCategoria ASC");
                 if(mysqli_num_rows($read_categoria) > 0){
                     foreach ($read_categoria as $read_categoria) {
@@ -42,9 +65,7 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
 
             ?>
             </ul>
-
-        </div>
-        <div class="container">
+            
             <div class="d-flex justify-content-around flex-wrap">
                 <input type="search" id="search" name="search" placeholder="Procurar...">
 
@@ -61,7 +82,7 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
     <section id="vitrine-products">
         <div class="container">
             <div class="row">
-                <?php
+                  <?php
                     if(isset($_GET['cat']) && $_GET['cat'] != ''){
                         $id_cat = addslashes($_GET['cat']);
                         $sql_categoria = "AND codcategoria = '".$id_cat."'";
@@ -69,41 +90,46 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
                         $sql_categoria = "";
                     }
                     $read_produto = mysqli_query($conn, "SELECT * FROM produto WHERE codproduto != '' {$sql_categoria}");
-
                     if(mysqli_num_rows($read_produto) > 0){
                         foreach ($read_produto as $read_produto) {
                             
                         
                 ?>
                 <div class="col-md-4">
-                    <div class="container-card">
-                        <!-- clique geral -->
-                        <div class="imagem-produto">
-                            <a href=""><img class="box-responsive" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt=""></a>
-                        </div>
-                        
-                        <div class="descricao-produto">
-                            <p class="description-t"><?php echo $read_produto['NomeProduto'] ?></p>
-                            <p class="description-p"><?php echo $read_produto['Descricao']?></p>
-                            <div class="card-price">
-                                <span class="price"><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong>
-                                <br/>
-                                <?php echo $read_produto["QntParcelas"].'x'?>&nbsp;&nbsp;&nbsp;<?php echo $read_produto["ValorParcela"]?>
-                                </span>
+                    <div class="cartao">
+                        <img class="rounded" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="" >
+                        <!-- <div class="cartao-hover">
+                            <div class="texto-cartao">
+                    
+                            <button class="btn btn-primary btn-block">Detalhes</button>
+                            <button class="btn btn-success btn-block">Comprar</button>
+
                             </div>
+                        </div> -->
+                    </div>
+
+                    <div class="legenda-prod text-center">
+                        <p class="description-t"><?php echo $read_produto['NomeProduto'] ?></p>
+                        <!-- <p class="description-p"><?php //echo $read_produto['Descricao']?></p> -->
+                        <div class="card-price">
+                            <span class="price"><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong>
+                            <br/>
+                            <?php echo $read_produto["QntParcelas"].'x'?>&nbsp;&nbsp;&nbsp;<?php echo $read_produto["ValorParcela"]?>
+                            </span>
                         </div>
-                        <div class="custom-fundo">
-                            <a href="">Comprar</a>
-                        </div>
-                    </div>    
-                </div><!-- fim col -->
-                <?php
+                        <span class="separador"><img src="Produtos/img/diamond.svg" alt="Separador" width="15" id="separador"></span>
+                        <button class="btn btn-primary btn-block">Detalhes</button>
+                        <button class="btn btn-success btn-block">Comprar</button>
+                    </div>
+                </div> <!-- fim coluna -->
+                 <?php
+                        }
                     }
-                }
                 ?>
-            </div><!-- fim row -->
-            
-        </div><!-- fim container -->
+            </div>
+        </div>
+
+        
     </section>
 </body>
 </html>

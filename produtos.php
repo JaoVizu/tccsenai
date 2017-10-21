@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="Produtos/css/produtos.css">
 
 
-	<title>Carolina Joias</title>
+	<title>Produtos</title>
 </head>
 <body>
 	

@@ -3,27 +3,28 @@
 
 body{ font-family: 'Quattrocento', serif;}
 
+/**** JUMBOTRON ****/
+.jumbo-text{
+    letter-spacing: 10px;
+    font-size: 60px;
+    font-weight: 700;
+}
+
 /***** HEADER PARA PESQUISA *****/
 #header-products{
-    margin-top: 150px;
+    /*margin-top: 150px;*/
 }
 
 #header-products .container{
     padding: 20px;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    border-top: 2px solid rgba(138,118,98, 1);
+    border-bottom: 2px solid rgba(138,118,98, 1);
 }
 
 .categories{
     text-align: center;
     font-size:24px;
     text-transform: uppercase;
-}
-
-.category-list li{
-    list-style: none;
-    display: inline;
-    padding: 0 3rem 0 3rem;
 }
 
 .category-list  a{
@@ -33,12 +34,9 @@ body{ font-family: 'Quattrocento', serif;}
 
 .category-list > a:hover{
     color: black;
-}
-
-.category-list > a > li:hover{
-    transition: all .4s ease;
-    border-bottom: 3px solid pink;
-    padding-bottom: 3px;
+    transition: all .2s ease;
+    border-bottom: 2px solid rgba(92,156,202, 1);
+    padding-bottom: 1px;
 }
 
 #ordenar{
@@ -51,7 +49,7 @@ body{ font-family: 'Quattrocento', serif;}
 #search{
     outline:none;
     border:none;
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid rgba(138,118,98, 1);
 }
 
 /***** PARTE DE PRODUTOS *****/
@@ -65,39 +63,62 @@ div[class^="col-md-"], div[class*="col-md-"]{
     margin-top: 15px;
 }
 
-.container-card{
-    border: 1px solid transparent;
-    transition: all .6s;
-    text-align: center;
+.cartao{
     position: relative;
-    min-height: 300px;
+    border-radius: 8px 8px 0px 0px;
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    
 }
 
-.container-card:hover{
-    border: 1px solid rgba(138,118,98, .6);
+.cartao img{
+    max-width: 100%;
+    width: 395px;
+    height: 290px;
+    object-fit: cover;   
+
 }
 
-.box-responsive{
-    width: 100%;
+.cartao-hover{
+    position: absolute;
+    bottom:0;
+    left: 100%;
+    right: 0;
+    transition: .5s ease;
+    background-color: rgba(0,0,0, .4);
+    overflow: hidden;
+    width: 0;
     height: 100%;
-    margin: 0 auto;
 }
 
-.imagem-produto{
-    position: relative;
-}
-
-.imagem-produto img{
+.cartao:hover .cartao-hover{
+    left: 0;
     width: 100%;
-    height: 60%;
+}
+
+.texto-cartao{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*overflow:hidden;*/
+    transform: translate(-50%, -50%); 
+}
+
+.legenda-prod{
+    border-radius: 0 0 10px 10px;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    padding: 0.85rem;
 }
 
 .description-t{
-    font-size: 1.6em;
+    font-size: 1.4em;
     font-style: normal;
 }
 .description-p{
-    font-size: 1.4em;
+    font-size: 1.3em;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -105,48 +126,40 @@ div[class^="col-md-"], div[class*="col-md-"]{
 
 .price{
     margin-top: 12px;
-    font-size: 1.4em;
+    font-size: 1.2em;
     line-height: 1.84em;
 }
 
-.custom-fundo{
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    transform: translateY(0);
-    z-index: 1;
-    padding: 6px;
-    background: rgba(138,118,98, .8);
-    
+/* FAZENDO O SEPARADOR */
+.separador{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
-.custom-fundo a{
-    color: #000;
-    text-transform: uppercase;
-    font-size: 1em;
-    text-decoration: none;
-    background: rgb(92,156,202);
-    padding: 5px;
-    transition: .4s;
+
+.separador::after{
+    content: '';
+    flex-grow: 1;
+    position: relative;
+    height: 2px;
+    top: 0.3em;
+     background-color: rgba(92,156,202, 1);
+    margin: 0 0 0 5px;
 }
 
-.custom-fundo a:hover{
-    /*text-decoration: none;
-    background: rgba(92,156,202, .6);*/
 
-    color:#FFF;
+.separador::before{
+    content: '';
+    flex-grow: 1;
+    position: relative;
+    height: 2px;
+    top: 0.3em;
+    background-color: rgba(92,156,202, 1);
+    margin: 0 5px 0 0;
 }
 
-.container-card:hover .custom-fundo{
-    transition: .3s;
-    display: block;
-}
 
 @media (min-width: 720px){
     #ordenar{
