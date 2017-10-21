@@ -336,6 +336,7 @@ desired effect
                     <th>Celular</th>
                     <th>E-mail</th>                  
                     <th style="width: 60px">Admin</th>
+                    <th style="width: 60px">Status</th>
                     <th style="width: 140px">Detalhes</th>
                   </tr>
                 </thead>
@@ -356,10 +357,11 @@ desired effect
                           ?>
                       
                     </td>
+                    <td><?php echo $row['StatusCliente']?></td>
                     <td style="width: 300px;">
                       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#<?php echo $row['CodCliente'];?>">Visualizar</button>
                       <a href="user-update.php?codcliente=<?php echo $row['CodCliente']?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="../cadastros/deleteCliente.php?idCliente=<?php echo $row['CodLogin'] ?>" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                      <a href="../cadastros/deleteCliente.php?idCliente=<?php echo $row['CodLogin'] ?>" onclick="return confirm('Deseja realmente mudar o status do Cliente?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Alt. Status</a>
                     </td>
                   </tr>
                     <!-- modal larga-->

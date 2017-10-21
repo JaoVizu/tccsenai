@@ -145,3 +145,14 @@
     document.getElementById('erro').innerHTML = texto;
 
 }());
+
+//FUNÇAO PARA AS NOTIFICAÇÕES
+(function(){
+
+    $(document).ready(function(){
+        $("li #messages-menu").click(function(){
+            alert('teste');
+            //$('#notifications-count').hide();
+        });
+    });
+}());

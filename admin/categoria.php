@@ -25,7 +25,7 @@
 
   //Query para pegar o ultimo id de venda para mostrar o mais recente
   $queryVendaR = mysqli_query($conn, "SELECT * FROM Venda a INNER JOIN Cliente b ON a.codcliente = b.CodCliente ORDER BY codVenda DESC LIMIT 2");
-  $queryCountVR = mysqli_query($conn, "SELECT count(*) as totalVenda FROM Venda a INNER JOIN Cliente b ON a.codcliente = b.CodCliente ORDER BY codVenda DESC LIMIT 2");
+  $queryCountVR = mysqli_query($conn, "SELECT count(*) as totalVenda FROM Venda a INNER JOIN Cliente b ON a.codcliente = b.CodCliente ORDER BY codVenda DESC");
   $countVR = mysqli_fetch_assoc($queryCountVR); 
   
 
@@ -108,12 +108,12 @@ desired effect
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
+          <li class="dropdown messages-menu" id="messages-menu">
             <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <!-- Aqui vai o tanto de venda -->
-              <span class="label label-success"><?php echo $countVR['totalVenda'];?></span>
+              <span class="label label-success" id="notifications-count"><?php echo $countVR['totalVenda'];?></span>
             </a>
             <ul class="dropdown-menu">
               <li class="header">Você tem <?php echo $countVR['totalVenda'];?> novas compras!!</li>

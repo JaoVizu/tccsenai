@@ -21,6 +21,7 @@ include('../Class/Sql.php');
 	$complemento = $_POST['complemento'];
 	$numeroC = $_POST['numCasa'];
 	$inadmin = isset($_POST['inadmin']) ? 1 : 0;
+	$status = 'ATIVO';
 
 
 	//INSERINDO NO BANCO DE DADOS
@@ -28,7 +29,7 @@ include('../Class/Sql.php');
 	'$datanasc','$endereco','$cep',
 	'$cpf','$rg','$telefone',
 	'$celular','$cidade',
-	'$estado','$bairro','$sexo','$login','$senha','$email','$numeroC','$complemento','$inadmin')");
+	'$estado','$bairro','$sexo','$login','$senha','$email','$numeroC','$complemento','$status','$inadmin')");
 
 	if($query){
 		echo "Sucesso ao cadastrar usuário";

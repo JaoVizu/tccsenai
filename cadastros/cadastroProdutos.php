@@ -13,6 +13,7 @@ include('../Class/Sql.php');
 	$valorparcela = $_POST['ValorParcela'];
 	$descricao = $_POST['Descricao'];
 	$categoria = $_POST['Categoria'];
+	$status = 'ATIVO';
 
 
 	if(!empty($_FILES['ImagemProduto']['name'])){ //verificando se a imagem nao esta vazia
@@ -37,7 +38,7 @@ include('../Class/Sql.php');
 
 		$query = mysqli_query($conn, "CALL sp_products_save('$nome',
     	'$valor','$margem','$valorvenda','$estoque','$fornecedor','$novo_nome',
-    	'$qntparcelas','$valorparcela','$descricao','$categoria')");	
+    	'$qntparcelas','$valorparcela','$descricao','$categoria','$status')");	
 
 		header('Location: ../admin/products.php');
 		
@@ -57,7 +58,7 @@ include('../Class/Sql.php');
 
 		$query = mysqli_query($conn, "CALL sp_products_save('$nome',
     	'$valor','$margem','$valorvenda','$estoque','$fornecedor','$novo_nome',
-    	'$qntparcelas','$valorparcela','$descricao','$categoria')");
+    	'$qntparcelas','$valorparcela','$descricao','$categoria','$status')");
 		
 
 		header('Location: ../admin/products.php');
