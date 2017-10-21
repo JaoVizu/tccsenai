@@ -29,7 +29,7 @@ include('../Class/Sql.php');
 	'$datanasc','$endereco','$cep',
 	'$cpf','$rg','$telefone',
 	'$celular','$cidade',
-	'$estado','$bairro','$sexo','$login','$senha','$email','$numeroC','$complemento','$status','$inadmin')");
+	'$estado','$bairro','$sexo','$login','$senha','$email','$numeroC','$complemento','$inadmin','$status')");
 
 	if($query){
 		echo "Sucesso ao cadastrar usuário";

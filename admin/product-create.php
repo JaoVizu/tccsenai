@@ -315,11 +315,7 @@ desired effect
   <h1>
     Lista de Produtos
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="/admin/categories">Categorias</a></li>
-    <li class="active"><a href="/admin/categories/create">Cadastrar</a></li>
-  </ol>
+  
 </section>
 
 <!-- Main content -->
