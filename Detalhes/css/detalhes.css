@@ -1,0 +1,100 @@
+/*IMPORTANDO FONTES*/
+@import url('https://fonts.googleapis.com/css?family=Quattrocento');
+
+body{ font-family: 'Quattrocento', serif;}
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+/**** JUMBOTRON ****/
+.jumbotron{
+    padding: 6rem 3rem;
+}
+
+.jumbo-text{
+    letter-spacing: 10px;
+    font-size: 60px;
+    font-weight: 700;
+}
+
+
+.name-prod{
+	border-bottom: 1px solid black;
+	border-bottom-style: dashed;
+}
+
+/**** PRODUTOS RELACIONADOS ****/
+.related-logo{
+	padding: 2rem;
+	background: url('../../res/site/img/diamondLogo2.png') no-repeat center;
+	background-size: 150px;
+}
+#related{
+	margin-top: 35px;
+	padding: 3rem;
+}
+
+#relprod-title{
+	letter-spacing: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#relprod-title::before{
+	content: "";
+	background-color: black;
+	flex-grow: 1;
+	position: relative;
+	height: 3px;
+	top: 0.5em;
+	margin-right: 10px;
+
+}
+
+#relprod-title::after{
+	content: "";
+	background-color: black;
+	flex-grow: 1;
+	position: relative;
+	height: 3px;
+	top: 0.5em;
+	margin-left: 10px;
+}
+
+/**** PARTE DE PRODUTOS RELACIONADOS ****/
+.cartao{
+	position: relative;
+	
+}
+
+.cartao img{
+	max-width: 100%;
+    width: 500px;
+    height: 350px;
+    object-fit: cover;  
+}
+
+.cartao-hover{
+    position: absolute;
+    bottom:0;
+    left: 100%;
+    right: 0;
+    transition: .5s ease;
+    background-color: rgba(0,0,0, .4);
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+}
+
+.cartao:hover .cartao-hover{
+    left: 0;
+    width: 100%;
+}
+
+.texto-cartao{
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    /*overflow:hidden;*/
+    transform: translate(-50%, -50%); 
+}

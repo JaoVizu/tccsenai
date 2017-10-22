@@ -4,6 +4,10 @@
 body{ font-family: 'Quattrocento', serif;}
 
 /**** JUMBOTRON ****/
+.jumbotron{
+    padding: 6rem 3rem;
+}
+
 .jumbo-text{
     letter-spacing: 10px;
     font-size: 60px;
@@ -12,17 +16,18 @@ body{ font-family: 'Quattrocento', serif;}
 
 /***** HEADER PARA PESQUISA *****/
 #header-products{
-    /*margin-top: 150px;*/
+    padding: 20px;
+    box-shadow: 5px 5px 3px  rgba(0,0,0, .5);
 }
 
 #header-products .container{
     padding: 20px;
-    border-top: 2px solid rgba(138,118,98, 1);
-    border-bottom: 2px solid rgba(138,118,98, 1);
+    /*border-top: 2px solid rgba(138,118,98, 1);
+    border-bottom: 2px solid rgba(138,118,98, 1);*/
 }
 
 .categories{
-    text-align: center;
+    /*text-align: center;*/
     font-size:24px;
     text-transform: uppercase;
 }
@@ -37,11 +42,12 @@ body{ font-family: 'Quattrocento', serif;}
     transition: all .2s ease;
     border-bottom: 2px solid rgba(92,156,202, 1);
     padding-bottom: 1px;
+    width: 30%;
 }
 
 #ordenar{
     margin-top: 11px;
-    width: 68%;
+    width: 100%;
     padding: 4px;
     font-size: 1.1em;
 }
@@ -52,10 +58,12 @@ body{ font-family: 'Quattrocento', serif;}
     border-bottom: 2px solid rgba(138,118,98, 1);
 }
 
+
 /***** PARTE DE PRODUTOS *****/
 #vitrine-products{
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     margin-bottom: 30px;
+    padding: 10px;
 }
 
 /* PEGA TODAS AS COLUNAS COL-MD-* */
@@ -65,16 +73,16 @@ div[class^="col-md-"], div[class*="col-md-"]{
 
 .cartao{
     position: relative;
-    border-radius: 8px 8px 0px 0px;
+    /*border-radius: 8px 8px 0px 0px;
     border-top: 3px solid black;
     border-left: 3px solid black;
-    border-right: 3px solid black;
+    border-right: 3px solid black;*/
     
 }
 
 .cartao img{
     max-width: 100%;
-    width: 395px;
+    width: 500px;
     height: 290px;
     object-fit: cover;   
 
@@ -106,10 +114,10 @@ div[class^="col-md-"], div[class*="col-md-"]{
 }
 
 .legenda-prod{
-    border-radius: 0 0 10px 10px;
+    /*border-radius: 0 0 10px 10px;
     border-bottom: 3px solid black;
     border-left: 3px solid black;
-    border-right: 3px solid black;
+    border-right: 3px solid black;*/
     padding: 0.85rem;
 }
 
@@ -163,6 +171,6 @@ div[class^="col-md-"], div[class*="col-md-"]{
 
 @media (min-width: 720px){
     #ordenar{
-        width: 30%;
+        width: 100%;
     }
 }
