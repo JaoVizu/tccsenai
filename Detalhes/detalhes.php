@@ -8,21 +8,7 @@ include('functions.php');
 
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- IMPORTANDO CSS DO BOOTSTRAP -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- IMPORTANDO FONT-AWESOME PARA ICONES -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    
-    <title>Detalhes</title>
-</head>
 <body>
 
     <!-- JUMBOTRON COM NOME DO PRODUTO -->
@@ -33,10 +19,11 @@ include('functions.php');
 
                     $id_prod = addslashes($_GET['id_prod']);
 
-                    $read_produto = mysqli_query($conn, "SELECT NomeProduto FROM produto WHERE codProduto = '$id_prod';");
+                    $read_produto = mysqli_query($conn, "SELECT * FROM produto WHERE codProduto = '$id_prod';");
                     foreach ($read_produto as $key) {
                         echo '<h1 class="jumbo-text">'.$key['NomeProduto'].'</h1>';
                     }
+
                 }
             ?>
         </div>
@@ -50,22 +37,22 @@ include('functions.php');
                 <div class="col-md-2">
                     <!-- GAP(GAMBIARRA DO NOT DO IT) -->
                 </div>
-
+                <?php foreach($read_produto as $read){ ?>
                 <div class="col-md-4">
-                    <img src="https://www.elondres.com/wp-content/uploads/2016/06/O_que_ver_em_Londres_n%C3%A3o_perca_as_joias_da_Coroa_Brit%C3%A2nica.jpg.jpeg" alt="" width="500">
+                    <img src="../res/site/img/products/<?php echo $read['ImagemProduto'];?>" alt="" width="500">
                 </div>
 
                 
                 <div class="col-md-4">
                     <div class="name-prod">
-                        <h3>Nome do produto</h3>
-                        <h5>55,00</h5>
+                        <h3 class="mb-3"><?php echo $read['NomeProduto'];?></h3>
+                        <h5 class="mb-2"><sup>&#36;</sup><?php echo formatPrice($read['ValorVendaProduto']);?></h5>
                     </div>
 
-                    <div class="buy-section">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus doloremque consectetur vero quaerat quod ea iste mollitia iure ad, modi nulla perferendis, labore quia officia.</p>
+                    <div class="buy-section mt-3">
+                        <p><?php echo $read['Descricao'];?></p>
 
-                        <input type="number"><button class="btn btn-warning">Comprar</button>
+                        <input type="number"><a class="btn btn-warning">Adicionar ao carrinho</a>
                     </div>
                 </div>
             </div><!-- fim row-->
@@ -74,13 +61,14 @@ include('functions.php');
     
     <!-- DESCRIÇÃO DO PRODUTO -->
     <section id="description" class="mt-5">
-        <div class="container">
-            <div class="product-desc" style="border:1px solid grey;">
-                <div class="col-md-12 text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nobis amet voluptate aliquam debitis! Dolorum placeat inventore, similique a.
+        <div class="container-fluid">
+            <div class="product-desc">
+                <div class="col-md-12">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At reprehenderit voluptate molestias sint, blanditiis odio, impedit consectetur amet incidunt velit ipsum quisquam in aut ipsam! Minus nesciunt, ratione nulla? Quo rem quae aut cum adipisci, ipsam alias? Consequuntur inventore optio laborum laboriosam, voluptate repudiandae earum velit odit facilis temporibus ad pariatur quibusdam voluptas veniam minima quo maxime assumenda perspiciatis molestias.
                 </div>
             </div>
         </div>
+        <?php } ?>
     </section>
     
     <!-- RELATED PRODUCTS -->
@@ -95,20 +83,31 @@ include('functions.php');
 
         <div class="container-fluid mt-5">
             <div class="row text-center">
+                <?php
+                    //PEGANDO O CODIGO DA CATEGORIA DO PRODUTO
+                    $produtos = mysqli_query($conn, " SELECT CodCategoria FROM Produto WHERE CodProduto = '$id_prod'");
+                    $x = mysqli_fetch_assoc($produtos);  $codCat = $x['CodCategoria'];//RECEBENDO VALORES
+
+                    //PEGANDO OS PRODUTOS COM A MESMA CATEGORIA
+                    $readCat = mysqli_query($conn, " SELECT * FROM Produto WHERE CodCategoria = '$codCat' LIMIT 4");
+
+                    foreach($readCat as $readCat){
+                ?>
                 <div class="col-md-3">
                   <div class="cartao">
-                        <img class="rounded" src="../res/site/img/products/anel.jpg" alt="" >
+                        <img class="rounded" src="../res/site/img/products/<?php echo $readCat['ImagemProduto']?>" alt="" >
                             <div class="cartao-hover">
                                 <div class="texto-cartao">
                                 
-                                    <button class="btn btn-primary btn-block">Detalhes</button>
-                                    <button class="btn btn-success btn-block">Comprar</button>
+                                    <a class="btn btn-primary btn-block">Detalhes</a>
+                                    <a class="btn btn-success btn-block">Comprar</a>
 
                                 </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <?php } ?>
+            </div>    
         </div>
     </section>
 

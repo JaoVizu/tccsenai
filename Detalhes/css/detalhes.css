@@ -17,8 +17,22 @@ body{ font-family: 'Quattrocento', serif;}
 
 
 .name-prod{
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid rgba(211, 211, 211, .8);
 	border-bottom-style: dashed;
+
+}
+
+.name-prod h5{
+	font-size: 2rem;
+	color: pink;
+}
+
+/**** DESCRIÇÃO DO PRODUTO ****/
+.product-desc{
+	border: 2px solid rgba(211, 211, 211, .4);
+	width: 66.5555%;
+	margin: 0 auto;
+	padding: 2rem;
 }
 
 /**** PRODUTOS RELACIONADOS ****/
