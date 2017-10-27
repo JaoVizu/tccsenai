@@ -11,8 +11,6 @@
 	$valor = $_POST['ValorProduto'];
 	$valorvenda = $_POST['ValorVendaProduto'];
 	$estoque = $_POST['QntProduto'];
-	$qntparcelas = $_POST['QntParcelas'];
-	$valorparcela = $_POST['ValorParcela'];
 	$descricao = $_POST['Descricao'];
 	$categoria = $_POST['Categoria'];
 
@@ -48,8 +46,6 @@
 		ValorVendaProduto = '$valorvenda',
 		QntProduto = '$estoque',
 		ImagemProduto = '$novo_nome',
-		QntParcelas = '$qntparcelas',
-		ValorParcela = '$valorparcela',
 		DataCadastro = NOW(),
 		Descricao = '$descricao' WHERE CodProduto = '$codproduto'
 		");
@@ -78,8 +74,6 @@
 		ValorVendaProduto = '$valorvenda',
 		QntProduto = '$estoque',
 		ImagemProduto = '$novo_nome',
-		QntParcelas = '$qntparcelas',
-		ValorParcela = '$valorparcela',
 		DataCadastro = NOW(),
 		Descricao = '$descricao' WHERE CodProduto = '$codproduto'
 		");

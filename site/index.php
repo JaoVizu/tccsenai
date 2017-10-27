@@ -29,11 +29,11 @@
                             <div class="efeito">
                                 <figure>
                                     <div class="box-black"></div>
-                                        <a href="/categoria/anel"><img class="img-fluid" src="res/site/img/img-produtos/produto1.png" alt="pulseira"></a>
+                                        <a href="produtos.php?cat=1"><img class="img-fluid" src="res/site/img/img-produtos/produto1.png" alt="pulseira"></a>
 
                                     <figcaption>
                                         <p>Anéis</p>
-                                        <a class="button" href="/categoria/anel">comprar</a>
+                                        <a class="button" href="produtos.php?cat=1">comprar</a>
                                     </figcaption>
                                 </figure>
                             </div><!-- fim div efeito-->
@@ -44,11 +44,11 @@
                             <div class="efeito">
                                 <figure>
                                     <div class="box-black"></div>
-                                        <a href="/categoria/colar"><img class="img-fluid" src="res/site/img/img-produtos/produto2.png" alt="pulseira"></a>
+                                        <a href="produtos.php?cat=4"><img class="img-fluid" src="res/site/img/img-produtos/produto2.png" alt="pulseira"></a>
 
                                     <figcaption>
                                         <p>Colares</p>
-                                        <a class="button" href="/categoria/colar">comprar</a>
+                                        <a class="button" href="produtos.php?cat=4">comprar</a>
                                     </figcaption>
                                 </figure>
                             </div><!-- fim div efeito-->
@@ -59,11 +59,11 @@
                             <div class="efeito">
                                 <figure>
                                     <div class="box-black"></div>
-                                        <a href="/categoria/pulseira"><img class="img-fluid" src="res/site/img/img-produtos/produto3.png" alt="pulseira"></a>
+                                        <a href="produtos.php?cat=5"><img class="img-fluid" src="res/site/img/img-produtos/produto3.png" alt="pulseira"></a>
 
                                     <figcaption>
                                         <p>Pulseiras</p>
-                                        <a class="button" href="/categoria/pulseira">comprar</a>
+                                        <a class="button" href="produtos.php?cat=5">comprar</a>
                                     </figcaption>
                                 </figure>
                             </div><!-- fim div efeito-->
@@ -117,7 +117,7 @@
                         <div class="card-body">
                             <p style="white-space: nowrap;overflow:hidden; text-overflow:ellipsis;" class="card-content"><?php echo $rows["NomeProduto"];?></p>
                             <p><strong><?php echo "R$ &nbsp;" . formatPrice($rows["ValorVendaProduto"]);?></strong></p>
-                            <a class="button" href="detalhes.php?id_product=<?php echo $rows["CodProduto"]; ?>">comprar</a>
+                            <a class="button" href="detalhes.php?id_prod=<?php echo $rows["CodProduto"]; ?>">comprar</a>
                         </div><!-- fim card body-->
                     </div><!-- fim cartao-->
                 </div><!-- fim coluna -->

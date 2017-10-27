@@ -389,8 +389,6 @@ desired effect
                             echo 'Estoque: ' . $row['QntProduto'] . '<br/>';
                             echo 'Fornecedor: ' .$fornArray['nomefant'] . '<br/>';
                             echo 'Imagem Produto: ' .$row['ImagemProduto']. '<br/>';
-                            echo 'Quant. Parcelas: ' .$row['QntParcelas'] . '<br/>';
-                            echo 'Valor Parcela : R$ ' . formatPrice($row['ValorParcela']) . '<br/>';
                             echo 'Data de Cadastro: '.$row['DataCadastro']. '<br/>';
                             echo 'Descrição: ' .$row['Descricao']. '<br/>';
                             echo 'Categoria: ' .$catArray['nomecategoria']. '<br/>';

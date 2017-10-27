@@ -376,19 +376,6 @@ desired effect
 
             <div class="row">
               <div class="form-group col-md-6">
-                <label for="vlweight">Max. Parcelas</label>
-                <input type="number" class="form-control" id="maxparcelas" name="QntParcelas"  placeholder="0" required>
-                <div id="erro" style="display:none;" class="alert alert-danger"><p>Erro! Digite uma margem de lucro</p></div>
-              </div>
-
-              <div class="form-group col-md-6">
-                <label for="vlweight">Valor das Parcelas</label>
-                <input type="text" class="form-control" id="valorParcela" name="ValorParcela" step="0.01" placeholder="0.00" readonly>
-              </div>
-            </div><!-- fim row -->
-
-            <div class="row">
-              <div class="form-group col-md-6">
                 <label for="categoria">Categoria</label>
                 <select name="Categoria" id="categoria" class="form-control" required>
                   <?php while($categoryRow = mysqli_fetch_array($categoryQuery)){?>

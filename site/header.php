@@ -22,11 +22,11 @@
                                 <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                                     <div class="area">
                                     <ul>
-                                        <li><a class="dropdown-item" href="#"><img src="res/site/img/menu-icons/aneis.svg" alt="aneis">Anéis</a></li>
-                                        <li><a class="dropdown-item" href="#"><img src="res/site/img/menu-icons/brincos.svg" alt="brincos">Brincos</a></li>
-                                        <li><a class="dropdown-item" href="#"><img src="res/site/img/menu-icons/colares.svg" alt="colares">Colares</a></li>
-                                        <li><a class="dropdown-item" href="#"><img src="res/site/img/menu-icons/pulseiras.svg" alt="pulseiras">Pulseiras</a></li>
-                                        <li><a class="dropdown-item" href="#"><img src="res/site/img/menu-icons/pulseiras.svg" alt="tornozeleiras">Tornozeleiras</a></li>
+                                        <li><a class="dropdown-item" href="produtos.php?cat=1"><img src="res/site/img/menu-icons/aneis.svg" alt="aneis">Anéis</a></li>
+                                        <li><a class="dropdown-item" href="produtos.php?cat=3"><img src="res/site/img/menu-icons/brincos.svg" alt="brincos">Brincos</a></li>
+                                        <li><a class="dropdown-item" href="produtos.php?cat=4"><img src="res/site/img/menu-icons/colares.svg" alt="colares">Colares</a></li>
+                                        <li><a class="dropdown-item" href="produtos.php?cat=5"><img src="res/site/img/menu-icons/pulseiras.svg" alt="pulseiras">Pulseiras</a></li>
+                                        <li><a class="dropdown-item" href="produtos.php?cat=2"><img src="res/site/img/menu-icons/pulseiras.svg" alt="tornozeleiras">Tornozeleiras</a></li>
                                     </ul>
                                 </div>
                                 </div>
@@ -37,7 +37,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="#section-two" class="nav-link">Nossos Produtos</a>
+                                <a href="produtos.php" class="nav-link">Nossos Produtos</a>
                             </li>
 
                         </ul>

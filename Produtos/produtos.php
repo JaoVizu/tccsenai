@@ -37,7 +37,7 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
                 if(mysqli_num_rows($read_categoria) > 0){
                         foreach ($read_categoria as $read_categoria) {
                             if($read_categoria['CodCategoria'] == $_GET['cat']){
-                                echo '<h1 class="jumbo-text">'.$read_categoria['NomeCategoria'].'</h1>';
+                                echo '<h1 class="jumbo-text">'.$read_categoria['NomeCategoria']. '</h1>';
                             }
                     }
                 }
@@ -49,28 +49,30 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
         ?>
     </div>
     <div class="row">
-        <div class="col-md-3 ml-3">
+        <div class="col-md-3">
             <section id="header-products">
                 <div class="container categories" style="margin-bottom: 10px;">                
                     
-                    <div class="d-flex flex-column justify-content-around flex-wrap">
+                    <div class="d-flex flex-column justify-content-around flex-wrap mb-5" id="search-ord">
                         <input type="search" id="search" name="search" placeholder="Procurar...">
 
                         <select name="ordenar" id="ordenar">
-                            <option value="maiorpreco">Maior Preço</option>
-                            <option value="menorpreco">Menor Preço</option>
-                            <option value="alfabetico">Ordenar A - Z</option>
+                            <option value="0">Ordenar por...</option>
+                            <option value="1">Maior Preço</option>
+                            <option value="2">Menor Preço</option>
+                            <option value="3">Ordenar A - Z</option>
                         </select>
                     </div>
                     
-                    <ul class="list-group mt-2" id="lista-cat">
-                        <a class="list-group-item" href="produtos.php">Todos</a>
+                    <h2>Categorias</h2>
+                    <ul class="d-flex flex-column mt-2" id="lista-cat">
+                        <a class="" href="produtos.php">Todos</a>
                     <?php 
 
                         $read_categoria = mysqli_query($conn, "SELECT * FROM categoria ORDER BY NomeCategoria ASC");
                         if(mysqli_num_rows($read_categoria) > 0){
                             foreach ($read_categoria as $read_categoria) {
-                                echo '<a class="list-group-item" href="produtos.php?cat='.$read_categoria['CodCategoria'].'">'.$read_categoria['NomeCategoria'].'&nbsp;</a>';
+                                echo '<a class=""  href="produtos.php?cat='.$read_categoria['CodCategoria'].'">'.$read_categoria['NomeCategoria'].'&nbsp;</a>';
                             }
                         }
 
@@ -83,9 +85,10 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
     
         <div class="col-md-7 ml-3">
             <section id="vitrine-products">
-                    <div class="row">
-                          <?php
-                            if(isset($_GET['cat']) && $_GET['cat'] != ''){
+                <div class="row">
+                    
+                <?php
+                    if(isset($_GET['cat']) && $_GET['cat'] != ''){
                                 $id_cat = addslashes($_GET['cat']);
                                 $sql_categoria = "AND codcategoria = '".$id_cat."'";
                             }else{
@@ -94,44 +97,21 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
                             $read_produto = mysqli_query($conn, "SELECT * FROM produto WHERE codproduto != '' {$sql_categoria}");
                             if(mysqli_num_rows($read_produto) > 0){
                                 foreach ($read_produto as $read_produto) {
-                                    
-                                
-                        ?>
-                        <div class="col-md-4">
-                            <div class="cartao">
-                                <img class="rounded" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="" >
-                                <!-- <div class="cartao-hover">
-                                    <div class="texto-cartao">
-                            
-                                    <button class="btn btn-primary btn-block">Detalhes</button>
-                                    <button class="btn btn-success btn-block">Comprar</button>
-
-                                    </div>
-                                </div> -->
-                            </div>
-
-                            <div class="legenda-prod text-center">
-                                <p class="description-t"><?php echo $read_produto['NomeProduto'] ?></p>
-                                <!-- <p class="description-p"><?php //echo $read_produto['Descricao']?></p> -->
-                                <div class="card-price">
-                                    <span class="price"><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong>
-                                    <br/>
-                                    <?php echo $read_produto["QntParcelas"].'x'?>&nbsp;&nbsp;&nbsp;<?php echo $read_produto["ValorParcela"]?>
-                                    </span>
-                                </div>
-                                <span class="separador"><img src="Produtos/img/diamond.svg" alt="Separador" width="15" id="separador"></span>
-                                <a href="detalhes.php?id_prod=<?php echo $read_produto['CodProduto'];?>" class="btn btn-primary btn-block">Detalhes</a>
-                                <a class="btn btn-success btn-block">Comprar</a>
-                            </div>
-                        </div> <!-- fim coluna -->
-                         <?php
-                                }
-                            }
-                        ?>
+                ?>
+                <div class="card mt-2 ml-2" style="width: 20rem;">
+                    <img class="card-img-top" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title"><?php echo $read_produto['NomeProduto'];?></h4>
+                        <p><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong></p>
+                        <a href="detalhes.php?id_prod=<?php echo $read_produto['CodProduto'];?>" class="btn btn-secondary">Detalhes</a>
+                        <a href="#" class="btn btn-primary">Comprar</a>
                     </div>
+                </div>
+                <?php
+                    }
+                } ?>
                 
-
-                
+                </div>
             </section>
         </div> <!-- fim col-md-9 -->
     </div><!--fim linha-->

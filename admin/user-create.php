@@ -561,6 +561,26 @@ desired effect
 <script src="dist/js/cadastroCliente.js"></script>
 <script src="dist/js/jquery.mask.js"></script>
 <script src="dist/js/funcoesJQ.js"></script>
+<script>
+    $('#cpfcliente').blur(function(){
+        var cpf = $('#cpfcliente').val();
+
+        $.ajax({
+          url: '../validacoes/validaCpf.php',
+          method: 'get',
+          data: "cpf="+cpf,
+
+          success: function(data){
+            if(data == "1"){
+              alert('O CPF digitado é válido');
+            }else{
+              alert('Digite um CPF válido!');
+             $('#cpfcliente').val("");
+          }
+          }
+        });
+    });
+</script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

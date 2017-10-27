@@ -9,8 +9,6 @@ include('../Class/Sql.php');
 	$valorvenda = $_POST['ValorVendaProduto'];
 	$estoque = $_POST['QntProduto'];
 	$fornecedor = $_POST['CodFornecedor'];
-	$qntparcelas = $_POST['QntParcelas'];
-	$valorparcela = $_POST['ValorParcela'];
 	$descricao = $_POST['Descricao'];
 	$categoria = $_POST['Categoria'];
 	$status = 'ATIVO';
@@ -38,9 +36,9 @@ include('../Class/Sql.php');
 
 		$query = mysqli_query($conn, "CALL sp_products_save('$nome',
     	'$valor','$margem','$valorvenda','$estoque','$fornecedor','$novo_nome',
-    	'$qntparcelas','$valorparcela','$descricao','$categoria','$status')");	
+    	'$descricao','$categoria','$status')");	
 
-		header('Location: ../admin/products.php');
+		//header('Location: ../admin/products.php');
 		
 	}else{
 
@@ -58,10 +56,10 @@ include('../Class/Sql.php');
 
 		$query = mysqli_query($conn, "CALL sp_products_save('$nome',
     	'$valor','$margem','$valorvenda','$estoque','$fornecedor','$novo_nome',
-    	'$qntparcelas','$valorparcela','$descricao','$categoria','$status')");
+    	'$descricao','$categoria','$status')");
 		
 
-		header('Location: ../admin/products.php');
+		//header('Location: ../admin/products.php');
 	}
 
 

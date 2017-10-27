@@ -368,18 +368,7 @@ desired effect
                 <label for="vlheight">Quantidade</label>
                 <input type="number" class="form-control" id="vlheight" name="QntProduto" placeholder="0.00" value="<?php echo $linha['QntProduto']?>">
             </div>
-
-            <div class="form-group col-md-3">
-                <label for="vlheight">Max Parcela</label>
-                <input type="number" class="form-control" id="maxparcelas" name="QntParcelas" placeholder="0.00" value="<?php echo $linha['QntParcelas']?>">
-            </div>
-
-            <div class="form-group col-md-3">
-                <label for="vlheight">Valor Parcela</label>
-                <input type="number" class="form-control" id="valorParcela" name="ValorParcela" placeholder="0.00" value="<?php echo $linha['ValorParcela']?>">
-            </div>
-
-
+            
             <?php
                 //pesquisa para pegar o nome da categoria
                 $catName = mysqli_query($conn, " SELECT NomeCategoria FROM Categoria WHERE CodCategoria = $codCategory");

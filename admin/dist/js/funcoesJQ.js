@@ -156,3 +156,5 @@
         });
     });
 }());
+
+//FUNÇÃO AJAX PARA VALIDAR CPF

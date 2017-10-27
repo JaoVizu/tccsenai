@@ -50,9 +50,23 @@ include('functions.php');
                     </div>
 
                     <div class="buy-section mt-3">
-                        <p><?php echo $read['Descricao'];?></p>
 
-                        <input type="number"><a class="btn btn-warning">Adicionar ao carrinho</a>
+                        <div class="quantity">
+                            <input type="number" min="1" max="<?php echo $read['QntProduto']; ?>" step="1" value="1">
+                        </div>
+                        
+                        <a class="btn btn-warning btn-carrinho ml-3">
+
+                            <i class="fa fa-cart-plus"></i><span class="text-center">Adicionar ao carrinho</span>
+                        
+                        </a>
+
+                    </div>
+
+                    <div class="product-desc mt-3">
+                       
+                        <p class="mt-3"><?php echo $read['Descricao'];?></p>
+                        
                     </div>
                 </div>
             </div><!-- fim row-->
@@ -60,17 +74,17 @@ include('functions.php');
     </section>
     
     <!-- DESCRIÇÃO DO PRODUTO -->
-    <section id="description" class="mt-5">
+    <!--<section id="description" class="mt-5">
         <div class="container-fluid">
             <div class="product-desc">
                 <div class="col-md-12">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At reprehenderit voluptate molestias sint, blanditiis odio, impedit consectetur amet incidunt velit ipsum quisquam in aut ipsam! Minus nesciunt, ratione nulla? Quo rem quae aut cum adipisci, ipsam alias? Consequuntur inventore optio laborum laboriosam, voluptate repudiandae earum velit odit facilis temporibus ad pariatur quibusdam voluptas veniam minima quo maxime assumenda perspiciatis molestias.
+                    
                 </div>
             </div>
         </div>
-        <?php } ?>
-    </section>
-    
+        
+    </section>-->
+    <?php } ?>
     <!-- RELATED PRODUCTS -->
     <section id="related">
         <div class="container">
@@ -89,7 +103,7 @@ include('functions.php');
                     $x = mysqli_fetch_assoc($produtos);  $codCat = $x['CodCategoria'];//RECEBENDO VALORES
 
                     //PEGANDO OS PRODUTOS COM A MESMA CATEGORIA
-                    $readCat = mysqli_query($conn, " SELECT * FROM Produto WHERE CodCategoria = '$codCat' LIMIT 4");
+                    $readCat = mysqli_query($conn, " SELECT * FROM Produto WHERE CodCategoria = '$codCat' AND CodProduto != '$id_prod' ORDER BY RAND() LIMIT 4");
 
                     foreach($readCat as $readCat){
                 ?>
@@ -98,9 +112,10 @@ include('functions.php');
                         <img class="rounded" src="../res/site/img/products/<?php echo $readCat['ImagemProduto']?>" alt="" >
                             <div class="cartao-hover">
                                 <div class="texto-cartao">
-                                
-                                    <a class="btn btn-primary btn-block">Detalhes</a>
-                                    <a class="btn btn-success btn-block">Comprar</a>
+
+                                    <p style="color: white;"><?php echo $readCat['NomeProduto'];?></p>
+                                    <a href="detalhes.php?id_prod=<?php echo $readCat['CodProduto']?>" class="btn btn-primary btn-block">Detalhes</a>
+                                    <a href="" class="btn btn-success btn-block">Comprar</a>
 
                                 </div>
                         </div>
