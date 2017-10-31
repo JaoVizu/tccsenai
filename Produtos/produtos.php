@@ -2,9 +2,24 @@
 
 include('Class/Sql.php');
 include('functions.php');
+include('Class/Carrinho.php');
+
+//iniciando a sessao
+//session_start();
 
 //CONSULTA DE PRODUTOS
 $query = mysqli_query($conn, "SELECT * FROM produto");
+
+if(isset($_GET['add'])):
+    if($_GET['add'] == 'ok'):
+        $produto = new Carrinho;
+        $produto->setId((int)$_GET['id_prod']);
+        $produto->adicionar();
+        header('Location:produtos.php');
+    endif;
+endif;
+
+//print_r($_SESSION['pedido']);
 
 ?>
 
@@ -104,7 +119,7 @@ $query = mysqli_query($conn, "SELECT * FROM produto");
                         <h4 class="card-title"><?php echo $read_produto['NomeProduto'];?></h4>
                         <p><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong></p>
                         <a href="detalhes.php?id_prod=<?php echo $read_produto['CodProduto'];?>" class="btn btn-secondary">Detalhes</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <a href="?add=ok&id_prod=<?php echo $read_produto['CodProduto'];?>" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 <?php
