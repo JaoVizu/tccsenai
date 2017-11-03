@@ -1,5 +1,4 @@
 <?php
-//include('Sql.php');
 
 class Carrinho{
 	private $id;
@@ -22,12 +21,6 @@ class Carrinho{
 		else:
 			$_SESSION['pedido'][$this->id] += 1;
 		endif;
-	}
-
-	public function listarPedido(){
-		$listar = mysqli_query($conn, "SELECT * FROM produto WHERE CodProduto = '$this->id'");
-		$arrayListar = mysqli_fetch_assoc($listar);
-		return $arrayListar;
 	}
 
 	public function excluirProduto(){

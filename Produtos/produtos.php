@@ -18,7 +18,6 @@ if(isset($_GET['add'])):
         header('Location:produtos.php');
     endif;
 endif;
-
 //print_r($_SESSION['pedido']);
 
 ?>

@@ -43,12 +43,15 @@
                         </ul>
                     </div>
                 </div><!-- FIM CONTAINER-->
-
+                <?php if(!isset($_SESSION['cliente'])){?>
                 <li class="entrar nav-item">
                     <a href="../login.php" class="nav-link">Entrar</a>
                 </li>
+                <?php }else{ ?>
+                
+                <?php } ?>
                 <div class="content-carrinho d-flex">
-                    <a href=""><span data-qtd=0 class="fa fa-shopping-bag" aria-hidden="true"></span></a>
+                    <a href="carrinho.php"><span id="qtdCar" data-qtd=0 class="fa fa-shopping-bag" aria-hidden="true"></span></a>
                 </div>
             </div>
     </nav>

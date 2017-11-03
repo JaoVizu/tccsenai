@@ -52,10 +52,10 @@ include('functions.php');
                     <div class="buy-section mt-3">
 
                         <div class="quantity">
-                            <input type="number" min="1" max="<?php echo $read['QntProduto']; ?>" step="1" value="1">
+                            <input type="number" min="1" max="<?php echo $read['QntProduto']; ?>" step="1" value="1" id="qtd" >
                         </div>
                         
-                        <a href="?id_prod=<?php echo $read['CodProduto']?>&add=ok" class="btn btn-warning btn-carrinho ml-3">
+                        <a href="?id_prod=<?php echo $read['CodProduto']?>&add=ok" class="btn btn-warning btn-carrinho ml-3" id="btnAddCar">
 
                             <i class="fa fa-cart-plus"></i><span class="text-center">Adicionar ao carrinho</span>
                         
