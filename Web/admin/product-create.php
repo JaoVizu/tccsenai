@@ -1,4 +1,3 @@
-
 <!-- ABRINDO PHP PARA CONSULTA DE NOMES E ETC -->
 <?php
   
@@ -21,11 +20,11 @@
   $results = mysqli_fetch_assoc($query);
   $nome = $results['NomeCliente'];
 
-  //pegar o cod do cliente que veio pelo get
-  $codcliente = isset($_GET['codcliente']) ? $_GET['codcliente'] : 0;
-  
-  //consulta para pegar o id do cliente que vai ser feito o update
-  $queryCliente = mysqli_query($conn, "SELECT * FROM Cliente a INNER JOIN login b USING(CodCliente) WHERE a.CodCliente = '$codcliente'");
+  //consulta para pegar os fornecedores
+  $FornQuery = mysqli_query($conn, "SELECT * FROM fornecedor");
+
+  //consulta para pegar Categorias
+  $categoryQuery = mysqli_query($conn, "SELECT * FROM categoria");
 
 ?>
 
@@ -108,29 +107,14 @@ desired effect
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
             <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
+           
             <ul class="dropdown-menu">
               <li class="header">You have 4 messages</li>
               <li>
                 <!-- inner menu: contains the messages -->
                 <ul class="menu">
                   <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <!-- User Image -->
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <!-- Message title and timestamp -->
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <!-- The message -->
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
+                    
                   </li>
                   <!-- end message -->
                 </ul>
@@ -142,64 +126,9 @@ desired effect
           <!-- /.messages-menu -->
 
           <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- Inner Menu: contains the notifications -->
-                <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <!-- end notification -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
+          
           <!-- Tasks Menu -->
-          <li class="dropdown tasks-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- Inner menu: contains the tasks -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <!-- Task title and progress text -->
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <!-- The progress bar -->
-                      <div class="progress xs">
-                        <!-- Change the css width attribute to simulate progress -->
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
+          
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
@@ -222,9 +151,7 @@ desired effect
               
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
+               
                 <div class="pull-right">
                   <a href="../validacoes/logout.php" class="btn btn-default btn-flat">Sair</a>
                 </div>
@@ -232,9 +159,7 @@ desired effect
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          
         </ul>
       </div>
     </nav>
@@ -258,22 +183,14 @@ desired effect
       </div>
 
       <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+      
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li class="treeview">
@@ -282,7 +199,7 @@ desired effect
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-           <ul class="treeview-menu">
+         <ul class="treeview-menu">
             <li><a href="relvendas.php">Relátorio de Vendas</a></li>
             
           </ul>
@@ -314,9 +231,9 @@ desired effect
      <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Lista de Clientes
+    Lista de Produtos
   </h1>
- 
+  
 </section>
 
 <!-- Main content -->
@@ -326,78 +243,75 @@ desired effect
     <div class="col-md-12">
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Alterar Cliente</h3>
+          <h3 class="box-title">Novo Produto</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-       <form  style="font-size:25px;" role="form" method="post" action="../update/updateClientes.php">
+        <form style="font-size:25px;" role="form" action="../cadastros/cadastroProdutos.php" method="post" enctype="multipart/form-data">
           <div class="box-body">
-
-            <!-- inicio do laço php -->
-            <?php while($row = mysqli_fetch_assoc($queryCliente)){?>
-            
-            <div class="row">
-              <div class="form-group col-md-3">
-                <label for="desperson">Código Cliente</label>
-                <input type="text" class="form-control" id="desperson" name="CodLogin" placeholder="Digite o nome" readonly value="<?php echo $row['CodLogin'];?>">
-              </div>
-
-              <div class="form-group col-md-9">
-                <label for="desperson">Nome</label>
-                <input type="text" class="form-control" id="desperson" name="NomeCliente" placeholder="Digite o nome" value="<?php echo $row['NomeCliente'];?>">
-              </div>
-            </div>
-            
             <div class="row">
               <div class="form-group col-md-6">
-                <label for="deslogin">Login</label>
-                <input type="text" class="form-control" id="deslogin" name="NomeLogin" placeholder="Digite o login"  value="<?php echo $row['NomeLogin'];?>">
+                <label for="desproduct">Nome do Produto</label>
+                <input type="text" class="form-control" id="desproduct" name="NomeProduto" placeholder="Digite o nome do produto" required>
               </div>
-
               <div class="form-group col-md-6">
-                <label for="desemail">E-mail</label>
-                <input type="email" class="form-control" id="desemail" name="email" placeholder="Digite o e-mail" value="<?php echo $row['email'];?>">
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="deslogin" name="endereco" placeholder="Endereço"  value="<?php echo $row['EndCliente'];?>">
-              </div>
-
-              <div class="form-group col-md-2">
-                <label for="">Nº Casa</label>
-                <input type="text" class="form-control" id="numerohouse" name="numCasa" placeholder="Nº da Casa"  value="<?php echo $row['NCliente'];?>">
-              </div>
-
-              <div class="form-group col-md-4">
-                <label for="">Complemento</label>
-                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento"  value="<?php echo $row['ComCliente'];?>">
+                <label for="vlprice">Valor</label>
+                <input type="number" class="form-control" id="vlprice" name="ValorProduto" step="0.01" placeholder="0.00" required>
               </div>
             </div>
 
             <div class="row">
               <div class="form-group col-md-6">
-                <label for="nrphone">Telefone</label>
-                <input type="tel" class="form-control" id="nrphone" name="TelefoneCliente" placeholder="Digite o telefone"  value="<?php echo $row['TelefoneCliente'];?>">
+                <label for="vlwidth">Margem de Lucro</label>
+                <input type="number" class="form-control" id="margem" name="MargemLucro" placeholder="0" maxlength="100" required>
+                <div id="erro"></div>
               </div>
-
               <div class="form-group col-md-6">
-                <label for="nrphone">Celular</label>
-                <input type="tel" class="form-control" id="nrphone" name="CelularCliente" placeholder="Digite o telefone"  value="<?php echo $row['CelularCliente'];?>">
+                <label for="vlheight">Valor de Venda</label>
+                <input type="text" class="form-control" id="valorVenda" name="ValorVendaProduto" placeholder="0.00" readonly>
               </div>
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="inadmin" value="1" <?php if($row['inadmin']){echo 'checked';}?>> Acesso de Administrador
-              </label>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="vllength">Estoque</label>
+                <input type="number" class="form-control" id="vllength" name="QntProduto" step="0.01" placeholder="Quantidade em estoque" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="vlweight">Fornecedor</label>
+                <select class="form-control" name="CodFornecedor" placeholder="Escolha o fornecedor" required>
+                  <?php while($resultsForn = mysqli_fetch_array($FornQuery)){?>
+                  <option value="<?php echo $resultsForn['CodFornecedor'] ?>"><?php echo $resultsForn['NomeFant']?></option>
+                  <?php } ?>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="vlweight">Imagem do Produto</label>
+              <input type="file" class="form-control" name="ImagemProduto">
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="categoria">Categoria</label>
+                <select name="Categoria" id="categoria" class="form-control" required>
+                  <?php while($categoryRow = mysqli_fetch_array($categoryQuery)){?>
+                  <option value="<?php echo $categoryRow['CodCategoria'];?>"><?php echo $categoryRow['NomeCategoria']; ?></option>
+                  <
+                  <?php }?>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="descricao">Descrição</label>
+              <textarea class="form-control" name="Descricao" id="descricao" cols="30" placeholder="Descreva o produto" required></textarea>
             </div>
           </div>
-          <?php } ?>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button id="enviar" type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" class="btn btn-success">Cadastrar</button>
           </div>
         </form>
       </div>
@@ -423,77 +337,7 @@ desired effect
   </footer>
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
-                </span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
+ 
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -508,6 +352,9 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
+
+<script src="dist/js/ajax.js"></script>
+<script src="dist/js/funcoesJQ.js"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

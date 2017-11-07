@@ -5,7 +5,7 @@
     <section class="loginBox">
         <img src="../res/site/img/shiny-diamond.png" alt="" class="diamond">
         <h2>Faça seu login</h2>
-        <form action="../validacoes/validaLogin.php" method="post">
+        <form action="../Web/validacoes/validaLogin.php" method="post">
             
             <div class="group">
                 <p>Usuário</p>

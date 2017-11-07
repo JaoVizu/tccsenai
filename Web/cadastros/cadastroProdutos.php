@@ -26,6 +26,7 @@ include('../Class/Sql.php');
 
 		//diretorio para onde a imagem deve ser mandada
 		$diretorio = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
+		"Web" . DIRECTORY_SEPARATOR .
 		"res" . DIRECTORY_SEPARATOR . 
 		"site" . DIRECTORY_SEPARATOR .
 		"img" . DIRECTORY_SEPARATOR .

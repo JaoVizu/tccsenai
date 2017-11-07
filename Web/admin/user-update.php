@@ -1,3 +1,4 @@
+
 <!-- ABRINDO PHP PARA CONSULTA DE NOMES E ETC -->
 <?php
   
@@ -20,14 +21,11 @@
   $results = mysqli_fetch_assoc($query);
   $nome = $results['NomeCliente'];
 
-  //PEGANDO CATEGORIAS CADASTRADAS
-  $queryCategory = mysqli_query($conn, "SELECT * FROM categoria");
-
-  //Query para pegar o ultimo id de venda para mostrar o mais recente
-  $queryVendaR = mysqli_query($conn, "SELECT * FROM Venda a INNER JOIN Cliente b ON a.codcliente = b.CodCliente ORDER BY codVenda DESC LIMIT 2");
-  $queryCountVR = mysqli_query($conn, "SELECT count(*) as totalVenda FROM Venda a INNER JOIN Cliente b ON a.codcliente = b.CodCliente ORDER BY codVenda DESC");
-  $countVR = mysqli_fetch_assoc($queryCountVR); 
+  //pegar o cod do cliente que veio pelo get
+  $codcliente = isset($_GET['codcliente']) ? $_GET['codcliente'] : 0;
   
+  //consulta para pegar o id do cliente que vai ser feito o update
+  $queryCliente = mysqli_query($conn, "SELECT * FROM Cliente a INNER JOIN login b USING(CodCliente) WHERE a.CodCliente = '$codcliente'");
 
 ?>
 
@@ -108,20 +106,15 @@ desired effect
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu" id="messages-menu">
+          <li class="dropdown messages-menu">
             <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <!-- Aqui vai o tanto de venda -->
-              <span class="label label-success" id="notifications-count"><?php echo $countVR['totalVenda'];?></span>
-            </a>
+            
             <ul class="dropdown-menu">
-              <li class="header">Você tem <?php echo $countVR['totalVenda'];?> novas compras!!</li>
+              <li class="header">You have 4 messages</li>
               <li>
                 <!-- inner menu: contains the messages -->
                 <ul class="menu">
                   <li><!-- start message -->
-                    <?php foreach($queryVendaR as $qr){?>
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
@@ -129,46 +122,23 @@ desired effect
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
-                        <span><?php echo $qr['NomeCliente'];?></span>
-                        
+                        Support Team
+                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
                       </h4>
                       <!-- The message -->
-                      <p>Acabou de fazer uma nova compra!!</p>
+                      <p>Why not buy a new awesome theme?</p>
                     </a>
-                    <?php } ?>
                   </li>
                   <!-- end message -->
                 </ul>
                 <!-- /.menu -->
               </li>
-              <li class="footer"><a href="relvendas.php">Ver todas as vendas</a></li>
+              <li class="footer"><a href="#">See All Messages</a></li>
             </ul>
           </li>
           <!-- /.messages-menu -->
 
-          <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- Inner Menu: contains the notifications -->
-                <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <!-- end notification -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
+  
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
@@ -191,9 +161,7 @@ desired effect
               
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
+                
                 <div class="pull-right">
                   <a href="../validacoes/logout.php" class="btn btn-default btn-flat">Sair</a>
                 </div>
@@ -201,9 +169,7 @@ desired effect
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+         
         </ul>
       </div>
     </nav>
@@ -227,15 +193,7 @@ desired effect
       </div>
 
       <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+    
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
@@ -279,114 +237,102 @@ desired effect
     <!-- Content Header (Page header) -->
     <!-- Main content -->
     <section class="conteudo">
-  
-      <section class="content-header">
+
+     <!-- Content Header (Page header) -->
+<section class="content-header">
   <h1>
-    Lista de Categorias
+    Lista de Clientes
   </h1>
+ 
 </section>
 
 <!-- Main content -->
-<section class="content ">
+<section class="content">
 
   <div class="row">
     <div class="col-md-12">
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Nova Categoria</h3>
+          <h3 class="box-title">Alterar Cliente</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form style="font-size:25px;" action="../cadastros/cadastroCategoria.php" role="form" method="post" id="formCliente">
+       <form  style="font-size:25px;" role="form" method="post" action="../update/updateClientes.php">
           <div class="box-body">
 
+            <!-- inicio do laço php -->
+            <?php while($row = mysqli_fetch_assoc($queryCliente)){?>
+            
             <div class="row">
-
-              <div class="form-group col-md-6">
-                <label for="desperson">Nome da Categoria</label>
-                <input type="text" class="form-control" id="categoryName" name="NomeCategoria" placeholder="Digite o nome da categoria">
+              <div class="form-group col-md-3">
+                <label for="desperson">Código Cliente</label>
+                <input type="text" class="form-control" id="desperson" name="CodLogin" placeholder="Digite o nome" readonly value="<?php echo $row['CodLogin'];?>">
               </div>
 
-            </div><!-- fim linha -->
+              <div class="form-group col-md-9">
+                <label for="desperson">Nome</label>
+                <input type="text" class="form-control" id="desperson" name="NomeCliente" placeholder="Digite o nome" value="<?php echo $row['NomeCliente'];?>">
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="deslogin">Login</label>
+                <input type="text" class="form-control" id="deslogin" name="NomeLogin" placeholder="Digite o login"  value="<?php echo $row['NomeLogin'];?>">
+              </div>
 
+              <div class="form-group col-md-6">
+                <label for="desemail">E-mail</label>
+                <input type="email" class="form-control" id="desemail" name="email" placeholder="Digite o e-mail" value="<?php echo $row['email'];?>">
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" id="deslogin" name="endereco" placeholder="Endereço"  value="<?php echo $row['EndCliente'];?>">
+              </div>
+
+              <div class="form-group col-md-2">
+                <label for="">Nº Casa</label>
+                <input type="text" class="form-control" id="numerohouse" name="numCasa" placeholder="Nº da Casa"  value="<?php echo $row['NCliente'];?>">
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="">Complemento</label>
+                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento"  value="<?php echo $row['ComCliente'];?>">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="nrphone">Telefone</label>
+                <input type="tel" class="form-control" id="nrphone" name="TelefoneCliente" placeholder="Digite o telefone"  value="<?php echo $row['TelefoneCliente'];?>">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="nrphone">Celular</label>
+                <input type="tel" class="form-control" id="nrphone" name="CelularCliente" placeholder="Digite o telefone"  value="<?php echo $row['CelularCliente'];?>">
+              </div>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="inadmin" value="1" <?php if($row['inadmin']){echo 'checked';}?>> Acesso de Administrador
+              </label>
+            </div>
           </div>
+          <?php } ?>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button id="enviar" type="submit" class="btn btn-success">Cadastrar</button>
+            <button id="enviar" type="submit" class="btn btn-primary">Salvar</button>
           </div>
         </form>
-          
-        <hr>
-
-        <div class="box-body">
-          
-           <h3>Lista de Categorias Cadastradas</h3>
-            <div class="row">
-
-              <table class="table table-bordered table-striped" style="font-size: 18px;">
-                <thead>
-                  <tr>
-                    <th>Código Categoria</th>
-                    <th>Nome da Categoria</th>
-                    <th>Ação</th>
-                  </tr>
-                </thead>
-
-
-                <tbody>
-                <?php while($rowCatiguria = mysqli_fetch_assoc($queryCategory)){ ?>
-                  <tr>
-                    <td><?php echo $rowCatiguria['CodCategoria'];?></td>
-                    <td><?php echo $rowCatiguria['NomeCategoria'];?></td>
-                    <td class="text-left"><a href="../cadastros/deleteCategoria.php?codcat=<?php echo $rowCatiguria['CodCategoria']?>" class="btn btn-danger" onclick="return confirm('Deseja deletar esta categoria?')"><i class="fa fa-trash"></i></a> &nbsp; <a href="" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $rowCatiguria['CodCategoria'];?>"><i class="fa fa-edit"></i></a></td>
-                  </tr>
-                  
-                  <div id="<?php echo $rowCatiguria['CodCategoria'];?>" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel">
-                    <div class="modal-dialog modal-lg" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title" style="font-size: 20px;">Alterar Categoria</h4>
-                        </div>
-
-                        <div class="modal-content" style="font-size: 25px; padding: 10px;">
-                          <?php
-                              /*echo "<label>Código Categoria</label> <br/>";
-                              echo "<input type='text' readonly value='".$rowCatiguria["CodCategoria"]."'<br/><br/>";
-
-                              echo "<label>Nome Categoria</label> <br/>";
-                              echo "<input type='text' value='".$rowCatiguria["NomeCategoria"]."'";*/
-                          ?>
-
-                          <form action="../update/updateCategoria.php" id="formCat" method="post">
-                            <label for="">Código Categoria</label> <br/>
-                            <input type="text" value="<?php echo $rowCatiguria['CodCategoria']?>" name="codCat"> <br/>
-
-                            <label for="">Nome Categoria</label><br/>
-                            <input type="text" value="<?php echo $rowCatiguria['NomeCategoria']?>" name="nomeCat">
-                            <br/>
-                            <button id="enviar" type="submit" class="btn btn-primary">Alterar</button>
-                          </form>
-                        </div>
-
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <?php } ?>
-                </tbody>
-              </table>
-
-            </div><!-- fim linha -->
-        </div>
       </div>
     </div>
   </div>
 
 </section>
-<!-- /.content -->   
+<!-- /.content -->
 
     </section>
     <!-- /.content -->
@@ -404,77 +350,7 @@ desired effect
   </footer>
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
-                </span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
+  
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -489,10 +365,6 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-
-<script src="dist/js/jquery.mask.js"></script>
-<script src="dist/js/funcoesJQ.js"></script>
-
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

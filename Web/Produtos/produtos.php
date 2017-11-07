@@ -2,7 +2,7 @@
 
 include('Class/Sql.php');
 include('functions.php');
-include('Class/Carrinho.php');
+//include('Class/Carrinho.php');
 
 //iniciando a sessao
 //session_start();
@@ -10,14 +10,14 @@ include('Class/Carrinho.php');
 //CONSULTA DE PRODUTOS
 $query = mysqli_query($conn, "SELECT * FROM produto");
 
-if(isset($_GET['add'])):
+/*if(isset($_GET['add'])):
     if($_GET['add'] == 'ok'):
         $produto = new Carrinho;
         $produto->setId((int)$_GET['id_prod']);
         $produto->adicionar();
         header('Location:produtos.php');
     endif;
-endif;
+endif;*/
 //print_r($_SESSION['pedido']);
 
 ?>
@@ -113,12 +113,12 @@ endif;
                                 foreach ($read_produto as $read_produto) {
                 ?>
                 <div class="card mt-2 ml-2" style="width: 20rem;">
-                    <img class="card-img-top" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
+                    <img class="card-img-top" src="../Web/res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title"><?php echo $read_produto['NomeProduto'];?></h4>
                         <p><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong></p>
                         <a href="detalhes.php?id_prod=<?php echo $read_produto['CodProduto'];?>" class="btn btn-secondary">Detalhes</a>
-                        <a href="?add=ok&id_prod=<?php echo $read_produto['CodProduto'];?>" class="btn btn-primary">Comprar</a>
+                        <a href="../Web/carrinho.php?acao=add&id_prod=<?php echo $read_produto['CodProduto'];?>" class="btn btn-primary">Comprar</a>
                     </div>
                 </div>
                 <?php

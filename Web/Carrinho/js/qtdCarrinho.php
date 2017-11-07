@@ -6,7 +6,7 @@
 	
 	if(isset($_SESSION['pedido'][$id])){
 		$_SESSION['pedido'][$id] = $qtd;
-		echo "R$ " . (number_format($preco*$qtd,2,",","."));	
+		echo (number_format($preco*$qtd,2,",","."));	
 	}
 
 	

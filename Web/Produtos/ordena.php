@@ -11,7 +11,7 @@
 			<?php foreach ($query as $read_produto) { ?>
 			
 				<div class="card mt-2 ml-2" style="width: 20rem;">
-	                    <img class="card-img-top" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
+	                    <img class="card-img-top" src="../Web/res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
 	                    <div class="card-body">
 	                        <h4 class="card-title"><?php echo $read_produto['NomeProduto'];?></h4>
 	                        <p><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong></p>
@@ -31,7 +31,7 @@
 			<?php foreach ($query as $read_produto) { ?>
 			
 				<div class="card mt-2 ml-2" style="width: 20rem;">
-	                    <img class="card-img-top" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
+	                    <img class="card-img-top" src="../Web/res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
 	                    <div class="card-body">
 	                        <h4 class="card-title"><?php echo $read_produto['NomeProduto'];?></h4>
 	                        <p><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong></p>
@@ -53,7 +53,7 @@
 			<?php foreach ($query as $read_produto) { ?>
 			
 				<div class="card mt-2 ml-2" style="width: 20rem;">
-	                    <img class="card-img-top" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
+	                    <img class="card-img-top" src="../Web/res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
 	                    <div class="card-body">
 	                        <h4 class="card-title"><?php echo $read_produto['NomeProduto'];?></h4>
 	                        <p><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong></p>
@@ -73,7 +73,7 @@
 			<?php foreach ($query as $read_produto) { ?>
 			
 				<div class="card mt-2 ml-2" style="width: 20rem;">
-	                    <img class="card-img-top" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
+	                    <img class="card-img-top" src="../Web/res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
 	                    <div class="card-body">
 	                        <h4 class="card-title"><?php echo $read_produto['NomeProduto'];?></h4>
 	                        <p><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong></p>
@@ -93,7 +93,7 @@
 			<?php foreach ($query as $read_produto) { ?>
 			
 				<div class="card mt-2 ml-2" style="width: 20rem;">
-	                    <img class="card-img-top" src="../res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
+	                    <img class="card-img-top" src="../Web/res/site/img/products/<?php echo $read_produto['ImagemProduto']?>" alt="Card image cap">
 	                    <div class="card-body">
 	                        <h4 class="card-title"><?php echo $read_produto['NomeProduto'];?></h4>
 	                        <p><strong>R$ &nbsp;<?php echo formatPrice($read_produto["ValorVendaProduto"])?></strong></p>

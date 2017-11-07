@@ -8,7 +8,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-            <a class="navbar-brand" href="/">Carolina Joias</a>
+            <a class="navbar-brand" href="/Web">Carolina Joias</a>
             
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <div class="container">
@@ -45,7 +45,7 @@
                 </div><!-- FIM CONTAINER-->
                 <?php if(!isset($_SESSION['cliente'])){?>
                 <li class="entrar nav-item">
-                    <a href="../login.php" class="nav-link">Entrar</a>
+                    <a href="../Web/login.php" class="nav-link">Entrar</a>
                 </li>
                 <?php }else{ ?>
                 
