@@ -78,6 +78,7 @@ include('Class/Sql.php');
                         <div class="quantity">
                                 <input type="number" min="1" max="<?php echo $arrayListar['QntProduto']; ?>" step="1" value="<?php echo $quantidade?>" id="qtd" name="<?php echo "prod[$prod]"?>">
                         </div>
+                        <button type="submit" class="btn btn-outline-primary ml-4" style="cursor:pointer;"><i class="fa fa-refresh" aria-hidden="true"></i> Atualizar Carrinho</button>
                     </td>
                     <td><?php echo "R$ ".$arrayListar['ValorVendaProduto']?></td>
                     <td class="subtotal"><?php echo "R$ ".$sub;?></td>
@@ -94,12 +95,12 @@ include('Class/Sql.php');
                     }
                 ?>
                 <tr>
-                    <td colspan="5">Total<span id="total" class="float-right"><?php echo "R$ ".number_format($total,2,",",".");?></span></td>
+                    <td colspan="5">Total<span id="total" class="float-right"><strong><?php echo "R$ ".number_format($total,2,",",".");?></strong></span></td>
                 </tr>
             </tbody>
         </table>
             <div class="d-flex justify-content-end mb-5">
-                <input type="submit" name="" value="Finalizar Pedido" class="btn btn-success pull-right">
+                <a href="" class="btn btn-success">Finalizar Pedido</a>
             </div>
         </form>
     </div>
