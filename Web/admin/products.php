@@ -45,13 +45,15 @@
             <div class="box-header">
               <a href="product-create.php" class="btn btn-success">Cadastrar Produto</a>
 
-               <form class="pull-right">
-                <div class="input-group">
-                  <input type="text" name="q" class="form-control" placeholder="Search...">
-                      <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                        </button>
-                      </span>
+              <form>
+                <div class="col-md-6 pull-right">
+                  <div class="input-group">
+                    <input type="text" name="search-t" id="search" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                          </button>
+                        </span>
+                  </div>
                 </div>
               </form>
             </div>
@@ -68,7 +70,7 @@
                     <th style="width: 140px">Detalhes</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="corpoTable">
                   <?php while ($row = mysqli_fetch_array($query)){?>
                   <!--Pegando codigo da categoria -->
                   <?php
@@ -143,6 +145,8 @@
           </div>
     </div>
   </div>
+
+  <script src="dist/js/buscarProd.js"></script>
 
 
 
