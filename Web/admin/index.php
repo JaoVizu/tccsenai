@@ -27,7 +27,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html>
+<html ng-app="admin">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -191,33 +191,11 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
-        <li><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="relvendas.php">Relátorio de Vendas</a></li>
-            
-            
-          </ul>
-        </li>
-
-        <li class="treeview">
-          <a href="#"><i class="fa fa-archive"></i> <span>Encomendas</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="encomendas.php">Encomendas</a></li>
-            
-          </ul>
-        </li>
+        <li><a id="users" a href="#!users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="products" href="#!products"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
+        <li><a id="category" a href="#!categoria"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
+        <li><a href="#!vendas"><i class="fa fa-area-chart"></i>Relátorio de Vendas</a></li>
+        <li><a href="#!encomendas"><i class="fa fa-archive"></i>Encomendas</a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -230,7 +208,7 @@ desired effect
     <!-- Main content -->
     <section class="conteudo">
 
-     
+      <div ng-view></div>
 
     </section>
     <!-- /.content -->
@@ -264,6 +242,10 @@ desired effect
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
 
+<!-- IMPORTANDO O ANGULAR -->
+<script src="dist/js/angular.min.js"></script>
+<script src="dist/js/angular-route.js"></script>
+<script src="dist/js/ang-app.js"></script>
 
 
 </script>

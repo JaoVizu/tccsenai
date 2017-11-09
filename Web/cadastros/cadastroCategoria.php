@@ -7,7 +7,7 @@
     $query = mysqli_query($conn, "INSERT INTO Categoria (NomeCategoria) VALUES('$nomeCategoria')");
 
     if($query){
-        header('Location: ../admin/categoria.php');
+        header('Location: ../admin/index.php#!/categoria');
     }else{
         echo "Deu erro"; 
     }

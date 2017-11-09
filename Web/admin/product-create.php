@@ -190,32 +190,11 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU ADMINISTRAÇÃO</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a id="users" a href="users.php"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a id="products" href="products.php"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
-        <li><a id="category" a href="categoria.php"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-area-chart"></i> <span>Vendas</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-         <ul class="treeview-menu">
-            <li><a href="relvendas.php">Relátorio de Vendas</a></li>
-            
-          </ul>
-        </li>
-
-        <li class="treeview">
-          <a href="#"><i class="fa fa-archive"></i> <span>Encomendas</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="encomendas.php">Encomendas</a></li>
-            
-          </ul>
-        </li>
+        <li><a id="users" a href="index.php#!/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a id="products" href="index.php#!/products"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
+        <li><a id="category" a href="index.php#!/categoria"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
+        <li><a href="index.php#!/vendas"><i class="fa fa-area-chart"></i>Relátorio de Vendas</a></li>
+        <li><a href="index.php#!/encomendas"><i class="fa fa-archive"></i>Encomendas</a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

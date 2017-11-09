@@ -100,7 +100,7 @@ include('Class/Sql.php');
             </tbody>
         </table>
             <div class="d-flex justify-content-end mb-5">
-                <a href="" class="btn btn-success">Finalizar Pedido</a>
+                <a href="../Web/checaLogin.php" class="btn btn-success">Finalizar Pedido</a>
             </div>
         </form>
     </div>

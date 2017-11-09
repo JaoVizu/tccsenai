@@ -1,6 +1,6 @@
 <script>
 	function redireciona(){
-		setTimeout("window.location = '../admin/users.php'");
+		setTimeout("window.location = '../admin/index.php#!/users'");
 	}
 </script>
 <?php
@@ -17,6 +17,7 @@
 	$complemento = $_POST['complemento'];
 	$numeroC = $_POST['numCasa'];
 	$inadmin = isset($_POST['inadmin']) ? 1:0;
+	
 
 	//query para fazer update
 

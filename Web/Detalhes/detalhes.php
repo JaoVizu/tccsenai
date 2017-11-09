@@ -39,7 +39,7 @@ include('functions.php');
                 </div>
                 <?php foreach($read_produto as $read){ ?>
                 <div class="col-md-4">
-                    <img src="../res/site/img/products/<?php echo $read['ImagemProduto'];?>" alt="" width="500">
+                    <img src="../Web/res/site/img/products/<?php echo $read['ImagemProduto'];?>" alt="" width="500">
                 </div>
 
                 
@@ -51,11 +51,11 @@ include('functions.php');
 
                     <div class="buy-section mt-3">
 
-                        <div class="quantity">
+                        <!--<div class="quantity">
                             <input type="number" min="1" max="<?php echo $read['QntProduto']; ?>" step="1" value="1" id="qtd" >
-                        </div>
+                        </div>-->
                         
-                        <a href="../Web/carrinho.php?acao=add&id_prod=<?php echo $read['CodProduto'];?>" class="btn btn-warning btn-carrinho ml-3" id="btnAddCar">
+                        <a href="../Web/carrinho.php?acao=add&id_prod=<?php //echo $read['CodProduto'];?>" class="btn btn-warning btn-carrinho ml-3" id="btnAddCar">
 
                             <i class="fa fa-cart-plus"></i><span class="text-center">Adicionar ao carrinho</span>
                         
@@ -109,7 +109,7 @@ include('functions.php');
                 ?>
                 <div class="col-md-3">
                   <div class="cartao">
-                        <img class="rounded" src="../res/site/img/products/<?php echo $readCat['ImagemProduto']?>" alt="" >
+                        <img class="rounded" src="../Web/res/site/img/products/<?php echo $readCat['ImagemProduto']?>" alt="" >
                             <div class="cartao-hover">
                                 <div class="texto-cartao">
 

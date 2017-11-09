@@ -9,7 +9,7 @@
 	$query = mysqli_query($conn, "UPDATE Categoria SET nomecategoria = '$nomeCat' WHERE codcategoria = '$codCat'");
 
 	if($query){
-		header('Location: ../admin/categoria.php');
+		header('Location: ../admin/index.php#!/categoria');
 	}else{
 		echo "Deu ruim";
 	}

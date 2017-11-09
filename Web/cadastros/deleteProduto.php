@@ -17,14 +17,14 @@
 			$sqlStatus = mysqli_query($conn, " UPDATE Produto SET StatusProduto = 'INATIVO' WHERE CodProduto = '$codproduto'");
 
 			//verificar se a query trouxe true
-			if($sqlStatus){header('Location:../admin/products.php');}else{ echo "Ocorreu um erro, consulte o desenvolvedor";}
+			if($sqlStatus){header('Location:../admin/index.php#!/products');}else{ echo "Ocorreu um erro, consulte o desenvolvedor";}
 
 		}else{
 			//fazendo update
 			$sqlStatus = mysqli_query($conn, " UPDATE Produto SET StatusProduto = 'ATIVO' WHERE CodProduto = '$codproduto'");
 
 			//verificar se a query trouxe true
-			if($sqlStatus){header('Location:../admin/products.php');}else{ echo "Ocorreu um erro, consulte o desenvolvedor";}
+			if($sqlStatus){header('Location:../admin/index.php#!/products');}else{ echo "Ocorreu um erro, consulte o desenvolvedor";}
 
 		}
 	
@@ -34,7 +34,7 @@
 	}
 
 	if($sqldel){
-		header('Location:../admin/products.php');
+		header('Location:../admin/index.php#!/products');
 	}else{
 		echo "Deu merada";
 	}

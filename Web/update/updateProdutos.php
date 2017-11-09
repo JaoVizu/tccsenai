@@ -50,7 +50,7 @@
 		Descricao = '$descricao' WHERE CodProduto = '$codproduto'
 		");
 
-		header('Location: ../admin/products.php');
+		header('Location: ../admin/index.php#!/products');
 
 		
 	}else{
@@ -78,7 +78,7 @@
 		Descricao = '$descricao' WHERE CodProduto = '$codproduto'
 		");
 
-		header('Location: ../admin/products.php');
+		header('Location: ../admin/index.php#!/products');
 	}
 
 ?>

@@ -9,10 +9,10 @@
 
 	if($query){
 		//echo 'Encomenda Atualizada com sucesso';
-		header('Location: ../admin/encomendas.php');
+		header('Location: ../admin/index.php#!/encomendas');
 	}else{
 		echo "<script>alert('Ocorreu um erro, consulte o desenvolvedor');</script>";
-		header('Location: ../admin/encomendas.php');
+		header('Location: ../admin/index.php#!/encomendas');
 	}
 
 ?>
