@@ -55,7 +55,7 @@ include('functions.php');
                             <input type="number" min="1" max="<?php echo $read['QntProduto']; ?>" step="1" value="1" id="qtd" >
                         </div>-->
                         
-                        <a href="../Web/carrinho.php?acao=add&id_prod=<?php //echo $read['CodProduto'];?>" class="btn btn-warning btn-carrinho ml-3" id="btnAddCar">
+                        <a href="../Web/carrinho.php?acao=add&id_prod=<?php echo $read['CodProduto'];?>" class="btn btn-warning btn-carrinho ml-3" id="btnAddCar">
 
                             <i class="fa fa-cart-plus"></i><span class="text-center">Adicionar ao carrinho</span>
                         
@@ -73,17 +73,6 @@ include('functions.php');
         </div>
     </section>
     
-    <!-- DESCRIÇÃO DO PRODUTO -->
-    <!--<section id="description" class="mt-5">
-        <div class="container-fluid">
-            <div class="product-desc">
-                <div class="col-md-12">
-                    
-                </div>
-            </div>
-        </div>
-        
-    </section>-->
     <?php } ?>
     <!-- RELATED PRODUCTS -->
     <section id="related">
@@ -115,7 +104,7 @@ include('functions.php');
 
                                     <p style="color: white;"><?php echo $readCat['NomeProduto'];?></p>
                                     <a href="detalhes.php?id_prod=<?php echo $readCat['CodProduto']?>" class="btn btn-primary btn-block">Detalhes</a>
-                                    <a href="" class="btn btn-success btn-block">Comprar</a>
+                                    <a href="../Web/carrinho.php?acao=add&id_prod=<?php echo $readCat['CodProduto']?>" class="btn btn-success btn-block">Comprar</a>
 
                                 </div>
                         </div>
