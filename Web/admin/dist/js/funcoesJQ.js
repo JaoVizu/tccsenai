@@ -103,6 +103,8 @@
 
 }());
 
+
+
 //FUNÇAO PARA CALCULAR PARCELAS
 (function(){
 

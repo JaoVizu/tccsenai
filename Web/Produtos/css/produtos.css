@@ -6,6 +6,7 @@ body{ font-family: 'Quattrocento', serif;}
 /**** JUMBOTRON ****/
 .jumbotron{
     padding: 6rem 3rem;
+    background-color: rgba(92,156,202,1);
 }
 
 .jumbo-text{

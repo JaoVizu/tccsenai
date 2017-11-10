@@ -27,22 +27,22 @@
             <div class="col-md-6">
                 <div id="cadastrar">
                     <fieldset><legend>Quero me cadastrar</legend>
-                        <form>
+                        <form action="../Web/cadastroCliente.php" method="post">
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label for="email" class="col-form-label col-form-label-lg">Email</label>
-                                    <input type="text" class="form-control form-control-lg" placeholder="voce@exemplo.com">
+                                    <input type="text" name="email" class="form-control form-control-lg" placeholder="voce@exemplo.com">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="cpf" class="col-form-label col-form-label-lg">CPF</label>
-                                    <input type="text" class="form-control form-control-lg" placeholder="000.000.000-00">
+                                    <input type="text" id="cpf" name="cpf" class="form-control form-control-lg" placeholder="000.000.000-00">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="cep" class="col-form-label col-form-label-lg">CEP</label>
-                                    <input type="text" class="form-control form-control-lg" placeholder="00000-000">
+                                    <input type="text" id="cep" name="cep" class="form-control form-control-lg" placeholder="00000-000">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg pull-right" style="cursor:pointer;">Cadastrar</button>
+                            <button type="submit" id="cad" class="btn btn-primary btn-lg pull-right" style="cursor:pointer;">Cadastrar</button>
                         </form>
                         <small><em><strong>* Campos obrigatórios</strong></em></small>
                     </fieldset>
@@ -51,3 +51,44 @@
 
         </div><!-- fim linha -->
     </div><!-- fim container-->
+
+    <script src="../Web/admin/dist/js/jquery-3.2.1.min.js"></script>
+    <script src="../Web/admin/dist/js/jquery.mask.js"></script>
+    <script>
+        //FUNCAO DE MASCARAS
+            $(document).ready(function($){
+                    $('#cep').mask('99999-999');
+                    $('#cpf').mask('000.000.000-00');
+                   
+            });
+
+            
+                $('#cpf').blur(function(){
+                    var cpf = $('#cpf').val();
+
+                    $.ajax({
+                      url: 'validacoes/validaCpf.php',
+                      method: 'get',
+                      data: "cpf="+cpf,
+
+                        success: function(data){
+                        
+                            if(data == "1"){
+                                alert('O CPF digitado é válido');
+                                $('#cpf').css("border","1px solid green");
+                                document.getElementById('cad').disabled = false;
+                                
+                            }else{
+                              alert('Digite um CPF válido para liberar o botão!');
+                              $('#cpf').css("border","1px solid red");
+                              document.getElementById('cad').disabled = true;
+                             
+                            }
+                      
+                        } // fim function(data)
+
+                    });//fim ajax
+
+            }); // fim função
+            
+    </script>

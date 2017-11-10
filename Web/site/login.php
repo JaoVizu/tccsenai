@@ -26,7 +26,8 @@
                 }
             ?>
             </p>
-            <a href="">Esqueci minha senha</a>   
+            <a href="cadastroCliente.php">Não tenho um cadastro</a><br/>
+            <a href="">Esqueci minha senha</a>     
 
         </form>
     </section>

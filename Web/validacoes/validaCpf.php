@@ -2,6 +2,8 @@
 
 
     $cpf = $_GET['cpf'];
+
+
        
 function valida_cpf( $cpf = false ) {
     // Exemplo de CPF: 025.462.884-23
@@ -15,6 +17,18 @@ function valida_cpf( $cpf = false ) {
      * @return int Os dígitos enviados concatenados com o último dígito
      *
      */
+    if ($cpf == '000.000.000-00' || 
+        $cpf == '111.111.111-11' || 
+        $cpf == '222.222.222-22' || 
+        $cpf == '333.333.333-33' || 
+        $cpf == '444.444.444-44' || 
+        $cpf == '555.555.555-55' || 
+        $cpf == '666.666.666-66' || 
+        $cpf == '777.777.777-77' || 
+        $cpf == '888.888.888-88' || 
+        $cpf == '999.999.999-99') {
+        return false;
+}
     if ( ! function_exists('calc_digitos_posicoes') ) {
         function calc_digitos_posicoes( $digitos, $posicoes = 10, $soma_digitos = 0 ) {
             // Faz a soma dos dígitos com a posição

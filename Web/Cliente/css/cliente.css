@@ -1,0 +1,17 @@
+/*IMPORTANDO FONTES*/
+@import url('https://fonts.googleapis.com/css?family=Quattrocento');
+
+body{ font-family: 'Quattrocento', serif;}
+
+/**** JUMBOTRON ****/
+.jumbotron{
+    padding: 6rem 3rem;
+    background-color: rgba(92,156,202,1);
+}
+
+.jumbo-text{
+    letter-spacing: 10px;
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
