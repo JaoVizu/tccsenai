@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="Detalhes/css/detalhes.css">
 
 
-	<title>Carrinho</title>
+	<title>Checando Login</title>
 </head>
 <body>
 	

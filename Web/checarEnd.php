@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="Cliente/css/cliente.css">
 
 
-	<title>Cadastro Cliente</title>
+	<title>Checar Endereço</title>
 </head>
 <body>
 	
@@ -37,7 +37,7 @@
 
 	<section>
 		<?php
-			include('Cliente/cadCliente.php');
+			include('Cliente/checkEndereco.php');
 		?>
 	</section>
 

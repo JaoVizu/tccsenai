@@ -9,7 +9,7 @@
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label for="email" class="col-form-label col-form-label-lg">Email*</label>
-                                    <input type="email" class="form-control form-control-lg" id="email" placeholder="voce@exemplo.com" name="email">
+                                    <input type="email" class="form-control form-control-lg" id="emailLog" placeholder="voce@exemplo.com" name="email">
                                 </div>
 
                                 <div class="col-md-12">
@@ -17,7 +17,7 @@
                                     <input type="password" class="form-control form-control-lg" id="senha" name="pass">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg pull-right" style="cursor:pointer;">Logar</button>
+                            <button type="submit" id="logar" class="btn btn-primary btn-lg pull-right" style="cursor:pointer;">Logar</button>
                         </form>
                         <small><em><strong>* Campos obrigatórios</strong></em></small>
                     </fieldset>
@@ -27,19 +27,19 @@
             <div class="col-md-6">
                 <div id="cadastrar">
                     <fieldset><legend>Quero me cadastrar</legend>
-                        <form action="../Web/cadastroCliente.php" method="post">
+                        <form action="../Web/cadastroCliente.php" method="post" id="form">
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <label for="email" class="col-form-label col-form-label-lg">Email</label>
-                                    <input type="text" name="email" class="form-control form-control-lg" placeholder="voce@exemplo.com">
+                                    <label for="email" class="col-form-label col-form-label-lg">Email*</label>
+                                    <input type="text" name="email" class="form-control form-control-lg" placeholder="voce@exemplo.com" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="cpf" class="col-form-label col-form-label-lg">CPF</label>
-                                    <input type="text" id="cpf" name="cpf" class="form-control form-control-lg" placeholder="000.000.000-00">
+                                    <label for="cpf" class="col-form-label col-form-label-lg">CPF*</label>
+                                    <input type="text" id="cpf" name="cpf" class="form-control form-control-lg" placeholder="000.000.000-00" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="cep" class="col-form-label col-form-label-lg">CEP</label>
-                                    <input type="text" id="cep" name="cep" class="form-control form-control-lg" placeholder="00000-000">
+                                    <label for="cep" class="col-form-label col-form-label-lg">CEP*</label>
+                                    <input type="text" id="cep" name="cep" class="form-control form-control-lg" placeholder="00000-000" required>
                                 </div>
                             </div>
                             <button type="submit" id="cad" class="btn btn-primary btn-lg pull-right" style="cursor:pointer;">Cadastrar</button>
@@ -62,7 +62,6 @@
                    
             });
 
-            
                 $('#cpf').blur(function(){
                     var cpf = $('#cpf').val();
 
@@ -91,4 +90,6 @@
 
             }); // fim função
             
+            
     </script>
+    <script src="validacoes/login.js"></script>

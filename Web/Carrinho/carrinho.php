@@ -5,6 +5,10 @@ include('Class/Sql.php');
         $_SESSION['pedido'] = array();
     }
 
+    if(!isset($_GET['acao'])){
+        $_GET['acao'] = null;
+    }
+
   if(isset($_GET['acao'])){ 
         //ADICIONAR CARRINHO 
         if($_GET['acao'] == 'add'){ 

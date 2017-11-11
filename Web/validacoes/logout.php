@@ -10,6 +10,6 @@ session_start();
 session_destroy();
 
 unset($_SESSION['usuario']);
-
+//unset($_SESSION['cliente']);
 echo "<script>logout()</script>"
 ?>

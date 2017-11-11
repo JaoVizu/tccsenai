@@ -24,7 +24,11 @@
 
 			header("Location: ../site/loadingPage/loading.php");
 		}else{
-			echo "Normal user";
+			
+			session_start();
+			$_SESSION['usuario'] = $results;
+
+			header("Location: ../index.php");
 		}
 
 	}else{

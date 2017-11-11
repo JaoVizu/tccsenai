@@ -20,7 +20,7 @@ include('../Class/Sql.php');
 	$senha = md5($_POST['Senha']);
 	$complemento = $_POST['complemento'];
 	$numeroC = $_POST['numCasa'];
-	$inadmin = isset($_POST['inadmin']) ? 1 : 0;
+	$inadmin = isset($_POST['inadmin']) ? $_POST['inadmin'] : 0;
 	$status = 'ATIVO';
 
 
@@ -35,7 +35,7 @@ include('../Class/Sql.php');
 		echo "Sucesso ao cadastrar usuário";
 		
 	}else{
-		echo "Erro ao cadastrar usuário";
+		echo "Erro ao cadastrar usuário". mysqli_error($conn);
 	}
 
 

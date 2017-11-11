@@ -15,3 +15,8 @@ body{ font-family: 'Quattrocento', serif;}
     font-weight: 700;
     text-transform: uppercase;
 }
+
+#checaEnd{
+    width: 960px;
+    margin: 0 auto;
+}

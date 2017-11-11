@@ -1,6 +1,5 @@
     <?php
         session_start();
-        
     ?>
     <!-- NAVBAR FIXED TOP -->
     <nav class="navbar  navbar-expand-md navbar-light bg-dark">
@@ -43,12 +42,17 @@
                         </ul>
                     </div>
                 </div><!-- FIM CONTAINER-->
-                <?php if(!isset($_SESSION['cliente'])){?>
+                <?php if(!isset($_SESSION['usuario'])){?>
                 <li class="entrar nav-item">
                     <a href="../Web/login.php" class="nav-link">Entrar</a>
                 </li>
                 <?php }else{ ?>
-                
+                    <li class="entrar nav-item" title="Meus Dados">
+                        <a href="" class="nav-link"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="entrar nav-item" title="Sair">
+                        <a href="../Web/validacoes/logout.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
+                    </li>
                 <?php } ?>
                 <div class="content-carrinho d-flex">
                     <a href="carrinho.php"><span id="qtdCar" data-qtd=0 class="fa fa-shopping-bag" aria-hidden="true"></span></a>
