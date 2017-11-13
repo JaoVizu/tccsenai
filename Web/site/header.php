@@ -48,7 +48,7 @@
                 </li>
                 <?php }else{ ?>
                     <li class="entrar nav-item" title="Meus Dados">
-                        <a href="" class="nav-link"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+                        <a href="../Web/meusDados.php" class="nav-link"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
                     </li>
 
                     <li class="entrar nav-item" title="Meus Pedidos">

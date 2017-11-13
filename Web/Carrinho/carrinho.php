@@ -110,7 +110,7 @@ include('Class/Sql.php');
                 <a href=<?php if(!isset($_SESSION['usuario'])){
                     echo "../Web/checaLogin.php";
                 }else{
-                    echo "../Web/meusPedidos.php";
+                    echo "../Web/finalizar-pedido.php";
                 }
 
                 ?> class="btn btn-success">Finalizar Pedido</a>

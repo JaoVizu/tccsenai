@@ -9,10 +9,6 @@ $("#search").keyup(function(){
 		}
 	}
 
-	/*$.post('../../../buscar.php', dados, function(retorna){
-		alert(dados);
-	});*/
-
 	$.ajax({
 		url: '../../../Web/buscarCli.php',
 		method: 'post',

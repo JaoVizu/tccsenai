@@ -67,6 +67,9 @@
                     $(document).ready(function($){
                         $('#cepcliente').mask('99999-999');
                         $('#cpfcliente').mask('000.000.000-00');
+                        $('#rgcliente').mask('00.000.000-0')
+                        $('#celularcliente').mask('(00) 00000-0000');
+                        $('#telefonecliente').mask('(00) 0000-0000');
                    
                     });
                 }());
