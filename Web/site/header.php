@@ -50,6 +50,11 @@
                     <li class="entrar nav-item" title="Meus Dados">
                         <a href="" class="nav-link"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
                     </li>
+
+                    <li class="entrar nav-item" title="Meus Pedidos">
+                        <a href="../Web/meusPedidos.php" class="nav-link"><i class="fa fa fa-list" aria-hidden="true"></i></a>
+                    </li>
+
                     <li class="entrar nav-item" title="Sair">
                         <a href="../Web/validacoes/logout.php" class="nav-link"><i class="fa fa-sign-out"></i></a>
                     </li>

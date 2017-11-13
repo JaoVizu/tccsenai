@@ -24,14 +24,13 @@
 
 			header("Location: ../site/loadingPage/loading.php");
 		}else{
-			
 			session_start();
 			$_SESSION['usuario'] = $results;
-
 			header("Location: ../index.php");
 		}
 
 	}else{
+		
 		session_start();
 		$_SESSION['loginerror'] = "Usuário ou senha inválidos";
 		header("Location:../login.php");

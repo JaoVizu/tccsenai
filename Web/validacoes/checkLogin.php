@@ -5,19 +5,19 @@
             <div class="col-md-6">
                 <div id="logar">
                     <fieldset><legend>Já sou cadastrado</legend>
-                       <form>
+                       <form id="loginForm">
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label for="email" class="col-form-label col-form-label-lg">Email*</label>
-                                    <input type="email" class="form-control form-control-lg" id="emailLog" placeholder="voce@exemplo.com" name="email">
+                                    <input type="email" class="form-control form-control-lg" id="emailLog" placeholder="voce@exemplo.com" name="login">
                                 </div>
 
                                 <div class="col-md-12">
                                     <label for="senha" class="col-form-label col-form-label-lg">Senha*</label>
-                                    <input type="password" class="form-control form-control-lg" id="senha" name="pass">
+                                    <input type="password" class="form-control form-control-lg" id="senha" name="password">
                                 </div>
                             </div>
-                            <button type="submit" id="logar" class="btn btn-primary btn-lg pull-right" style="cursor:pointer;">Logar</button>
+                            <button type="submit" id="logar-btn" class="btn btn-primary btn-lg pull-right" style="cursor:pointer;">Logar</button>
                         </form>
                         <small><em><strong>* Campos obrigatórios</strong></em></small>
                     </fieldset>

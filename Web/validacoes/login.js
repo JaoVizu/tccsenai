@@ -1,7 +1,17 @@
- $('#logar').click(function(e){
-        e.preventDefault();
+ $('#logar-btn
 
+
+ 	').click(function(e){
+        e.preventDefault();
+        
         $.ajax({
-        	
+        	url: 'validacoes/validaLogin.php',
+        	method:'post',
+        	data: $('#loginForm').serialize(),
+
+        	success: function(data){
+        		alert(data);
+        		if(data == '1'){ window.location = "../Web/meusPedidos.php"}
+        	}
         });
   })

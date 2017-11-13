@@ -45,6 +45,9 @@ include('Class/Sql.php');
 
 
 ?>
+    <div class="jumbotron text-center">
+        <h1 class="jumbo-text">Meu Carrinho</h1>
+    </div>
     <div class="container mt-5">
         
         <table class="table table-bordered">
@@ -104,7 +107,13 @@ include('Class/Sql.php');
             </tbody>
         </table>
             <div class="d-flex justify-content-end mb-5">
-                <a href="../Web/checaLogin.php" class="btn btn-success">Finalizar Pedido</a>
+                <a href=<?php if(!isset($_SESSION['usuario'])){
+                    echo "../Web/checaLogin.php";
+                }else{
+                    echo "../Web/meusPedidos.php";
+                }
+
+                ?> class="btn btn-success">Finalizar Pedido</a>
             </div>
         </form>
     </div>
