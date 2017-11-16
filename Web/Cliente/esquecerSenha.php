@@ -6,19 +6,19 @@
 		<div id="form-cpf" class="mb-5">
 			<form action="" id="formCpf">
 				<label for="" class="col-form-label col-form-label-lg">Digite seu CPF:</label>
-				<input type="text" name="cpf" id="cpf" class="form-control">
+				<input type="text" name="cpf" id="cpf" class="form-control" required>
 
 				<input type="submit" class="btn btn-lg btn-primary mt-4" id="enviaCpf">
 			</form>
 		</div>
 
-		<div id="nova-senha" class="mb-5">
+		<div id="nova-senha" class="mb-5" style="display: none;">
 			<form action="" id="formSenha">
 				<label for="" class="col-form-label col-form-label-lg">Digite sua nova senha:</label>
-				<input type="text" name="pass" id="pass" class="form-control">
+				<input type="password" name="pass" id="pass" class="form-control" required>
 
 				<label for="" class="col-form-label col-form-label-lg">Confirme sua senha:</label>
-				<input type="text" name="pass2" id="pass2" class="form-control">
+				<input type="password" name="pass2" id="pass2" class="form-control" required>
 
 				<button class="btn btn-lg btn-primary mt-4" id="enviaSenha">Finalizar</button>
 			</form>

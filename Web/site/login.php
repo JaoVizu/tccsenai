@@ -27,7 +27,7 @@
             ?>
             </p>
             <a href="cadastroCliente.php">Não tenho um cadastro</a><br/>
-            <a href="">Esqueci minha senha</a>     
+            <a href="esqueceuSenha.php">Esqueci minha senha</a>     
 
         </form>
     </section>
@@ -46,6 +46,10 @@
                 success: function(data){
                     
                     if(data == '1'){ window.location = "../Web/index.php"}else{window.location ="../Web/site/loadingPage/loading.php"}
+                    if(data == '2'){
+                        alert('Usuário ou Senha incorreta');
+                        window.location = "../Web/login.php";
+                    }
                 }
             });
         })

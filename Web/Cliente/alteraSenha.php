@@ -23,7 +23,7 @@
 	if($queryLogin){ //condição para ver se a query retornou algum resultado
 		echo 'Senha alterada com sucesso';
 	}
-	//SELECT cpfcliente from cliente a INNER JOIN login b USING(codcliente) WHERE a.CodCliente = 2
+	
 	
 
 ?>

@@ -31,10 +31,10 @@
 		}
 
 	}else{
-		
-		session_start();
+		echo "2";
+		/*session_start();
 		$_SESSION['loginerror'] = "Usuário ou senha inválidos";
-		header("Location:../login.php");
+		header("Location:login.php");*/
 		
 	}
 
