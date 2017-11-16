@@ -1,6 +1,7 @@
 <?php
 
 include('../Class/Sql.php');
+include('../functions.php');
 
 	//VARIAVEIS PARA PEGAR INFORMACOES VINDO DO POST
 	$nome = $_POST['NomeCliente'];
@@ -23,6 +24,8 @@ include('../Class/Sql.php');
 	$inadmin = isset($_POST['inadmin']) ? $_POST['inadmin'] : 0;
 	$status = 'ATIVO';
 
+	$cpf = limpaCpf($cpf);
+	
 
 	//INSERINDO NO BANCO DE DADOS
 	$query = mysqli_query($conn, "CALL sp_users_save('$nome',
