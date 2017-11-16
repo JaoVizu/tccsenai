@@ -5,7 +5,7 @@
 
 <div class="container mt-5">
         
-        <table class="table table-bordered">
+        <table class="table table-bordered table-responsive">
             <thead>
                 <tr>
                     <th>Nº Pedido</th>

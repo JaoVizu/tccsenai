@@ -50,7 +50,7 @@ include('Class/Sql.php');
     </div>
     <div class="container mt-5">
         
-        <table class="table table-bordered">
+        <table class="table table-bordered table-responsive">
             <thead>
                 <tr>
                     <th>Imagem</th>

@@ -17,6 +17,13 @@ body{ font-family: 'Quattrocento', serif;}
     text-transform: uppercase;
 }
 
+@media (max-width: 420px){
+    .jumbo-text{
+        font-size: 40px;
+        text-align: left;
+    }
+}
+
 
 .name-prod{
 	border-bottom: 1px solid rgba(211, 211, 211, .8);

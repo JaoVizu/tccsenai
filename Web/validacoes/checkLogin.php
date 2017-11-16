@@ -1,5 +1,19 @@
+    <!-- ISSO AQUI E UMA GAMBIARRA -->
+    <script>
+        function janelaN(){
+            window.location = "../Web/index.php";
+        }
+    </script>
+    <?php
+        if(isset($_SESSION['usuario'])){
+            echo "<script>janelaN()</script>";
+        }
+    ?>
+    <!-- FIM DA GAMBIARRA -->
+    <div class="jumbotron text-center">
+        <h1 class="jumbo-text">Fazer Login</h1>
+    </div>
     <div class="container mb-5 mt-5">
-        <h1 class="text-center mt-5 mb-5">Identificação</h1>
         <div class="row">
 
             <div class="col-md-6">

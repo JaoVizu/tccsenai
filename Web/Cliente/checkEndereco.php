@@ -7,7 +7,7 @@
 ?>
 
 <div class="jumbotron text-center">
-    <h1 class="jumbo-text">Confirme o Endereço</h1>
+        <h1 class="jumbo-text">Confirme o Endereço</h1>
 </div>
 
 <div class="container">
@@ -44,9 +44,6 @@
             </div>
         </div><!-- fim linha -->
         
-        <div class="d-flex justify-content-end mb-4">
-            <input type="submit" name="" value="Continuar" class="btn btn-success btn-lg">
-        </div>
             <?php } ?>
     </form>
     <div class="d-flex justify-content-end mb-4">
