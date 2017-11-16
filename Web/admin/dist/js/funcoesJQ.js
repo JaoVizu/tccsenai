@@ -1,7 +1,7 @@
 //FUNCAO PARA  CALCULAR MARGEM DE LUCRO
 (function(){
     var margemLucro = $('#margem'),
-        valorProduto = $('#vlprice');
+        valorProduto = $('#valor');
     
         
     $('#margem').focusout(function(){
@@ -17,7 +17,7 @@
             total = valorConv + (valorConv *margemConv/100);
             
             var totalPrize = parseFloat(total).toFixed(2);
-
+            
             $('#valorVenda').val(totalPrize);
         }
     });

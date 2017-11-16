@@ -37,7 +37,7 @@
                                     </figcaption>
                                 </figure>
                             </div><!-- fim div efeito-->
-                            <a href="/categoria/anel"><span>Coleção Anéis</span></a>
+                            <a href="produtos.php?cat=1"><span>Coleção Anéis</span></a>
                         </div>
 
                         <div class="col align-self-center">
@@ -52,7 +52,7 @@
                                     </figcaption>
                                 </figure>
                             </div><!-- fim div efeito-->
-                            <a href=""><span>Coleção Colares</span></a>
+                            <a href="produtos.php?cat=4"><span>Coleção Colares</span></a>
                         </div>
 
                         <div class="col align-self-center">
@@ -67,7 +67,7 @@
                                     </figcaption>
                                 </figure>
                             </div><!-- fim div efeito-->
-                            <a href=""><span>Coleção Pulseiras</span></a>
+                            <a href="produtos.php?cat=5"><span>Coleção Pulseiras</span></a>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
 
                     <div class="texto">
                         <p>“Uma joia tem o poder de ser essa coisa pequena que pode lhe fazer sentir única” - <em>Jennie Kwon</em></p>
-                        <p>Seja única! Conheça nossos produtos</p><i class="fa fa-arrow-right" aria-hidden="true"><a href="produtos.php"></a></i>
+                        <p>Seja única! Conheça nossos produtos</p><a href="produtos.php"></a><i class="fa fa-arrow-right" aria-hidden="true"></i>
                     </div>
                     
                </div>

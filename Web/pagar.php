@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="res/site/css/bootstrap.min.css">
+<link rel="stylesheet" href="Cliente/css/cliente.css">
+
 <?php
 session_start();
 include('Class/Sql.php');
@@ -66,9 +69,14 @@ try {
             \PagSeguro\Configuration\Configure::getAccountCredentials()
         );
 
-        echo "<h2>Criando requisi&ccedil;&atilde;o de pagamento</h2>"
-            . "<p>URL do pagamento: <strong>$result</strong></p>"
-            . "<p><a title=\"URL do pagamento\" href=\"$result\" target=\_blank\">Ir para URL do pagamento.</a></p>";
+
+
+        echo '  <div class="jumbotron text-center">
+                    <h1 class="jumbo-text">Criando requisi&ccedil;&atilde;o de pagamento</h1>
+                </div>'
+            //. "<p>URL do pagamento: <strong>$result</strong></p>"
+            . "<p style='font-size: 25px;'><a title=\"URL do pagamento\" href=\"$result\" target=\_blank\">Ir para URL do pagamento.</a></p>";
+
     } catch (Exception $e) {
         die($e->getMessage());
     }

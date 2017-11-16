@@ -392,7 +392,6 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-
 <script src="dist/js/ajax.js"></script>
 <script src="dist/js/cadastroCliente.js"></script>
 <script src="dist/js/jquery.mask.js"></script>
