@@ -41,7 +41,7 @@
 
         $update_venda = mysqli_query($conn, "UPDATE Venda SET TotalEncomenda = '$total' WHERE CodVenda = '".$read_ultimo_pedido_view['CodVenda']."'");
         echo "<script>alert('Cadastrou certin')</script>";
-        header("Location: pagar.php?id='".$read_ultimo_pedido_view['CodVenda']."'");
+        header("Location: pagar.php?id=".$read_ultimo_pedido_view['CodVenda']."");
     }
     
 

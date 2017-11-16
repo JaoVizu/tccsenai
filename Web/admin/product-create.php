@@ -235,7 +235,7 @@ desired effect
               </div>
               <div class="form-group col-md-6">
                 <label for="vlprice">Valor</label>
-                <input type="number" class="form-control" id="vlprice" name="ValorProduto" step="0.01" placeholder="0.00" required>
+                <input type="number" class="form-control" id="valor" name="ValorProduto" step="0.01" placeholder="0.00" required>
               </div>
             </div>
 

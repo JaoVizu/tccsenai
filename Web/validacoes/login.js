@@ -1,7 +1,4 @@
- $('#logar-btn
-
-
- 	').click(function(e){
+ $('#logar-btn').click(function(e){
         e.preventDefault();
         
         $.ajax({
@@ -10,8 +7,8 @@
         	data: $('#loginForm').serialize(),
 
         	success: function(data){
-        		alert(data);
-        		if(data == '1'){ window.location = "../Web/meusPedidos.php"}
+        		
+        		if(data == '1'){ window.location = "../Web/checarEnd.php"}
         	}
         });
   })

@@ -1,3 +1,11 @@
+$('tbody #qtd').on("keyup keydown change", function(){
+    //document.getElementById('finaliza').style.display = 'none';
+    $('#finaliza').click(function(e){
+        e.preventDefault();
+        alert('Atualize o carrinho para continuar');
+    }) ;
+});
+
 //PEGA O ID DO CAMPO QUANTIDADE
 /*var qtd = $('#qtd');
 var count = 0;

@@ -17,7 +17,7 @@ try {
     $payment = new \PagSeguro\Domains\Requests\Payment();
 
     //ADD O PRODUTO
-    $id_pedido = addslashes($_GET['id']);
+    $id_pedido = $_GET['id'];
 
     $read_pedido = mysqli_query($conn, "SELECT * FROM Venda Where CodVenda = '$id_pedido'");
 

@@ -7,7 +7,7 @@
 	$login = $_POST['login'];
 	$pass = md5($_POST['password']);
 
-	$query = mysqli_query($conn,"SELECT * FROM Login WHERE NomeLogin = '$login' AND Senha = '$pass'");
+	$query = mysqli_query($conn,"SELECT * FROM Login WHERE NomeLogin = '$login' OR email = '$login' AND Senha = '$pass'");
 
 	$results = mysqli_fetch_array($query);//resultados da query no banco
 	$inadmin = $results["inadmin"]; //pegando o valor do campo inadmin
@@ -26,7 +26,8 @@
 		}else{
 			session_start();
 			$_SESSION['usuario'] = $results;
-			header("Location: ../index.php");
+			echo "1";
+			//header("Location: ../index.php");
 		}
 
 	}else{

@@ -107,14 +107,15 @@ include('Class/Sql.php');
             </tbody>
         </table>
             <div class="d-flex justify-content-end mb-5">
-                <a href=<?php if(!isset($_SESSION['usuario'])){
-                    echo "../Web/checaLogin.php";
+                <a id="finaliza" href=<?php if(isset($_SESSION['usuario'])){
+                    echo "../Web/checarEnd.php";
                 }else{
-                    echo "../Web/finalizar-pedido.php";
+                    echo "../Web/checaLogin.php";
                 }
 
                 ?> class="btn btn-success">Finalizar Pedido</a>
             </div>
         </form>
     </div>
-       
+    <script src="admin/dist/js/jquery-3.2.1.min.js"></script>
+    <script src="Carrinho/js/qtdCarrinho.js"></script>

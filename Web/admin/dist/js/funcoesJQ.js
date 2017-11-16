@@ -22,6 +22,13 @@
         }
     });
 
+    $('#valor').focusout(function(){
+        if($('#valor').val() < 0.01){
+            alert('Coloque um valor maior que zero!');
+            document.getElementById('valor').value = 0;
+        }
+    });
+
 }());
 
 //FUNCAO DE CEP
@@ -152,10 +159,7 @@
 (function(){
 
     $(document).ready(function(){
-        $("li #messages-menu").click(function(){
-            alert('teste');
-            //$('#notifications-count').hide();
-        });
+     
     });
 }());
 
