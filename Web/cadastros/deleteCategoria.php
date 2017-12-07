@@ -8,6 +8,9 @@
 
 	if($queryDel){
 		header('Location: ../admin/index.php#!/categoria');
+	}else{
+		echo 'Nao deu'.mysqli_error($conn);
+		exit;
 	}
 
 ?>

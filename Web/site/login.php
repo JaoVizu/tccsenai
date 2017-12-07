@@ -44,12 +44,22 @@
                 data: $('#loginForm').serialize(),
 
                 success: function(data){
-                    
-                    if(data == '1'){ window.location = "../Web/index.php"}else{window.location ="../Web/site/loadingPage/loading.php"}
+                    if(data == '3'){
+                        alert('Usuário não existente');
+                        return false;
+                    }
+                    if(data == '1'){
+                        window.location = "../Web/index.php"
+                        
+                        }else{
+                        window.location ="../Web/site/loadingPage/loading.php"
+                     
+                        }
                     if(data == '2'){
                         alert('Usuário ou Senha incorreta');
                         window.location = "../Web/login.php";
                     }
+                    
                 }
             });
         })

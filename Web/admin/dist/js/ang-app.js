@@ -24,4 +24,6 @@ app.config(function($routeProvider){
 		templateUrl: 'encomendas.php'
 	});
 
+
+
 });

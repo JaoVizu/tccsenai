@@ -1,5 +1,9 @@
 $('#enviar').click(function(e){
     e.preventDefault();
+    //pegando valor dos campos para passar via json
+    var login = $('#deslogin').val(),
+        senha = $('#despassword').val();
+
     $.ajax({
         url: "../Web/cadastros/cadastroCliente.php",
 	    method: "post",
@@ -7,7 +11,21 @@ $('#enviar').click(function(e){
         
         success: function(data){
 			alert(data);
-            window.location = "../../Web/checarEnd.php";
+
+            console.log(login,senha);
+            $.ajax({
+
+                url: "../Web/validacoes/validaLogin.php",
+                method: "post",
+                data : {'login':login, 'password':senha},
+                
+                success: function(data){
+                    console.log('teste de dados ' + data);
+                    if(data == "1"){
+                        window.location = "../../Web/checarEnd.php";
+                    }
+                }
+            });
 		}
     });
     
@@ -65,6 +83,9 @@ $('#enviar').click(function(e){
                                 });
 
 
+                        }else{
+                            alert('O CPF não é válido, tente novamente!');
+                            document.getElementById('cpf').value = "";
                         } // fim if response server
                     }// fim success function
                 }); // fim first ajax function

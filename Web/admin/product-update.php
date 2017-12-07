@@ -206,7 +206,7 @@ desired effect
         <li><a id="products" href="index.php#!/products"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li><a id="category" a href="index.php#!/categoria"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li><a href="index.php#!/vendas"><i class="fa fa-area-chart"></i>Relátorio de Vendas</a></li>
-        <li><a href="index.php#!/encomendas"><i class="fa fa-archive"></i>Encomendas</a></li>
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -257,17 +257,18 @@ desired effect
           <div class="row">
               <div class="form-group col-md-4">
                   <label for="vlprice">Valor Produto</label>
-                  <input type="number" class="form-control" id="vlprice" name="ValorProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorProduto']?>">
+                  <input type="number" class="form-control" id="valor" name="ValorProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorProduto']?>">
               </div>
 
             <div class="form-group col-md-4">
               <label for="vlwidth">Margem Lucro</label>
               <input type="number" class="form-control" id="margem" name="MargemLucro" step="0.01" value="<?php echo $linha['MargemLucro']?>" placeholder="0% - 100%">
+              <div id="erro"></div>
             </div>
 
             <div class="form-group col-md-4">
               <label for="vlheight">Valor de Venda</label>
-              <input type="number" class="form-control" id="valorVenda" name="ValorVendaProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorVendaProduto']?>" maxlength="100">
+              <input type="number" class="form-control" id="valorVenda" name="ValorVendaProduto" step="0.01" placeholder="0.00" value="<?php echo $linha['ValorVendaProduto']?>" readonly>
             </div>
           </div><!-- fim linha -->
 

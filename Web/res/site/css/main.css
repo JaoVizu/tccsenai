@@ -297,6 +297,11 @@ figcaption p {
     padding:30px;   
 }
 
+#section-one img{
+    width: 550px;
+    height: 700px; 
+}
+
 #section-one p:first-child{
     font-size: 34px;
     line-height: 2;
@@ -501,6 +506,12 @@ form *{
 @media (max-width: 769px){
      .dropdown-menu.show{
         display: inline;
+    }
+}
+
+@media (max-width: 640px){
+    .sub-titles{
+        font-size: 48px;
     }
 }
 

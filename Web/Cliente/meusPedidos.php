@@ -1,4 +1,6 @@
-<?php include('Class/Sql.php'); ?>
+<?php include('Class/Sql.php');
+        include('functions.php');
+?>
 <div class="jumbotron text-center">
     <h1 class="jumbo-text">Meus Pedidos</h1>
 </div>
@@ -12,7 +14,6 @@
                     <th>Data</th>
                     <th>Valor</th>
                     <th>Status</th>
-                    <th>Opções</th>
                 </tr>
             </thead>
 
@@ -26,7 +27,7 @@
                 <tr>
                     <td><?php echo $row['CodVenda']?></td>
                     <td><?php echo $row['DataVenda']?></td>
-                    <td><?php echo $row['TotalEncomenda']?></td>
+                    <td><?php echo 'R$ '.formatPrice($row['TotalVenda'])?></td>
                     <td><?php echo $row['StatusPedido']?></td>
                 </tr>
             <?php endforeach; ?>

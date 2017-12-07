@@ -147,7 +147,7 @@
 
     var margem = document.getElementById('margem').value;
     var texto;
-    if(isNan(margem) || margem < 0.01 || margem > 100 ){
+    if(margem < 0.01 || margem > 100 ){
         texto = "Coloque um valor maior que 0.01 e menor que 100";
     }
 

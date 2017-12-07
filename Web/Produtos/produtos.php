@@ -99,7 +99,7 @@ endif;*/
     
         <div class="col-md-7 ml-3">
             <section id="vitrine-products">
-                <div class="row">
+                <div class="row busca">
                     
                 <?php
                     if(isset($_GET['cat']) && $_GET['cat'] != ''){
@@ -131,7 +131,8 @@ endif;*/
     </div><!--fim linha-->
 
     <!-- Scripts -->
-
+    <script src="admin/dist/js/jquery-3.2.1.min.js"></script>
+    <script src="Produtos/js/buscar.js"></script>
     
 </body>
 </html>

@@ -4,6 +4,8 @@
     $codCli = $_SESSION['usuario']['CodCliente'];
     $queryCli = mysqli_query($conn, "SELECT * FROM Cliente WHERE CodCliente = '$codCli'");
 
+    
+    var_dump(mysqli_fetch_assoc($queryCli));
 ?>
 
 <div class="jumbotron text-center">

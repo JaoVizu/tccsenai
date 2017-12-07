@@ -204,7 +204,7 @@ desired effect
         <li><a id="products" href="index.php#!/products"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li><a id="category" a href="index.php#!/categoria"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li><a href="index.php#!/vendas"><i class="fa fa-area-chart"></i>Relátorio de Vendas</a></li>
-        <li><a href="index.php#!/encomendas"><i class="fa fa-archive"></i>Encomendas</a></li>
+      
       </ul>
       <!-- /.sidebar-menu -->
     </section>

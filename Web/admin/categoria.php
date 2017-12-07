@@ -1,4 +1,3 @@
-<!-- ABRINDO PHP PARA CONSULTA DE NOMES E ETC -->
 <?php
   
   session_start();
@@ -96,43 +95,9 @@
                   <tr>
                     <td><?php echo $rowCatiguria['CodCategoria'];?></td>
                     <td><?php echo $rowCatiguria['NomeCategoria'];?></td>
-                    <td class="text-left"><a href="../cadastros/deleteCategoria.php?codcat=<?php echo $rowCatiguria['CodCategoria']?>" class="btn btn-danger" onclick="return confirm('Deseja deletar esta categoria?')"><i class="fa fa-trash"></i></a> &nbsp; <a href="" class="btn btn-warning" data-toggle="modal" data-target="#<?php echo $rowCatiguria['CodCategoria'];?>"><i class="fa fa-edit"></i></a></td>
+                    <td class="text-left"> <a href="altCategoria.php?id=<?php echo $rowCatiguria['CodCategoria']?>" class="btn btn-warning" ><i class="fa fa-edit"></i></a></td>
                   </tr>
-                  
-                  <div id="<?php echo $rowCatiguria['CodCategoria'];?>" class="modal fade bs-example-modal-lg" aria-labelledby="myLargeModalLabel">
-                    <div class="modal-dialog modal-lg" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title" style="font-size: 20px;">Alterar Categoria</h4>
-                        </div>
-
-                        <div class="modal-content" style="font-size: 25px; padding: 10px;">
-                          <?php
-                              /*echo "<label>Código Categoria</label> <br/>";
-                              echo "<input type='text' readonly value='".$rowCatiguria["CodCategoria"]."'<br/><br/>";
-
-                              echo "<label>Nome Categoria</label> <br/>";
-                              echo "<input type='text' value='".$rowCatiguria["NomeCategoria"]."'";*/
-                          ?>
-
-                          <form action="../update/updateCategoria.php" id="formCat" method="post">
-                            <label for="">Código Categoria</label> <br/>
-                            <input type="text" value="<?php echo $rowCatiguria['CodCategoria']?>" name="codCat"> <br/>
-
-                            <label for="">Nome Categoria</label><br/>
-                            <input type="text" value="<?php echo $rowCatiguria['NomeCategoria']?>" name="nomeCat">
-                            <br/>
-                            <button id="enviar" type="submit" class="btn btn-primary">Alterar</button>
-                          </form>
-                        </div>
-
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                
                 <?php } ?>
                 </tbody>
               </table>
@@ -150,4 +115,3 @@
     <!-- /.content -->
  
   <!-- /.content-wrapper -->
-

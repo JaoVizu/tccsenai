@@ -1,4 +1,4 @@
-<!-- ABRINDO PHP PARA CONSULTA DE NOMES E ETC -->
+
 <?php
   
   session_start();
@@ -185,7 +185,7 @@ desired effect
         <li><a id="products" href="#!products"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li><a id="category" a href="#!categoria"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li><a href="#!vendas"><i class="fa fa-area-chart"></i>Relátorio de Vendas</a></li>
-        <li><a href="#!encomendas"><i class="fa fa-archive"></i>Encomendas</a></li>
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -236,6 +236,7 @@ desired effect
 <script src="dist/js/angular.min.js"></script>
 <script src="dist/js/angular-route.js"></script>
 <script src="dist/js/ang-app.js"></script>
+
 
 
 </script>

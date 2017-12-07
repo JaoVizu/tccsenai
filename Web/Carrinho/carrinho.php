@@ -87,7 +87,7 @@ include('Class/Sql.php');
                         </div>
                         <button type="submit" class="btn btn-outline-primary ml-4" style="cursor:pointer;"><i class="fa fa-refresh" aria-hidden="true"></i> Atualizar Carrinho</button>
                     </td>
-                    <td><?php echo "R$ ".$arrayListar['ValorVendaProduto']?></td>
+                    <td><?php echo "R$ ".number_format($arrayListar['ValorVendaProduto'],2,",",".");?></td>
                     <td class="subtotal"><?php echo "R$ ".$sub;?></td>
                     <td>
                         <a href="?acao=del&id_prod=<?php echo $arrayListar['CodProduto'];?>"><i class="fa fa-trash fa-3x"></i></a>

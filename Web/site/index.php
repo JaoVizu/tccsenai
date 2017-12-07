@@ -82,11 +82,11 @@
            <div class="row">
                <div class="col-md-6 col-sm-12">
                     <div class="row justify-content-center">
-                        <img class="img-responsive" src="res/site/img/img-produtos/bumblee.jpg" alt="">
+                        <img class="img-responsive" src="res/site/img/img-produtos/img-pag-5.png" alt="">
                     </div>
                </div>
 
-               <div class="col-md-6 col-sm-12">
+               <div class="col-md-6 col-sm-12 quebra">
 
                     <div class="border-baixo row justify-content-center">
                         <h2 class="sub-titles">Desperte sua beleza</h2>
@@ -94,7 +94,7 @@
 
                     <div class="texto">
                         <p>“Uma joia tem o poder de ser essa coisa pequena que pode lhe fazer sentir única” - <em>Jennie Kwon</em></p>
-                        <p>Seja única! Conheça nossos produtos</p><a href="produtos.php"></a><i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        <p>Seja única! Conheça nossos produtos</p>
                     </div>
                     
                </div>

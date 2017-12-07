@@ -45,7 +45,8 @@
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">Relátorio de Vendas</h3>
-                        <h4 class="pull-right">Vendas Totais:&nbsp; <strong style="font-size:40px;"><?php echo $rowTotal['total']; ?></strong></h4>
+                        
+                        <a class="pull-right" style="margin-right: 20px;" href="../geraPdf.php"><i class="fa fa-file-pdf-o fa-4x"></i></a>
                     </div>
                     
                     <!-- tabela do relatorio -->
@@ -88,21 +89,25 @@
 
                                             //pegando item da venda e o produto
                                             $queryItemVenda = mysqli_query($conn, "SELECT * FROM itemvenda where codvenda = '$codVenda'");
-                                            $xArra = mysqli_fetch_array($queryItemVenda);
-                                            $codigoproduto = $xArra['CodProduto'];
-
-                                            $queryPegaProduto = mysqli_query($conn, "SELECT * FROM produto where codproduto = '$codigoproduto'");
-                                            $pegaProduto = mysqli_fetch_array($queryPegaProduto);
                                           ?>
                                           <?php
+
+                                            foreach($queryItemVenda as $linha):
+
+                                                //pegando o codigo do produto
+                                                $codigoproduto = $linha['CodProduto'];
+                                                //Selecionando o produto do item da venda
+                                                $queryPegaProduto = mysqli_query($conn, "SELECT * FROM produto WHERE codproduto = '$codigoproduto'");
+
+                                                //laço para mostrar todos os nomes do produtos que estao nos itens das vendas
+                                                foreach($queryPegaProduto as $pega):
                                                 
-                                            echo "Nome do Produto: ". '<strong>' . $pegaProduto['NomeProduto'].'</strong>' . '<br/>';
-                                            echo "Quantidade: " . '<strong>'.$xArra['QntItem']. '</strong>' . '<br/>';
-                                            echo "Valor do produto: "  . '<strong>R$ '.formatPrice($xArra['ValorItem']).'</strong>' . '<br/>' ;
+                                                    echo "Nome do Produto: ". '<strong>' . $pega['NomeProduto'].'</strong>' . '<br/>';
+                                                    echo "Quantidade: " . '<strong>'.$linha['QntItem']. '</strong>' . '<br/>';
 
-                                            $total = (float)$pegaProduto['ValorVendaProduto'] * (float)$xArra['QntItem'];
-
-                                            echo "Valor total: " . '<strong>R$ '.formatPrice($total).'</strong>';
+                                                    echo "Valor total: " . '<strong>R$ '.formatPrice($linha['ValorItem']).'</strong><br/>';
+                                                    endforeach;  
+                                            endforeach;
                                                 
                                           ?>
                                         </div>

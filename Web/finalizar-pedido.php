@@ -1,3 +1,4 @@
+
 <?php
     session_start();
     include('Class/Sql.php');
@@ -11,10 +12,11 @@
         $endArra = mysqli_fetch_array($queryEnd);
         $end = $endArra['EndCliente'];
         $nmr = $endArra['NCliente'];
-      
 
-        $insert_venda = mysqli_query($conn, "INSERT INTO Venda(CodCliente, DataVenda, FormaPagamento, DataPagamento,CodEncomenda, DataEncomenda, TotalEncomenda, EndEncomenda, NCliente, StatusPedido)
-        VALUES('$cod','".date("Y-m-d")."','0','n/a','".date("Y-m-d")."','0','0','$end','$nmr','Aguardando')");
+        $insert_venda = mysqli_query($conn, "INSERT INTO Venda
+        (CodCliente, DataVenda, DescontoVenda, FormaPagamento, HoraPedido,TotalVenda,EndVenda,NVenda,StatusPedido)
+        VALUES
+        ('$cod', '".date("Y-m-d")."', '0', 'N/A', '".date('H:i:s')."','0','$end','$nmr', 'Aguardando')");
 
         if(mysqli_num_rows($insert_venda) < 0){
            echo "Erro ao cadastrar usuário". mysqli_error($conn);
@@ -32,15 +34,17 @@
 
                 $sub = number_format($arrayListar['ValorVendaProduto'] * $qtd_produto,2, ",", ".");
                 $total += $arrayListar['ValorVendaProduto'] * $qtd_produto; 
+                
             }
 
             $insert_item_venda = mysqli_query($conn, "INSERT INTO itemvenda(CodProduto,CodVenda,QntItem,ValorItem)
             VALUES('$id_produto','".$read_ultimo_pedido_view['CodVenda']."','$qtd_produto','".$arrayListar['ValorVendaProduto']."')");
 
         endforeach;
-
-        $update_venda = mysqli_query($conn, "UPDATE Venda SET TotalEncomenda = '$total' WHERE CodVenda = '".$read_ultimo_pedido_view['CodVenda']."'");
+        
+        $update_venda = mysqli_query($conn, "UPDATE Venda SET TotalVenda = '$total' WHERE CodVenda = '".$read_ultimo_pedido_view['CodVenda']."'");
         //echo "<script>alert('Cadastrou certin')</script>";
+
         header("Location: pagar.php?id=".$read_ultimo_pedido_view['CodVenda']."");
     }
     

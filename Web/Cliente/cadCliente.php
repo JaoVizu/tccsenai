@@ -111,7 +111,7 @@
 
             <div class="form-group col-md-4">
                 <label for="deslogin">Login</label>
-                <input type="text" class="form-control" id="deslogin" name="NomeLogin" placeholder="Digite o login">
+                <input type="text" class="form-control" id="deslogin" name="login" placeholder="Digite o login">
               </div>
 
             
@@ -123,7 +123,7 @@
             
               <div class="form-group col-md-4">
                 <label for="despassword">Senha</label>
-                <input type="password" class="form-control" id="despassword" name="Senha" placeholder="Digite a senha">
+                <input type="password" class="form-control" id="despassword" name="password" placeholder="Digite a senha">
               </div>
           </div><!-- fim linha -->
           </div>

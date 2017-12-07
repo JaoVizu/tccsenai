@@ -3,6 +3,7 @@
   
   session_start();
   include('../Class/Sql.php');
+  include('../functions.php');
 
 
   //tratamento de sessao
@@ -21,7 +22,7 @@
   $results = mysqli_fetch_assoc($query);
   $nome = $results['NomeCliente'];
 
-   include('../functions.php');
+
 
   //SELECIONANDO TODOS OS PRODUTOS DO BANCO
   $query = mysqli_query($conn, "select * from produto");
@@ -92,7 +93,7 @@
                   <tr>
                     
                     <td><?php echo $row['NomeProduto']?></td>
-                    <td style="width: 100px;">R$ &nbsp;<?php echo $row['ValorProduto']?></td>
+                    <td style="width: 130px;">R$ &nbsp;<?php echo formatPrice($row['ValorVendaProduto'])?></td>
                     
                     <td><?php echo $row['Descricao']?></td>
                     <td><?php echo $row['StatusProduto']?></td>

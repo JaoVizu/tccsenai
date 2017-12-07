@@ -1,5 +1,7 @@
     <?php
         session_start();
+
+       
     ?>
     <!-- NAVBAR FIXED TOP -->
     <nav class="navbar  navbar-expand-md navbar-light bg-dark">
@@ -60,7 +62,15 @@
                     </li>
                 <?php } ?>
                 <div class="content-carrinho d-flex">
-                    <a href="carrinho.php"><span id="qtdCar" data-qtd=0 class="fa fa-shopping-bag" aria-hidden="true"></span></a>
+                    <a href="carrinho.php"><span id="qtdCar" data-qtd=<?php
+                        //contar quantos produtos tem no carrinho 
+                        if(isset($_SESSION['pedido'])){
+                            echo count($_SESSION['pedido']);
+                        }else{
+                            echo "0";
+                        }
+                        
+                    ?> class="fa fa-shopping-bag" aria-hidden="true"></span></a>
                 </div>
             </div>
     </nav>

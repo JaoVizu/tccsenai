@@ -1,8 +1,29 @@
-<link rel="stylesheet" href="res/site/css/bootstrap.min.css">
-<link rel="stylesheet" href="Cliente/css/cliente.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+<!-- IMPORTANDO CSS DO BOOTSTRAP -->
+<link rel="stylesheet" href="res/site/css/bootstrap.min.css">
+
+<!-- IMPORTANDO FONT-AWESOME PARA ICONES -->
+<link rel="stylesheet" href="res/site/css/font-awesome.min.css">
+
+<!-- IMPORTANDO SLIDER CSS -->
+<link rel="stylesheet" href="res/site/css/responsiveslides.css">
+
+<!-- IMPORTADO ANIMATE.CSS -->
+<link rel="stylesheet" href="res/site/css/animate.css">
+
+<!-- IMPORTANDO MAIN.CSS -->
+<link rel="stylesheet" href="res/site/css/main.css">
+<link rel="stylesheet" href="Cliente/css/cliente.css">
+<header>
+		<?php
+			include('site/header.php');
+		?>
+</header>
 <?php
-session_start();
+//session_start();
 include('Class/Sql.php');
 require_once "pagseguro-php-sdk-master/vendor/autoload.php";
 
@@ -41,7 +62,7 @@ try {
         }
     }
 
-    $updateStatus = mysqli_query($conn, "UPDATE venda SET StatusPedido = 'Pago' WHERE CodVenda = '$id_pedido'");
+    //$updateStatus = mysqli_query($conn, "UPDATE venda SET StatusPedido = 'Pago' WHERE CodVenda = '$id_pedido'");
     //moeda
     $payment->setCurrency("BRL");
     //referencia para fazer a baixa automatica
@@ -72,10 +93,11 @@ try {
 
 
         echo '  <div class="jumbotron text-center">
-                    <h1 class="jumbo-text">Criando requisi&ccedil;&atilde;o de pagamento</h1>
-                </div>'
-            //. "<p>URL do pagamento: <strong>$result</strong></p>"
-            . "<p style='font-size: 25px;'><a title=\"URL do pagamento\" href=\"$result\" target=\_blank\">Ir para URL do pagamento.</a></p>";
+                    <h1 class="jumbo-text">Realizar pagamento...</h1>
+                </div>'.
+            "<div style='margin:0 auto; width:10%;'><a class='btn btn-primary btn-lg' title=\"URL do pagamento\" href=\"$result\" target=\_blank\">Ir ao PagSeguro</a></div>";
+
+            unset($_SESSION['pedido']);
 
     } catch (Exception $e) {
         die($e->getMessage());
@@ -86,3 +108,9 @@ try {
 }
 
 ?>
+
+<footer style="margin-top: 100px;">
+    <?php
+	    include('site/footer.html');
+	?>
+</footer>

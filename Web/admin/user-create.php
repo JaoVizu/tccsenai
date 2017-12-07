@@ -197,7 +197,7 @@ desired effect
         <li><a id="products" href="index.php#!/products"><i class="fa fa-product-hunt"></i> <span>Produtos</span></a></li>
         <li><a id="category" a href="index.php#!/categoria"><i class="fa fa-tag"></i> <span>Categorias</span></a></li>
         <li><a href="index.php#!/vendas"><i class="fa fa-area-chart"></i>Relátorio de Vendas</a></li>
-        <li><a href="index.php#!/encomendas"><i class="fa fa-archive"></i>Encomendas</a></li>
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -327,7 +327,7 @@ desired effect
 
             <div class="form-group col-md-4">
                 <label for="deslogin">Login</label>
-                <input type="text" class="form-control" id="deslogin" name="NomeLogin" placeholder="Digite o login">
+                <input type="text" class="form-control" id="deslogin" name="login" placeholder="Digite o login">
               </div>
 
             
@@ -339,7 +339,7 @@ desired effect
             
               <div class="form-group col-md-4">
                 <label for="despassword">Senha</label>
-                <input type="password" class="form-control" id="despassword" name="Senha" placeholder="Digite a senha">
+                <input type="password" class="form-control" id="despassword" name="password" placeholder="Digite a senha">
               </div>
           </div><!-- fim linha -->
 
